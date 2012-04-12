@@ -1,8 +1,8 @@
 //
-//  rdvFirstViewController.m
+//  favsVC.m
 //  Rendezvous
 //
-//  Created by Harvest Zhang on 4/5/12.
+//  Created by Harvest Zhang on 4/11/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
 //
 
@@ -14,10 +14,19 @@
 
 @implementation favsVC
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -28,7 +37,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

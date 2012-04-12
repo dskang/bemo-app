@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface mapVC : UIViewController
+@interface mapVC : UIViewController <MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *_mapView;
+- (IBAction)recenter:(id)sender;
 
 @end

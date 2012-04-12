@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A06AD541533EC3C0023E769 /* MapKit.framework */; };
+		1A9AA68415366AFC001B5614 /* favsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* favsVC.m */; };
+		1A9AA68715368016001B5614 /* contactDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* contactDisplay.m */; };
+		1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEC00C1535191B007F1C60 /* contactTableVC.m */; };
 		1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* settingsVC.m */; };
 		1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* mapVC.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
@@ -17,7 +20,6 @@
 		1AF44503152E695A0006B5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44502152E695A0006B5DB /* main.m */; };
 		1AF44507152E695A0006B5DB /* rdvAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* rdvAppDelegate.m */; };
 		1AF4450A152E695A0006B5DB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */; };
-		1AF4450D152E695A0006B5DB /* favsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4450C152E695A0006B5DB /* favsVC.m */; };
 		1AF4450F152E695A0006B5DB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF4450E152E695A0006B5DB /* first.png */; };
 		1AF44511152E695A0006B5DB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44510152E695A0006B5DB /* first@2x.png */; };
 		1AF44514152E695A0006B5DB /* rendezvousVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* rendezvousVC.m */; };
@@ -27,6 +29,12 @@
 
 /* Begin PBXFileReference section */
 		1A06AD541533EC3C0023E769 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A9AA68215366AFC001B5614 /* favsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favsVC.h; sourceTree = "<group>"; };
+		1A9AA68315366AFC001B5614 /* favsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favsVC.m; sourceTree = "<group>"; };
+		1A9AA68515368016001B5614 /* contactDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactDisplay.h; sourceTree = "<group>"; };
+		1A9AA68615368016001B5614 /* contactDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactDisplay.m; sourceTree = "<group>"; };
+		1ACEC00B1535191B007F1C60 /* contactTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactTableVC.h; sourceTree = "<group>"; };
+		1ACEC00C1535191B007F1C60 /* contactTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactTableVC.m; sourceTree = "<group>"; };
 		1AE29FA01533F33800E651E4 /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
 		1AE29FA11533F33800E651E4 /* settingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsVC.m; sourceTree = "<group>"; };
 		1AE29FA31533FC4300E651E4 /* mapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapVC.h; sourceTree = "<group>"; };
@@ -42,8 +50,6 @@
 		1AF44505152E695A0006B5DB /* rdvAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rdvAppDelegate.h; sourceTree = "<group>"; };
 		1AF44506152E695A0006B5DB /* rdvAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rdvAppDelegate.m; sourceTree = "<group>"; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		1AF4450B152E695A0006B5DB /* favsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = favsVC.h; sourceTree = "<group>"; };
-		1AF4450C152E695A0006B5DB /* favsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = favsVC.m; sourceTree = "<group>"; };
 		1AF4450E152E695A0006B5DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		1AF44510152E695A0006B5DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		1AF44512152E695A0006B5DB /* rendezvousVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rendezvousVC.h; sourceTree = "<group>"; };
@@ -101,18 +107,22 @@
 				1AF44505152E695A0006B5DB /* rdvAppDelegate.h */,
 				1AF44506152E695A0006B5DB /* rdvAppDelegate.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
+				1A9AA68215366AFC001B5614 /* favsVC.h */,
+				1A9AA68315366AFC001B5614 /* favsVC.m */,
 				1AE29FA31533FC4300E651E4 /* mapVC.h */,
 				1AE29FA41533FC4300E651E4 /* mapVC.m */,
+				1A9AA68515368016001B5614 /* contactDisplay.h */,
+				1A9AA68615368016001B5614 /* contactDisplay.m */,
 				1AE29FA01533F33800E651E4 /* settingsVC.h */,
 				1AE29FA11533F33800E651E4 /* settingsVC.m */,
-				1AF4450B152E695A0006B5DB /* favsVC.h */,
-				1AF4450C152E695A0006B5DB /* favsVC.m */,
 				1AF4450E152E695A0006B5DB /* first.png */,
 				1AF44510152E695A0006B5DB /* first@2x.png */,
 				1AF44512152E695A0006B5DB /* rendezvousVC.h */,
 				1AF44513152E695A0006B5DB /* rendezvousVC.m */,
 				1AF44515152E695A0006B5DB /* second.png */,
 				1AF44517152E695A0006B5DB /* second@2x.png */,
+				1ACEC00B1535191B007F1C60 /* contactTableVC.h */,
+				1ACEC00C1535191B007F1C60 /* contactTableVC.m */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
 			);
 			path = Rendezvous;
@@ -199,10 +209,12 @@
 			files = (
 				1AF44503152E695A0006B5DB /* main.m in Sources */,
 				1AF44507152E695A0006B5DB /* rdvAppDelegate.m in Sources */,
-				1AF4450D152E695A0006B5DB /* favsVC.m in Sources */,
 				1AF44514152E695A0006B5DB /* rendezvousVC.m in Sources */,
 				1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */,
+				1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */,
+				1A9AA68415366AFC001B5614 /* favsVC.m in Sources */,
+				1A9AA68715368016001B5614 /* contactDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
