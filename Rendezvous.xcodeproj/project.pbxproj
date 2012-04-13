@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A06AD541533EC3C0023E769 /* MapKit.framework */; };
+		1A18B3421537EADF006C8BF7 /* rdvTimers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A18B3411537EADF006C8BF7 /* rdvTimers.m */; };
+		1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A18B343153808FF006C8BF7 /* CoreLocation.framework */; };
 		1A9AA68415366AFC001B5614 /* favsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* favsVC.m */; };
-		1A9AA68715368016001B5614 /* contactDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* contactDisplay.m */; };
+		1A9AA68715368016001B5614 /* rdvPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* rdvPin.m */; };
 		1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEC00C1535191B007F1C60 /* contactTableVC.m */; };
 		1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* settingsVC.m */; };
 		1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* mapVC.m */; };
@@ -29,10 +31,13 @@
 
 /* Begin PBXFileReference section */
 		1A06AD541533EC3C0023E769 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A18B3401537EADF006C8BF7 /* rdvTimers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvTimers.h; sourceTree = "<group>"; };
+		1A18B3411537EADF006C8BF7 /* rdvTimers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvTimers.m; sourceTree = "<group>"; };
+		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A9AA68215366AFC001B5614 /* favsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favsVC.h; sourceTree = "<group>"; };
 		1A9AA68315366AFC001B5614 /* favsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favsVC.m; sourceTree = "<group>"; };
-		1A9AA68515368016001B5614 /* contactDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactDisplay.h; sourceTree = "<group>"; };
-		1A9AA68615368016001B5614 /* contactDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactDisplay.m; sourceTree = "<group>"; };
+		1A9AA68515368016001B5614 /* rdvPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvPin.h; sourceTree = "<group>"; };
+		1A9AA68615368016001B5614 /* rdvPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvPin.m; sourceTree = "<group>"; };
 		1ACEC00B1535191B007F1C60 /* contactTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactTableVC.h; sourceTree = "<group>"; };
 		1ACEC00C1535191B007F1C60 /* contactTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactTableVC.m; sourceTree = "<group>"; };
 		1AE29FA01533F33800E651E4 /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */,
 				1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */,
 				1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */,
 				1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */,
@@ -76,6 +82,7 @@
 		1AF444E7152E695A0006B5DB = {
 			isa = PBXGroup;
 			children = (
+				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
 				1A06AD541533EC3C0023E769 /* MapKit.framework */,
 				1AF444FC152E695A0006B5DB /* Rendezvous */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
@@ -111,8 +118,10 @@
 				1A9AA68315366AFC001B5614 /* favsVC.m */,
 				1AE29FA31533FC4300E651E4 /* mapVC.h */,
 				1AE29FA41533FC4300E651E4 /* mapVC.m */,
-				1A9AA68515368016001B5614 /* contactDisplay.h */,
-				1A9AA68615368016001B5614 /* contactDisplay.m */,
+				1A18B3401537EADF006C8BF7 /* rdvTimers.h */,
+				1A18B3411537EADF006C8BF7 /* rdvTimers.m */,
+				1A9AA68515368016001B5614 /* rdvPin.h */,
+				1A9AA68615368016001B5614 /* rdvPin.m */,
 				1AE29FA01533F33800E651E4 /* settingsVC.h */,
 				1AE29FA11533F33800E651E4 /* settingsVC.m */,
 				1AF4450E152E695A0006B5DB /* first.png */,
@@ -214,7 +223,8 @@
 				1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */,
 				1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */,
 				1A9AA68415366AFC001B5614 /* favsVC.m in Sources */,
-				1A9AA68715368016001B5614 /* contactDisplay.m in Sources */,
+				1A9AA68715368016001B5614 /* rdvPin.m in Sources */,
+				1A18B3421537EADF006C8BF7 /* rdvTimers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
