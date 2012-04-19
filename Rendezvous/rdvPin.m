@@ -22,8 +22,4 @@
     return self;
 }
 
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
-    _coord = newCoordinate;
-}
-
 @end

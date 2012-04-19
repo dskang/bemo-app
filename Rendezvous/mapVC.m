@@ -8,21 +8,23 @@
 
 #import "mapVC.h"
 #import "rdvPin.h"
+#import "rdvLocationRelay.h"
 
 @interface mapVC ()
-
+@property (strong, nonatomic) rdvPin *contactPin;
+@property (strong, nonatomic) rdvLocationRelay *locationRelay;
+@property (strong, nonatomic) NSTimer *partnerTimer;
 @end
 
 @implementation mapVC
-@synthesize _mapView;
-@synthesize _pinsTimer;
-@synthesize _viewTimer;
-@synthesize _locationManager;
-@synthesize _myLocation;
-@synthesize _contactLocation;
+@synthesize mapView = _mapView;
+/* @synthesize pinsTimer;
+@synthesize viewTimer; */
+@synthesize contactPin = _contactPin;
+@synthesize locationRelay = _locationRelay;
+@synthesize partnerTimer = _partnerTimer;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -30,62 +32,87 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	[self plotContact]; // We're plotting the contact here (DEBUG)
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
-    [_locationManager startUpdatingLocation];
+    [self startUpdating];
 }
 
-- (void)viewDidUnload
-{
-    [self set_mapView:nil];
+- (void)viewDidUnload {
+    [self setMapView:nil];
     [super viewDidUnload];
+    [self stopUpdating];
     // Release any retained subviews of the main view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:(BOOL)animated];
-    _pinsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLocations) userInfo:nil repeats:YES];
-    _viewTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recenter:) userInfo:self repeats:YES];
     
+    /*_pinsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLocations) userInfo:nil repeats:YES];*/
+    /* This bit of code auto-recenters. Currently de-timing this doesn't work.
+    _viewTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recenter:) userInfo:self repeats:YES];
+    */
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
-    [_pinsTimer invalidate];
+    
+    
+    /*[_pinsTimer invalidate];
     _pinsTimer = nil;
     [_viewTimer invalidate];
-    _viewTimer = nil;
+    _viewTimer = nil; */
 }
 
-- (void)refreshLocations {
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
-        if ([annotation isKindOfClass:[MKUserLocation class]]) {
-            CLLocation* location = [_locationManager location];
-            _myLocation = [location coordinate];
-            [annotation setCoordinate:_myLocation];
-        }
+- (rdvPin *)contactPin {
+    if (!_contactPin) {
+        _contactPin = [[rdvPin alloc] init];
+        // Put pin on map
+        [self.mapView addAnnotation:_contactPin];
     }
+    return _contactPin;
 }
 
-// For now, this is dummy -- we need to fill this in for real later
-- (void)plotContact {
-    CLLocationCoordinate2D coord;
-    coord.latitude = 37.787;
-    coord.longitude = -122.419;
-    rdvPin* newContact = [[rdvPin alloc] initID:@"Harvest Zhang" atCoord:coord];
-    [_mapView addAnnotation:newContact];
+- (rdvLocationRelay *)locationRelay {
+    if (!_locationRelay) {
+        _locationRelay = [[rdvLocationRelay alloc] init];
+    }
+    return _locationRelay;
+}
+
+- (void)updatePartnerLocationOnMap {
+    // Show partner's location on map
+    self.contactPin.coordinate = self.locationRelay.partnerLocation.coordinate;
+    NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
+          self.contactPin.coordinate.latitude,
+          self.contactPin.coordinate.longitude);
+}
+
+- (void)startPartnerUpdatesOnMap {
+    self.partnerTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updatePartnerLocationOnMap) userInfo:nil repeats:YES];
+}
+
+- (void)stopPartnerUpdatesOnMap {
+    [self.partnerTimer invalidate];
+}
+
+- (void)startUpdating {
+    NSLog(@"Start updating.");
+    [self.locationRelay startSelfUpdates];
+    [self.locationRelay startPartnerUpdates];
+    [self startPartnerUpdatesOnMap];
+}
+
+- (void)stopUpdating {
+    NSLog(@"Stop updating.");
+    // [self.locationTracker stopSelfUpdates];
+    [self.locationRelay stopPartnerUpdates];
+    [self stopPartnerUpdatesOnMap];
 }
 
 // This is called each time an annotation is added to the map
 - (MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     static NSString* contactPinID = @"contactPin";
-    static NSString* myPinID = @"myPin";
+    //static NSString* myPinID = @"myPin";
     MKPinAnnotationView* annotView = nil;
     
     // This code for the contact pin
@@ -93,14 +120,6 @@
         annotView = (MKPinAnnotationView*) [_mapView dequeueReusableAnnotationViewWithIdentifier:contactPinID];
         if (annotView == nil) annotView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:contactPinID];
         else annotView.annotation = annotation;
-    }
-    
-    // This code for the user's own location pin
-    else if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        annotView = (MKPinAnnotationView*) [_mapView dequeueReusableAnnotationViewWithIdentifier:myPinID];
-        if (annotView == nil) annotView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:myPinID];
-        else annotView.annotation = annotation;
-        annotView.pinColor = MKPinAnnotationColorGreen;
     }
     
     if (annotView) {
@@ -116,30 +135,30 @@
 // See: http://stackoverflow.com/questions/1336370/positioning-mkmapview-to-show-multiple-annotations-at-once
 
 - (IBAction)recenter:(id)sender {
-    MKMapRect regionToDisplay = [self mapRectForAnnotations:_mapView.annotations];
-    if (!MKMapRectIsNull(regionToDisplay))
-        [_mapView setRegion:MKCoordinateRegionForMapRect(regionToDisplay) animated:YES];
-}
-
-- (MKMapRect) mapRectForAnnotations:(NSArray*)annotationsArray
-{
-    MKMapRect mapRect = MKMapRectNull;
+    CLLocation *currentLocation = self.locationRelay.currentLocation;
+    CLLocationCoordinate2D southWest;
+    CLLocationCoordinate2D northEast;
     
-    //annotations is an array with all the annotations I want to display on the map
-    for (id<MKAnnotation> annotation in annotationsArray) { 
-        
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-        
-        if (MKMapRectIsNull(mapRect)) 
-        {
-            mapRect = pointRect;
-        } else 
-        {
-            mapRect = MKMapRectUnion(mapRect, pointRect);
-        }
-    }
-    return mapRect;
+    southWest.latitude = MIN(currentLocation.coordinate.latitude, self.contactPin.coordinate.latitude);
+    southWest.longitude = MIN(currentLocation.coordinate.longitude, self.contactPin.coordinate.longitude);
+    
+    northEast.latitude = MAX(currentLocation.coordinate.latitude, self.contactPin.coordinate.latitude);
+    northEast.longitude = MAX(currentLocation.coordinate.longitude, self.contactPin.coordinate.longitude);
+    
+    CLLocation *locSouthWest = [[CLLocation alloc] initWithLatitude:southWest.latitude longitude:southWest.longitude];
+    CLLocation *locNorthEast = [[CLLocation alloc] initWithLatitude:northEast.latitude longitude:northEast.longitude];
+    
+    // This is a diag distance (if you wanted tighter you could do NE-NW or NE-SE)
+    CLLocationDistance meters = [locSouthWest distanceFromLocation:locNorthEast];
+    
+    MKCoordinateRegion region;
+    region.center.latitude = (southWest.latitude + northEast.latitude) / 2.0;
+    region.center.longitude = (southWest.longitude + northEast.longitude) / 2.0;
+    region.span.latitudeDelta = meters / 111319.5; // WOAH MAGIC!
+    region.span.longitudeDelta = 0.0;
+    
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
+    [self.mapView setRegion:adjustedRegion animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

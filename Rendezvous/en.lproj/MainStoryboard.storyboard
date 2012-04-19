@@ -21,6 +21,53 @@
             </objects>
             <point key="canvasLocation" x="652" y="498"/>
         </scene>
+        <!--Contact TableVC-->
+        <scene sceneID="qOz-N7-7C7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvq-qq-qLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="5Uu-xU-wOo" customClass="contactTableVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hTR-gk-EdJ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="zAf-YJ-44Z">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="hlK-cZ-rw9"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="04E-cG-t6w">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5Uu-xU-wOo" id="gNS-ok-TVf"/>
+                            <outlet property="delegate" destination="5Uu-xU-wOo" id="MNw-mK-T3M"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="fg3-KA-H42" id="FN1-Xz-cEN"/>
+                    </connections>
+                </tableViewController>
+                <searchDisplayController id="fg3-KA-H42">
+                    <connections>
+                        <outlet property="delegate" destination="5Uu-xU-wOo" id="1Ol-03-PYf"/>
+                        <outlet property="searchContentsController" destination="5Uu-xU-wOo" id="VuW-SL-jfp"/>
+                        <outlet property="searchResultsDataSource" destination="5Uu-xU-wOo" id="QRT-37-W8k"/>
+                        <outlet property="searchResultsDelegate" destination="5Uu-xU-wOo" id="PVo-yp-Gso"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="72" y="-90"/>
+        </scene>
         <!--RendezvousVC - Rendezvous-->
         <scene sceneID="13">
             <objects>
@@ -45,17 +92,14 @@
                                     <segue destination="fpt-Cj-heB" kind="modal" modalTransitionStyle="flipHorizontal" id="E5Q-bQ-Ygs"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="KGf-Uz-pKe">
-                                <rect key="frame" x="221" y="245" width="79" height="27"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="fCC-00-bGl">
+                                <rect key="frame" x="20" y="20" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End session automatically" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wYH-A2-xiS">
-                                <rect key="frame" x="20" y="248" width="198" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <segments>
+                                    <segment title="User 1"/>
+                                    <segment title="User 2"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
@@ -153,6 +197,9 @@
         <image name="second" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="contactTableVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/contactTableVC.h"/>
+        </class>
         <class className="favsVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/favsVC.h"/>
         </class>
@@ -160,7 +207,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mapVC.h"/>
             <relationships>
                 <relationship kind="action" name="recenter:"/>
-                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
         <class className="rendezvousVC" superclassName="UIViewController">
