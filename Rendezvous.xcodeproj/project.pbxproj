@@ -22,9 +22,9 @@
 		1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F0153D049400C7D6ED /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C9403153D137000C7D6ED /* rdvLocationRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */; };
+		1A7535E21540EDB400FBC5E6 /* rdvFBContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */; };
 		1A9AA68415366AFC001B5614 /* favsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* favsVC.m */; };
 		1A9AA68715368016001B5614 /* rdvPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* rdvPin.m */; };
-		1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEC00C1535191B007F1C60 /* contactTableVC.m */; };
 		1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* settingsVC.m */; };
 		1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* mapVC.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
@@ -83,12 +83,12 @@
 		1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		1A6C9401153D137000C7D6ED /* rdvLocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvLocationRelay.h; sourceTree = "<group>"; };
 		1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvLocationRelay.m; sourceTree = "<group>"; };
+		1A7535E01540EDB400FBC5E6 /* rdvFBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvFBContacts.h; sourceTree = "<group>"; };
+		1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvFBContacts.m; sourceTree = "<group>"; };
 		1A9AA68215366AFC001B5614 /* favsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favsVC.h; sourceTree = "<group>"; };
 		1A9AA68315366AFC001B5614 /* favsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favsVC.m; sourceTree = "<group>"; };
 		1A9AA68515368016001B5614 /* rdvPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvPin.h; sourceTree = "<group>"; };
 		1A9AA68615368016001B5614 /* rdvPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvPin.m; sourceTree = "<group>"; };
-		1ACEC00B1535191B007F1C60 /* contactTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactTableVC.h; sourceTree = "<group>"; };
-		1ACEC00C1535191B007F1C60 /* contactTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactTableVC.m; sourceTree = "<group>"; };
 		1AE29FA01533F33800E651E4 /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
 		1AE29FA11533F33800E651E4 /* settingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsVC.m; sourceTree = "<group>"; };
 		1AE29FA31533FC4300E651E4 /* mapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapVC.h; sourceTree = "<group>"; };
@@ -218,6 +218,8 @@
 				1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */,
 				1AF44505152E695A0006B5DB /* rdvAppDelegate.h */,
 				1AF44506152E695A0006B5DB /* rdvAppDelegate.m */,
+				1A7535E01540EDB400FBC5E6 /* rdvFBContacts.h */,
+				1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
 				1A9AA68215366AFC001B5614 /* favsVC.h */,
 				1A9AA68315366AFC001B5614 /* favsVC.m */,
@@ -233,8 +235,6 @@
 				1AF44513152E695A0006B5DB /* rendezvousVC.m */,
 				1AF44515152E695A0006B5DB /* second.png */,
 				1AF44517152E695A0006B5DB /* second@2x.png */,
-				1ACEC00B1535191B007F1C60 /* contactTableVC.h */,
-				1ACEC00C1535191B007F1C60 /* contactTableVC.m */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
 			);
 			path = Rendezvous;
@@ -325,7 +325,6 @@
 				1AF44514152E695A0006B5DB /* rendezvousVC.m in Sources */,
 				1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */,
-				1ACEC00D1535191B007F1C60 /* contactTableVC.m in Sources */,
 				1A9AA68415366AFC001B5614 /* favsVC.m in Sources */,
 				1A9AA68715368016001B5614 /* rdvPin.m in Sources */,
 				1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */,
@@ -339,6 +338,7 @@
 				1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */,
 				1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */,
 				1A6C9403153D137000C7D6ED /* rdvLocationRelay.m in Sources */,
+				1A7535E21540EDB400FBC5E6 /* rdvFBContacts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

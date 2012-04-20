@@ -19,7 +19,7 @@
 @implementation mapVC
 @synthesize mapView = _mapView;
 /* @synthesize pinsTimer;
-@synthesize viewTimer; */
+ @synthesize viewTimer; */
 @synthesize contactPin = _contactPin;
 @synthesize locationRelay = _locationRelay;
 @synthesize partnerTimer = _partnerTimer;
@@ -49,8 +49,8 @@
     
     /*_pinsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLocations) userInfo:nil repeats:YES];*/
     /* This bit of code auto-recenters. Currently de-timing this doesn't work.
-    _viewTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recenter:) userInfo:self repeats:YES];
-    */
+     _viewTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recenter:) userInfo:self repeats:YES];
+     */
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -58,9 +58,9 @@
     
     
     /*[_pinsTimer invalidate];
-    _pinsTimer = nil;
-    [_viewTimer invalidate];
-    _viewTimer = nil; */
+     _pinsTimer = nil;
+     [_viewTimer invalidate];
+     _viewTimer = nil; */
 }
 
 - (rdvPin *)contactPin {
@@ -107,6 +107,15 @@
     // [self.locationTracker stopSelfUpdates];
     [self.locationRelay stopPartnerUpdates];
     [self stopPartnerUpdatesOnMap];
+}
+
+- (IBAction)identityChanged:(UISegmentedControl *)sender {
+    self.locationRelay.user = sender.selectedSegmentIndex;
+    [self.locationRelay sendLocationToServer];
+}
+- (IBAction)endRendezvous:(id)sender {
+    [self stopUpdating];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 // This is called each time an annotation is added to the map

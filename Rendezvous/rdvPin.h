@@ -19,6 +19,6 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 - (id)initID:(NSString*)devID atCoord:(CLLocationCoordinate2D)coordinate;
-
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 
 @end

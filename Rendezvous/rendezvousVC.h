@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface rendezvousVC : UIViewController
+@interface rendezvousVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    
+}
 
 @end

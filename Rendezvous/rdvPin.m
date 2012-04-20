@@ -7,6 +7,9 @@
 //
 
 #import "rdvPin.h"
+@interface rdvPin()
+
+@end
 
 @implementation rdvPin
 
@@ -20,6 +23,10 @@
         _coord = coordinate;
     }
     return self;
+}
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    _coord = newCoordinate;
 }
 
 @end
