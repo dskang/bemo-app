@@ -21,22 +21,22 @@
 		1A6C93FA153D049400C7D6ED /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93EE153D049400C7D6ED /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F0153D049400C7D6ED /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1A6C9403153D137000C7D6ED /* rdvLocationRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */; };
-		1A7535E21540EDB400FBC5E6 /* rdvFBContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */; };
-		1A9AA68415366AFC001B5614 /* favsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* favsVC.m */; };
-		1A9AA68715368016001B5614 /* rdvPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* rdvPin.m */; };
-		1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* settingsVC.m */; };
-		1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* mapVC.m */; };
+		1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C9402153D137000C7D6ED /* LocationRelay.m */; };
+		1A7535E21540EDB400FBC5E6 /* FBContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7535E11540EDB400FBC5E6 /* FBContacts.m */; };
+		1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* FavoritesViewController.m */; };
+		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
+		1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* SettingsViewController.m */; };
+		1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* MapViewController.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
 		1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F8152E695A0006B5DB /* Foundation.framework */; };
 		1AF444FB152E695A0006B5DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444FA152E695A0006B5DB /* CoreGraphics.framework */; };
 		1AF44501152E695A0006B5DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AF444FF152E695A0006B5DB /* InfoPlist.strings */; };
 		1AF44503152E695A0006B5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44502152E695A0006B5DB /* main.m */; };
-		1AF44507152E695A0006B5DB /* rdvAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* rdvAppDelegate.m */; };
+		1AF44507152E695A0006B5DB /* RendezvousAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */; };
 		1AF4450A152E695A0006B5DB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */; };
 		1AF4450F152E695A0006B5DB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF4450E152E695A0006B5DB /* first.png */; };
 		1AF44511152E695A0006B5DB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44510152E695A0006B5DB /* first@2x.png */; };
-		1AF44514152E695A0006B5DB /* rendezvousVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* rendezvousVC.m */; };
+		1AF44514152E695A0006B5DB /* RendezvousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* RendezvousViewController.m */; };
 		1AF44516152E695A0006B5DB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44515152E695A0006B5DB /* second.png */; };
 		1AF44518152E695A0006B5DB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44517152E695A0006B5DB /* second@2x.png */; };
 /* End PBXBuildFile section */
@@ -81,18 +81,18 @@
 		1A6C93F0153D049400C7D6ED /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		1A6C93F1153D049400C7D6ED /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		1A6C9401153D137000C7D6ED /* rdvLocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvLocationRelay.h; sourceTree = "<group>"; };
-		1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvLocationRelay.m; sourceTree = "<group>"; };
-		1A7535E01540EDB400FBC5E6 /* rdvFBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvFBContacts.h; sourceTree = "<group>"; };
-		1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvFBContacts.m; sourceTree = "<group>"; };
-		1A9AA68215366AFC001B5614 /* favsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favsVC.h; sourceTree = "<group>"; };
-		1A9AA68315366AFC001B5614 /* favsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favsVC.m; sourceTree = "<group>"; };
-		1A9AA68515368016001B5614 /* rdvPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdvPin.h; sourceTree = "<group>"; };
-		1A9AA68615368016001B5614 /* rdvPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdvPin.m; sourceTree = "<group>"; };
-		1AE29FA01533F33800E651E4 /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
-		1AE29FA11533F33800E651E4 /* settingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsVC.m; sourceTree = "<group>"; };
-		1AE29FA31533FC4300E651E4 /* mapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapVC.h; sourceTree = "<group>"; };
-		1AE29FA41533FC4300E651E4 /* mapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapVC.m; sourceTree = "<group>"; };
+		1A6C9401153D137000C7D6ED /* LocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LocationRelay.h; sourceTree = "<group>"; };
+		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationRelay.m; sourceTree = "<group>"; };
+		1A7535E01540EDB400FBC5E6 /* FBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FBContacts.h; sourceTree = "<group>"; };
+		1A7535E11540EDB400FBC5E6 /* FBContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBContacts.m; sourceTree = "<group>"; };
+		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Pin.h; sourceTree = "<group>"; };
+		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
+		1AE29FA01533F33800E651E4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SettingsViewController.h; sourceTree = "<group>"; };
+		1AE29FA11533F33800E651E4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MapViewController.h; sourceTree = "<group>"; };
+		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		1AF444F2152E695A0006B5DB /* Rendezvous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rendezvous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF444F6152E695A0006B5DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1AF444F8152E695A0006B5DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,13 +101,13 @@
 		1AF44500152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AF44502152E695A0006B5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AF44504152E695A0006B5DB /* Rendezvous-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rendezvous-Prefix.pch"; sourceTree = "<group>"; };
-		1AF44505152E695A0006B5DB /* rdvAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rdvAppDelegate.h; sourceTree = "<group>"; };
-		1AF44506152E695A0006B5DB /* rdvAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rdvAppDelegate.m; sourceTree = "<group>"; };
+		1AF44505152E695A0006B5DB /* RendezvousAppDelegate.h */ = {isa = PBXFileReference; path = RendezvousAppDelegate.h; sourceTree = "<group>"; };
+		1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendezvousAppDelegate.m; sourceTree = "<group>"; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1AF4450E152E695A0006B5DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		1AF44510152E695A0006B5DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		1AF44512152E695A0006B5DB /* rendezvousVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rendezvousVC.h; sourceTree = "<group>"; };
-		1AF44513152E695A0006B5DB /* rendezvousVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rendezvousVC.m; sourceTree = "<group>"; };
+		1AF44512152E695A0006B5DB /* RendezvousViewController.h */ = {isa = PBXFileReference; path = RendezvousViewController.h; sourceTree = "<group>"; };
+		1AF44513152E695A0006B5DB /* RendezvousViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendezvousViewController.m; sourceTree = "<group>"; };
 		1AF44515152E695A0006B5DB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		1AF44517152E695A0006B5DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,25 +214,25 @@
 		1AF444FC152E695A0006B5DB /* Rendezvous */ = {
 			isa = PBXGroup;
 			children = (
-				1A6C9401153D137000C7D6ED /* rdvLocationRelay.h */,
-				1A6C9402153D137000C7D6ED /* rdvLocationRelay.m */,
-				1AF44505152E695A0006B5DB /* rdvAppDelegate.h */,
-				1AF44506152E695A0006B5DB /* rdvAppDelegate.m */,
-				1A7535E01540EDB400FBC5E6 /* rdvFBContacts.h */,
-				1A7535E11540EDB400FBC5E6 /* rdvFBContacts.m */,
+				1A6C9401153D137000C7D6ED /* LocationRelay.h */,
+				1A6C9402153D137000C7D6ED /* LocationRelay.m */,
+				1AF44505152E695A0006B5DB /* RendezvousAppDelegate.h */,
+				1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */,
+				1A7535E01540EDB400FBC5E6 /* FBContacts.h */,
+				1A7535E11540EDB400FBC5E6 /* FBContacts.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
-				1A9AA68215366AFC001B5614 /* favsVC.h */,
-				1A9AA68315366AFC001B5614 /* favsVC.m */,
-				1AE29FA31533FC4300E651E4 /* mapVC.h */,
-				1AE29FA41533FC4300E651E4 /* mapVC.m */,
-				1A9AA68515368016001B5614 /* rdvPin.h */,
-				1A9AA68615368016001B5614 /* rdvPin.m */,
-				1AE29FA01533F33800E651E4 /* settingsVC.h */,
-				1AE29FA11533F33800E651E4 /* settingsVC.m */,
+				1A9AA68215366AFC001B5614 /* FavoritesViewController.h */,
+				1A9AA68315366AFC001B5614 /* FavoritesViewController.m */,
+				1AE29FA31533FC4300E651E4 /* MapViewController.h */,
+				1AE29FA41533FC4300E651E4 /* MapViewController.m */,
+				1A9AA68515368016001B5614 /* Pin.h */,
+				1A9AA68615368016001B5614 /* Pin.m */,
+				1AE29FA01533F33800E651E4 /* SettingsViewController.h */,
+				1AE29FA11533F33800E651E4 /* SettingsViewController.m */,
 				1AF4450E152E695A0006B5DB /* first.png */,
 				1AF44510152E695A0006B5DB /* first@2x.png */,
-				1AF44512152E695A0006B5DB /* rendezvousVC.h */,
-				1AF44513152E695A0006B5DB /* rendezvousVC.m */,
+				1AF44512152E695A0006B5DB /* RendezvousViewController.h */,
+				1AF44513152E695A0006B5DB /* RendezvousViewController.m */,
 				1AF44515152E695A0006B5DB /* second.png */,
 				1AF44517152E695A0006B5DB /* second@2x.png */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
@@ -321,12 +321,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF44503152E695A0006B5DB /* main.m in Sources */,
-				1AF44507152E695A0006B5DB /* rdvAppDelegate.m in Sources */,
-				1AF44514152E695A0006B5DB /* rendezvousVC.m in Sources */,
-				1AE29FA21533F33800E651E4 /* settingsVC.m in Sources */,
-				1AE29FA51533FC4300E651E4 /* mapVC.m in Sources */,
-				1A9AA68415366AFC001B5614 /* favsVC.m in Sources */,
-				1A9AA68715368016001B5614 /* rdvPin.m in Sources */,
+				1AF44507152E695A0006B5DB /* RendezvousAppDelegate.m in Sources */,
+				1AF44514152E695A0006B5DB /* RendezvousViewController.m in Sources */,
+				1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */,
+				1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */,
+				1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */,
+				1A9AA68715368016001B5614 /* Pin.m in Sources */,
 				1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */,
 				1A6C93F4153D049400C7D6ED /* AFHTTPRequestOperation.m in Sources */,
 				1A6C93F5153D049400C7D6ED /* AFImageRequestOperation.m in Sources */,
@@ -337,8 +337,8 @@
 				1A6C93FA153D049400C7D6ED /* AFURLConnectionOperation.m in Sources */,
 				1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */,
 				1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */,
-				1A6C9403153D137000C7D6ED /* rdvLocationRelay.m in Sources */,
-				1A7535E21540EDB400FBC5E6 /* rdvFBContacts.m in Sources */,
+				1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */,
+				1A7535E21540EDB400FBC5E6 /* FBContacts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

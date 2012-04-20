@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "rdvAppDelegate.h"
+#import "RendezvousAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
    @autoreleasepool {
-       return UIApplicationMain(argc, argv, nil, NSStringFromClass([rdvAppDelegate class]));
+       return UIApplicationMain(argc, argv, nil, NSStringFromClass([RendezvousAppDelegate class]));
    }
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--FavsVC - Favs-->
+        <!--Favorites View Controller - Favs-->
         <scene sceneID="11">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
-                <viewController title="Favs" id="2" customClass="favsVC" sceneMemberID="viewController">
+                <viewController title="Favs" id="2" customClass="FavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,11 +21,11 @@
             </objects>
             <point key="canvasLocation" x="652" y="498"/>
         </scene>
-        <!--RendezvousVC - Rendezvous-->
+        <!--Rendezvous View Controller - Rendezvous-->
         <scene sceneID="13">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-                <viewController title="Rendezvous" id="3" customClass="rendezvousVC" sceneMemberID="viewController">
+                <viewController title="Rendezvous" id="3" customClass="RendezvousViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,11 +69,11 @@
             </objects>
             <point key="canvasLocation" x="652" y="-90"/>
         </scene>
-        <!--SettingsVC - Settings-->
+        <!--Settings View Controller - Settings-->
         <scene sceneID="3Cs-E8-Nkp">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTA-dG-kC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Settings" id="mAA-3b-ghg" customClass="settingsVC" sceneMemberID="viewController">
+                <viewController title="Settings" id="mAA-3b-ghg" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ff-kd-5EO">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -84,11 +84,11 @@
             </objects>
             <point key="canvasLocation" x="652" y="1083"/>
         </scene>
-        <!--MapVC - Map-->
+        <!--Map View Controller - Map-->
         <scene sceneID="aLc-7J-tdv">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbJ-zR-05d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Map" id="fpt-Cj-heB" customClass="mapVC" sceneMemberID="viewController">
+                <viewController title="Map" id="fpt-Cj-heB" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8LX-oh-9uh">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,24 +168,6 @@
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="favsVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/favsVC.h"/>
-        </class>
-        <class className="mapVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mapVC.h"/>
-            <relationships>
-                <relationship kind="action" name="recenter:"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="rendezvousVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/rendezvousVC.h"/>
-        </class>
-        <class className="settingsVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/settingsVC.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
