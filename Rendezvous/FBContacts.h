@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 
-@interface FBContacts : NSObject <FBRequestDelegate> {
+@interface FBContacts : NSObject <FBRequestDelegate>
 
-}
-
-@property (strong, nonatomic) Facebook* facebook;
 @property (strong, nonatomic) NSArray* contactArray;
 
 - (void)requestContacts;

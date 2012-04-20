@@ -1,6 +1,6 @@
 //
 //  LocationRelay.h
-//  Mapper
+//  Rendezvous
 //
 //  Created by Dan Kang on 4/13/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.

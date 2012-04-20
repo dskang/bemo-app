@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 
-@interface RendezvousAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate> {
-    Facebook *facebook;
-}
+#define myAppDelegate ((RendezvousAppDelegate *)[[UIApplication sharedApplication] delegate])
+
+@interface RendezvousAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Facebook *facebook;

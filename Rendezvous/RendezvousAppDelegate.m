@@ -11,38 +11,44 @@
 @implementation RendezvousAppDelegate
 
 @synthesize window = _window;
-@synthesize facebook;
+@synthesize facebook = _facebook;
+
+- (Facebook *)facebook {
+    if (!_facebook) {
+        _facebook = [[Facebook alloc] initWithAppId:@"407078449305300" andDelegate:self];
+    }
+    return _facebook;
+}
 
 - (void)loginToFB {
-    facebook = [[Facebook alloc] initWithAppId:@"407078449305300" andDelegate:self];
-
+    // Check for previously saved access token information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
         && [defaults objectForKey:@"FBExpirationDateKey"]) {
-        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
 
-    if (![facebook isSessionValid]) {
-        [facebook authorize:nil];
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil];
     }
 }
 
 // Pre iOS 4.2 support
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [facebook handleOpenURL:url]; 
+    return [self.facebook handleOpenURL:url]; 
 }
 
 // For iOS 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [facebook handleOpenURL:url]; 
+    return [self.facebook handleOpenURL:url]; 
 }
 
 - (void)fbDidLogin {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
 }
 
