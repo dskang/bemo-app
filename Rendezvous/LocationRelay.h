@@ -1,5 +1,5 @@
 //
-//  rdvLocationRelay.h
+//  LocationRelay.h
 //  Mapper
 //
 //  Created by Dan Kang on 4/13/12.

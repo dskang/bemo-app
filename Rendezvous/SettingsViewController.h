@@ -1,5 +1,5 @@
 //
-//  settingsVC.h
+//  SettingsViewController.h
 //  Rendezvous
 //
 //  Created by Harvest Zhang on 4/10/12.

@@ -1,5 +1,5 @@
 //
-//  rendezvousVC.h
+//  RendezvousViewController.h
 //  Rendezvous
 //
 //  Created by Harvest Zhang on 4/5/12.

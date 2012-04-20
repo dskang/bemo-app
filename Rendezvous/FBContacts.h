@@ -1,5 +1,5 @@
 //
-//  rdvFBContacts.h
+//  FBContacts.h
 //  Rendezvous
 //
 //  Created by Harvest Zhang on 4/19/12.

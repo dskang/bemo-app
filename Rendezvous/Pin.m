@@ -1,5 +1,5 @@
 //
-//  rdvPin.m
+//  Pin.m
 //  Rendezvous
 //
 //  Created by Harvest Zhang on 4/11/12.

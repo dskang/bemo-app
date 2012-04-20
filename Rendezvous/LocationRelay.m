@@ -1,5 +1,5 @@
 //
-//  rdvLocationRelay.m
+//  LocationRelay.m
 //  Mapper
 //
 //  Created by Dan Kang on 4/13/12.
