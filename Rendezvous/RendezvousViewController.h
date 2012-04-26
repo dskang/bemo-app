@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBContacts.h"
 
-@interface RendezvousViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    
+@interface RendezvousViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ContactRequestDelegate> {
 }
 
 @end

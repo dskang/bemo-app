@@ -9,12 +9,17 @@
 #import "FBContacts.h"
 #import "RendezvousAppDelegate.h"
 
+@interface FBContacts ()
+@end
+
 @implementation FBContacts
+@synthesize delegate = _delegate;
 @synthesize contactArray = _contactArray;
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
     NSLog(@"Ah hah, got contact results!");
-    _contactArray = (NSArray*)result;
+    _contactArray = (NSDictionary*)result;
+    [[self delegate] contactsAcquired:YES];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
@@ -23,6 +28,7 @@
 
 - (void)requestContacts {
     NSLog(@"Request sending...");
+    _contactArray = nil;
     Facebook *facebook = myAppDelegate.facebook;
     [facebook requestWithGraphPath:@"me/friends" andDelegate:self];
     NSLog(@"Request sent.");

@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 
+@protocol ContactRequestDelegate <NSObject>
+
+@required
+- (void) contactsAcquired: (BOOL)success;
+
+@end
+
 @interface FBContacts : NSObject <FBRequestDelegate>
 
-@property (strong, nonatomic) NSArray* contactArray;
+@property (strong, nonatomic) NSDictionary* contactArray;
+@property (strong, nonatomic) id delegate;
 
 - (void)requestContacts;
 
