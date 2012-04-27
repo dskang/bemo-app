@@ -10,16 +10,24 @@
 #import "RendezvousAppDelegate.h"
 
 @interface FBContacts ()
+@property (nonatomic) BOOL infoLoaded;
 @end
 
 @implementation FBContacts
 @synthesize delegate = _delegate;
-@synthesize contactArray = _contactArray;
+@synthesize infoLoaded = _infoLoaded;
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
-    NSLog(@"Ah hah, got contact results!");
-    self.contactArray = (NSDictionary*)result;
-    [[self delegate] contactsAcquired:YES];
+    if ([request.url isEqualToString:@"https://graph.facebook.com/me"]) {
+        NSLog(@"Got my contact info.");
+        myAppDelegate.myFBinfo = (NSDictionary*)result;
+    }
+    else if ([request.url isEqualToString:@"https://graph.facebook.com/me/friends"]) {
+        NSLog(@"Got my friends' contact info.");
+        myAppDelegate.contactArray = (NSDictionary*)result;
+    }
+    if (self.infoLoaded) [[self delegate] contactsAcquired:YES]; 
+    else self.infoLoaded = TRUE;
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
@@ -28,9 +36,10 @@
 
 - (void)requestContacts {
     NSLog(@"Request sending...");
-    self.contactArray = nil;
+    self.infoLoaded = NO;
     Facebook *facebook = myAppDelegate.facebook;
     [facebook requestWithGraphPath:@"me/friends" andDelegate:self];
+    [facebook requestWithGraphPath:@"me" andDelegate:self];
     NSLog(@"Request sent.");
 }
 

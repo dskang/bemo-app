@@ -8,10 +8,10 @@
 
 #import "RendezvousViewController.h"
 #import "MapViewController.h"
+#import "RendezvousAppDelegate.h"
 
 @interface RendezvousViewController ()
-@property (strong, nonatomic) NSArray* contacts;
-@property (strong, nonatomic) NSArray* indices;
+@property (weak, nonatomic) NSArray* contacts;
 @property (strong, nonatomic) FBContacts* fbContacts;
 @property (strong, nonatomic) UITableView* tableView;
 @property int numFriends;
@@ -19,7 +19,6 @@
 
 @implementation RendezvousViewController
 @synthesize contacts = _contacts;
-@synthesize indices = _indices;
 @synthesize fbContacts = _fbContacts;
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
@@ -47,7 +46,7 @@
 
 - (void)contactsAcquired:(BOOL)success {
     NSLog(@"RendezvousViewController has the contacts!");
-    self.contacts = [self.fbContacts.contactArray objectForKey:@"data"];
+    self.contacts = [myAppDelegate.contactArray objectForKey:@"data"];
     self.numFriends = [self.contacts count];
     [self.tableView reloadData];
 }
@@ -69,8 +68,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    myAppDelegate.contactFBinfo = [self.contacts objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
 }
 

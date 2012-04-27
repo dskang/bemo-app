@@ -18,7 +18,6 @@
 
 @interface FBContacts : NSObject <FBRequestDelegate>
 
-@property (strong, nonatomic) NSDictionary* contactArray;
 @property (strong, nonatomic) id delegate;
 
 - (void)requestContacts;

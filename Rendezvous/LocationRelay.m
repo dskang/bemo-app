@@ -19,7 +19,8 @@
 @synthesize partnerLocation = _partnerLocation;
 @synthesize locationManager = _locationManager;
 @synthesize partnerUpdateTimer = _partnerUpdateTimer;
-@synthesize user = _user; // FIXME
+@synthesize user = _user;
+@synthesize contact = _contact;
 
 - (CLLocationManager *)locationManager {
     if (!_locationManager) {
@@ -69,11 +70,7 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
     // Form POST request
     NSString *partnerUrl;
-    if (self.user == 0) {
-        partnerUrl = @"http://mapper-app.herokuapp.com/user/0";
-    } else {
-        partnerUrl = @"http://mapper-app.herokuapp.com/user/1";
-    }
+    partnerUrl = [NSString stringWithFormat:@"http://mapper-app.herokuapp.com/user/%lld", self.user];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
@@ -99,11 +96,7 @@
 - (void)fetchPartnerLocation {
     // Fetch partner's location
     NSString *partnerUrl;
-    if (self.user == 0) {
-        partnerUrl = @"http://mapper-app.herokuapp.com/user/1";
-    } else {
-        partnerUrl = @"http://mapper-app.herokuapp.com/user/0";
-    }
+    partnerUrl = [NSString stringWithFormat:@"http://mapper-app.herokuapp.com/user/%lld", self.contact];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     

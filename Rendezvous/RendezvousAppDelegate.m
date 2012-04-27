@@ -12,6 +12,9 @@
 
 @synthesize window = _window;
 @synthesize facebook = _facebook;
+@synthesize contactArray = _contactArray;
+@synthesize myFBinfo = _myFBinfo;
+@synthesize contactFBinfo = _contactFBinfo;
 
 - (Facebook *)facebook {
     if (!_facebook) {

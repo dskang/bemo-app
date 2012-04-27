@@ -15,5 +15,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Facebook *facebook;
+@property (strong, nonatomic) NSDictionary* contactArray;
+@property (strong, nonatomic) NSDictionary* myFBinfo;
+@property (strong, nonatomic) NSDictionary* contactFBinfo;
 
 @end

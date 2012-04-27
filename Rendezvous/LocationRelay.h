@@ -12,7 +12,8 @@
 @interface LocationRelay : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) CLLocation *partnerLocation;
-@property (nonatomic) NSInteger user; // FIXME
+@property (nonatomic) long long user;
+@property (nonatomic) long long contact;
 
 - (void)sendLocationToServer;
 

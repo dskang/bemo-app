@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView* mapView;
 
 - (IBAction)recenter:(id)sender;
+- (IBAction)endRendezvous:(id)sender;
 
 @end

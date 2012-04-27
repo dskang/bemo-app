@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "Pin.h"
 #import "LocationRelay.h"
+#import "RendezvousAppDelegate.h"
 
 @interface MapViewController ()
 @property (strong, nonatomic) Pin *contactPin;
@@ -32,6 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Contact ID: %lld", strtoull([[myAppDelegate.contactFBinfo objectForKey:@"id"] UTF8String], NULL, 0));
+    self.locationRelay.contact = strtoull([[myAppDelegate.contactFBinfo objectForKey:@"id"] UTF8String], NULL, 0);
+    NSLog(@"My own ID: %lld", strtoull([[myAppDelegate.myFBinfo objectForKey:@"id"] UTF8String], NULL, 0));
+    self.locationRelay.contact = strtoull([[myAppDelegate.myFBinfo objectForKey:@"id"] UTF8String], NULL, 0);
     [self startUpdating];
 }
 
@@ -44,24 +49,15 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:(BOOL)animated];
-    
-    /*_pinsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLocations) userInfo:nil repeats:YES];*/
-    /* This bit of code auto-recenters. Currently de-timing this doesn't work.
-     _viewTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recenter:) userInfo:self repeats:YES];
-     */
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
-    
-    
-    /*[_pinsTimer invalidate];
-     _pinsTimer = nil;
-     [_viewTimer invalidate];
-     _viewTimer = nil; */
+
 }
 
-- (Pin *)contactPin {
+- (Pin*)contactPin {
     if (!_contactPin) {
         _contactPin = [[Pin alloc] init];
         // Put pin on map
@@ -70,7 +66,7 @@
     return _contactPin;
 }
 
-- (LocationRelay *)locationRelay {
+- (LocationRelay*)locationRelay {
     if (!_locationRelay) {
         _locationRelay = [[LocationRelay alloc] init];
     }
@@ -102,14 +98,15 @@
 
 - (void)stopUpdating {
     NSLog(@"Stop updating.");
-    // [self.locationTracker stopSelfUpdates];
+    [self.locationRelay stopSelfUpdates];
     [self.locationRelay stopPartnerUpdates];
     [self stopPartnerUpdatesOnMap];
 }
 
 - (IBAction)endRendezvous:(id)sender {
     [self stopUpdating];
-    [self dismissModalViewControllerAnimated:YES];
+    NSLog(@"endRendezvous called. Time to stop updating.");
+    [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 
 // This is called each time an annotation is added to the map
