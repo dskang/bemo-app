@@ -12,8 +12,6 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView* mapView;
-/*@property (weak, nonatomic) NSTimer* _pinsTimer;
-@property (weak, nonatomic) NSTimer* _viewTimer; */
 
 - (IBAction)recenter:(id)sender;
 

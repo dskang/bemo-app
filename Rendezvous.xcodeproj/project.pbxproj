@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A06AD541533EC3C0023E769 /* MapKit.framework */; };
+		1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0876F4154A5D360079276F /* ConnectingViewController.m */; };
 		1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A18B343153808FF006C8BF7 /* CoreLocation.framework */; };
 		1A2D33D715387E7E003FC6A3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2D33CA15387E7E003FC6A3 /* FBDialog.bundle */; };
 		1A2D33D815387E7E003FC6A3 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2D33D015387E7E003FC6A3 /* libfacebook_ios_sdk.a */; };
@@ -43,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		1A06AD541533EC3C0023E769 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectingViewController.h; sourceTree = "<group>"; };
+		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectingViewController.m; sourceTree = "<group>"; };
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A2D33C815387E7E003FC6A3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		1A2D33C915387E7E003FC6A3 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				1A7535E01540EDB400FBC5E6 /* FBContacts.h */,
 				1A7535E11540EDB400FBC5E6 /* FBContacts.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
+				1A0876F3154A5D360079276F /* ConnectingViewController.h */,
+				1A0876F4154A5D360079276F /* ConnectingViewController.m */,
 				1A9AA68215366AFC001B5614 /* FavoritesViewController.h */,
 				1A9AA68315366AFC001B5614 /* FavoritesViewController.m */,
 				1AE29FA31533FC4300E651E4 /* MapViewController.h */,
@@ -339,6 +344,7 @@
 				1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */,
 				1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */,
 				1A7535E21540EDB400FBC5E6 /* FBContacts.m in Sources */,
+				1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

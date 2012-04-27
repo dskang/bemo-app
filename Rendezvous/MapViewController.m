@@ -18,8 +18,6 @@
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
-/* @synthesize pinsTimer;
- @synthesize viewTimer; */
 @synthesize contactPin = _contactPin;
 @synthesize locationRelay = _locationRelay;
 @synthesize partnerTimer = _partnerTimer;
@@ -109,10 +107,6 @@
     [self stopPartnerUpdatesOnMap];
 }
 
-- (IBAction)identityChanged:(UISegmentedControl *)sender {
-    self.locationRelay.user = sender.selectedSegmentIndex;
-    [self.locationRelay sendLocationToServer];
-}
 - (IBAction)endRendezvous:(id)sender {
     [self stopUpdating];
     [self dismissModalViewControllerAnimated:YES];
