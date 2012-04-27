@@ -18,7 +18,7 @@
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
     NSLog(@"Ah hah, got contact results!");
-    _contactArray = (NSDictionary*)result;
+    self.contactArray = (NSDictionary*)result;
     [[self delegate] contactsAcquired:YES];
 }
 
@@ -28,7 +28,7 @@
 
 - (void)requestContacts {
     NSLog(@"Request sending...");
-    _contactArray = nil;
+    self.contactArray = nil;
     Facebook *facebook = myAppDelegate.facebook;
     [facebook requestWithGraphPath:@"me/friends" andDelegate:self];
     NSLog(@"Request sent.");
