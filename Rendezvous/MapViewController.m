@@ -57,7 +57,7 @@
 
 }
 
-- (Pin*)contactPin {
+- (Pin *)contactPin {
     if (!_contactPin) {
         _contactPin = [[Pin alloc] init];
         // Put pin on map
@@ -66,7 +66,7 @@
     return _contactPin;
 }
 
-- (LocationRelay*)locationRelay {
+- (LocationRelay *)locationRelay {
     if (!_locationRelay) {
         _locationRelay = [[LocationRelay alloc] init];
     }
@@ -110,10 +110,10 @@
 }
 
 // This is called each time an annotation is added to the map
-- (MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString* contactPinID = @"contactPin";
+- (MKAnnotationView *)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *contactPinID = @"contactPin";
     //static NSString* myPinID = @"myPin";
-    MKPinAnnotationView* annotView = nil;
+    MKPinAnnotationView *annotView = nil;
     
     // This code for the contact pin
     if ([annotation isKindOfClass:[Pin class]]) {

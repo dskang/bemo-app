@@ -11,8 +11,8 @@
 #import "RendezvousAppDelegate.h"
 
 @interface LocationRelay()
-@property (nonatomic, strong) CLLocationManager* locationManager;
-@property (nonatomic, strong) NSTimer* partnerUpdateTimer;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSTimer *partnerUpdateTimer;
 @end
 
 @implementation LocationRelay
@@ -49,7 +49,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-    NSDate* eventDate = newLocation.timestamp;
+    NSDate *eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     // Only use update if it's from the last 15 seconds
     if (abs(howRecent) < 15.0)
@@ -64,8 +64,8 @@
 
 - (void)loginToRendezvous {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* deviceKey = [defaults objectForKey:@"deviceKey"];
-    NSString* serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
+    NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
+    NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
     
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -102,12 +102,12 @@
 }
 
 - (void)getFriends {
-    NSString* partnerUrl;
+    NSString *partnerUrl;
     partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/friends?token=%@", myAppDelegate.sessionToken];
-    NSURL* url = [NSURL URLWithString:partnerUrl];
+    NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     
-    AFJSONRequestOperation* operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             myAppDelegate.contactArray = [JSON objectForKey:@"data"];

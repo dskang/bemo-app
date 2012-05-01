@@ -10,12 +10,12 @@
 #import <MapKit/MapKit.h>
 
 @interface Pin : NSObject <MKAnnotation> {
-    NSString* _devID;
+    NSString *_devID;
     CLLocationCoordinate2D _coord;
 }
 
-@property (nonatomic, readonly, copy) NSString* subtitle;
-@property (nonatomic, readonly, copy) NSString* title;
+@property (nonatomic, readonly, copy) NSString *subtitle;
+@property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 - (id)initID:(NSString*)devID atCoord:(CLLocationCoordinate2D)coordinate;

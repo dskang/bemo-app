@@ -17,7 +17,7 @@
 @synthesize title = _devID;
 @synthesize coordinate = _coord;
 
-- (id)initID:(NSString*)devID atCoord:(CLLocationCoordinate2D)coordinate {
+- (id)initID:(NSString *)devID atCoord:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
         _devID = [devID copy];
         _coord = coordinate;

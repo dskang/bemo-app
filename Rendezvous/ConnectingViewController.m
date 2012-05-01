@@ -10,8 +10,8 @@
 #import "RendezvousAppDelegate.h"
 
 @interface ConnectingViewController ()
-@property (weak, nonatomic) IBOutlet UILabel* contactName;
-@property (strong, nonatomic) NSTimer* timeoutTimer;
+@property (weak, nonatomic) IBOutlet UILabel *contactName;
+@property (strong, nonatomic) NSTimer *timeoutTimer;
 
 @end
 

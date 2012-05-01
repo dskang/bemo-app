@@ -16,10 +16,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Facebook *facebook;
-@property (strong, nonatomic) LocationRelay* locationRelay;
-@property (strong, nonatomic) NSArray* contactArray;
-@property (strong, nonatomic) NSDictionary* myFBinfo;
-@property (strong, nonatomic) NSDictionary* contactFBinfo;
-@property (strong, nonatomic) NSString* sessionToken;
+@property (strong, nonatomic) LocationRelay *locationRelay;
+@property (strong, nonatomic) NSArray *contactArray;
+@property (strong, nonatomic) NSDictionary *myFBinfo;
+@property (strong, nonatomic) NSDictionary *contactFBinfo;
+@property (strong, nonatomic) NSString *sessionToken;
 
 @end

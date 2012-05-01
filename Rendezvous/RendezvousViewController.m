@@ -11,8 +11,8 @@
 #import "RendezvousAppDelegate.h"
 
 @interface RendezvousViewController ()
-@property (weak, nonatomic) NSArray* contacts;
-@property (strong, nonatomic) UITableView* tableView;
+@property (weak, nonatomic) NSArray *contacts;
+@property (strong, nonatomic) UITableView *tableView;
 @property int numFriends;
 @end
 
@@ -47,8 +47,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* cellID = @"cellID";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     cell.textLabel.text = [[self.contacts objectAtIndex:indexPath.row] objectForKey:@"name"];
     return cell;
