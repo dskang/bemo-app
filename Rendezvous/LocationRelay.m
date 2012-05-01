@@ -86,8 +86,8 @@
     [mutableRequest setHTTPBody:data];
     
     // Send request
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
-        NSString* status = [JSON valueForKeyPath:@"status"];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest *request, NSHTTPURLResponse*response, id JSON) {
+        NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
             myAppDelegate.sessionToken = [JSON valueForKeyPath:@"data.token"];
@@ -105,7 +105,7 @@
     NSString *partnerUrl;
     partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/friends?token=%@", myAppDelegate.sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
