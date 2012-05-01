@@ -22,4 +22,7 @@
 
 - (void)startPartnerUpdates;
 - (void)stopPartnerUpdates;
+
+- (void)loginToRendezvous;
+- (void)getFriends;
 @end

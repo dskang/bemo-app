@@ -12,41 +12,27 @@
 
 @interface RendezvousViewController ()
 @property (weak, nonatomic) NSArray* contacts;
-@property (strong, nonatomic) FBContacts* fbContacts;
 @property (strong, nonatomic) UITableView* tableView;
 @property int numFriends;
 @end
 
 @implementation RendezvousViewController
 @synthesize contacts = _contacts;
-@synthesize fbContacts = _fbContacts;
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
 
-- (FBContacts *)fbContacts {
-    if (!_fbContacts) {
-        _fbContacts = [[FBContacts alloc] init];
-        [_fbContacts setDelegate:self];
-    }
-    return _fbContacts;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    self.contacts = nil;
-    [self.fbContacts requestContacts];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:@"loginAndFriendsSuccess" object:nil];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)contactsAcquired:(BOOL)success {
-    NSLog(@"RendezvousViewController has the contacts!");
-    self.contacts = [myAppDelegate.contactArray objectForKey:@"data"];
+- (void)gotContacts {
+    self.contacts = myAppDelegate.contactArray;
     self.numFriends = [self.contacts count];
     [self.tableView reloadData];
 }

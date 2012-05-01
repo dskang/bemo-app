@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
+#import "LocationRelay.h"
 
 #define myAppDelegate ((RendezvousAppDelegate *)[[UIApplication sharedApplication] delegate])
 
@@ -15,8 +16,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Facebook *facebook;
-@property (strong, nonatomic) NSDictionary* contactArray;
+@property (strong, nonatomic) LocationRelay* locationRelay;
+@property (strong, nonatomic) NSArray* contactArray;
 @property (strong, nonatomic) NSDictionary* myFBinfo;
 @property (strong, nonatomic) NSDictionary* contactFBinfo;
+@property (strong, nonatomic) NSString* sessionToken;
 
 @end
