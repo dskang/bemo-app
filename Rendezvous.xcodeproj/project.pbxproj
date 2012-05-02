@@ -188,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C7D8FC1551E3C90080E630 /* External */,
-				1AF444FC152E695A0006B5DB /* Rendezvous */,
+				1AF444FC152E695A0006B5DB /* Source */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
 				1AF444F3152E695A0006B5DB /* Products */,
 			);
@@ -215,7 +215,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1AF444FC152E695A0006B5DB /* Rendezvous */ = {
+		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				1A6C9401153D137000C7D6ED /* LocationRelay.h */,
@@ -243,7 +243,7 @@
 				1AF44517152E695A0006B5DB /* second@2x.png */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
 			);
-			path = Rendezvous;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		1AF444FD152E695A0006B5DB /* Supporting Files */ = {
@@ -429,8 +429,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rendezvous/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Rendezvous/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = "Source/Rendezvous-Prefix.pch";
+				INFOPLIST_FILE = "Source/Rendezvous-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
@@ -444,8 +444,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rendezvous/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Rendezvous/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = "Source/Rendezvous-Prefix.pch";
+				INFOPLIST_FILE = "Source/Rendezvous-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
