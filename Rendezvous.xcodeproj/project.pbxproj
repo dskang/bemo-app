@@ -187,8 +187,6 @@
 			children = (
 				1A6C93DD153D049400C7D6ED /* AFNetworking */,
 				1A2D33C715387E7E003FC6A3 /* facebook-ios-sdk */,
-				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
-				1A06AD541533EC3C0023E769 /* MapKit.framework */,
 				1AF444FC152E695A0006B5DB /* Rendezvous */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
 				1AF444F3152E695A0006B5DB /* Products */,
@@ -206,6 +204,8 @@
 		1AF444F5152E695A0006B5DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
+				1A06AD541533EC3C0023E769 /* MapKit.framework */,
 				1A2D33D915387EE2003FC6A3 /* libfacebook_ios_sdk.a */,
 				1AF444F6152E695A0006B5DB /* UIKit.framework */,
 				1AF444F8152E695A0006B5DB /* Foundation.framework */,
