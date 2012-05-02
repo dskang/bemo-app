@@ -20,7 +20,7 @@
 
 - (Facebook *)facebook {
     if (!_facebook) {
-        _facebook = [[Facebook alloc] initWithAppId:@"407078449305300" andDelegate:self];
+        _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
     }
     return _facebook;
 }
