@@ -1,14 +1,14 @@
 //
-//  RendezvousAppDelegate.m
-//  Rendezvous
+//  LumoAppDelegate.m
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/5/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
 //
 
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
-@implementation RendezvousAppDelegate
+@implementation LumoAppDelegate
 
 @synthesize window = _window;
 @synthesize facebook = _facebook;
@@ -39,13 +39,13 @@
     }
 }
 
-- (void)loginToRendezvous {
+- (void)loginToLumo {
     if (!_locationRelay) _locationRelay = [[LocationRelay alloc] init];
-    [self.locationRelay loginToRendezvous];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRendezvousFriends) name:@"loginSuccess" object:nil];
+    [self.locationRelay loginToLumo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
 }
 
-- (void)getRendezvousFriends {
+- (void)getLumoFriends {
     NSLog(@"Login successful. Session token is %@", self.sessionToken); //HEFFALUMPS
     [self.locationRelay getFriends];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
@@ -106,7 +106,7 @@
     // Override point for customization after application launch.
     [self loginToFB];
     [self generateDeviceKey];
-    [self loginToRendezvous];
+    [self loginToLumo];
     return YES;
 }
 

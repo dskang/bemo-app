@@ -1,6 +1,6 @@
 //
 //  MapViewController.h
-//  Rendezvous
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/10/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView* mapView;
 
 - (IBAction)recenter:(id)sender;
-- (IBAction)endRendezvous:(id)sender;
+- (IBAction)endLumo:(id)sender;
 
 @end

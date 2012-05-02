@@ -1,6 +1,6 @@
 //
 //  LocationRelay.m
-//  Rendezvous
+//  Lumo
 //
 //  Created by Dan Kang on 4/13/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "LocationRelay.h"
 #import "AFJSONRequestOperation.h"
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
 @interface LocationRelay()
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -62,7 +62,7 @@
     }
 }
 
-- (void)loginToRendezvous {
+- (void)loginToLumo {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];

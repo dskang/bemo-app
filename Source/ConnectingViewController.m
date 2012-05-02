@@ -1,13 +1,13 @@
 //
 //  ConnectingViewController.m
-//  Rendezvous
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/27/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
 //
 
 #import "ConnectingViewController.h"
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
 @interface ConnectingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *contactName;
@@ -45,7 +45,7 @@
     [self performSegueWithIdentifier:@"gotoMapView" sender:nil];
 }
 
-- (IBAction)cancelRendezvous {
+- (IBAction)cancelLumo {
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -1,6 +1,6 @@
 //
-//  RendezvousAppDelegate.h
-//  Rendezvous
+//  LumoAppDelegate.h
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/5/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
@@ -10,9 +10,9 @@
 #import "FBConnect.h"
 #import "LocationRelay.h"
 
-#define myAppDelegate ((RendezvousAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 
-@interface RendezvousAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
+@interface LumoAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Facebook *facebook;

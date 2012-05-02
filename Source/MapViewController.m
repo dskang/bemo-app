@@ -1,6 +1,6 @@
 //
 //  MapViewController.m
-//  Rendezvous
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/10/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import "Pin.h"
 #import "LocationRelay.h"
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
 @interface MapViewController ()
 @property (strong, nonatomic) Pin *contactPin;
@@ -103,9 +103,9 @@
     [self stopPartnerUpdatesOnMap];
 }
 
-- (IBAction)endRendezvous:(id)sender {
+- (IBAction)endLumo:(id)sender {
     [self stopUpdating];
-    NSLog(@"endRendezvous called. Time to stop updating.");
+    NSLog(@"endLumo called. Time to stop updating.");
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 
