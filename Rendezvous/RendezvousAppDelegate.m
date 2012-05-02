@@ -14,8 +14,8 @@
 @synthesize facebook = _facebook;
 @synthesize locationRelay = _locationRelay;
 @synthesize contactArray = _contactArray;
-@synthesize myFBinfo = _myFBinfo;
-@synthesize contactFBinfo = _contactFBinfo;
+@synthesize myInfo = _myInfo;
+@synthesize contactInfo = _contactInfo;
 @synthesize sessionToken = _sessionToken;
 
 - (Facebook *)facebook {

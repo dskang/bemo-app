@@ -18,8 +18,8 @@
 @property (strong, nonatomic) Facebook *facebook;
 @property (strong, nonatomic) LocationRelay* locationRelay;
 @property (strong, nonatomic) NSArray* contactArray;
-@property (strong, nonatomic) NSDictionary* myFBinfo;
-@property (strong, nonatomic) NSDictionary* contactFBinfo;
+@property (strong, nonatomic) NSDictionary* myInfo;
+@property (strong, nonatomic) NSDictionary* contactInfo;
 @property (strong, nonatomic) NSString* sessionToken;
 
 @end

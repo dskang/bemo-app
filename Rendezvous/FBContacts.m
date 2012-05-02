@@ -20,11 +20,11 @@
 - (void)request:(FBRequest *)request didLoad:(id)result {
     if ([request.url isEqualToString:@"https://graph.facebook.com/me"]) {
         NSLog(@"Got my contact info.");
-        myAppDelegate.myFBinfo = (NSDictionary*)result;
+        myAppDelegate.myInfo = (NSDictionary*)result;
     }
     else if ([request.url isEqualToString:@"https://graph.facebook.com/me/friends"]) {
         NSLog(@"Got my friends' contact info.");
-        myAppDelegate.contactArray = (NSDictionary*)result;
+        myAppDelegate.contactArray = (NSArray*)result;
     }
     if (self.infoLoaded) [[self delegate] contactsAcquired:YES]; 
     else self.infoLoaded = TRUE;

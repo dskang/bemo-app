@@ -8,16 +8,15 @@
 
 #import "ConnectingViewController.h"
 #import "RendezvousAppDelegate.h"
+#import "LocationRelay.h"
 
 @interface ConnectingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel* contactName;
-@property (strong, nonatomic) NSTimer* timeoutTimer;
 
 @end
 
 @implementation ConnectingViewController
 @synthesize contactName;
-@synthesize timeoutTimer = _timeoutTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,10 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.contactName.text = [myAppDelegate.contactFBinfo objectForKey:@"name"];
-    
-    self.timeoutTimer = [[NSTimer alloc] init];
-    self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(gotoMapView) userInfo:nil repeats:NO];
+	self.contactName.text = [myAppDelegate.contactInfo objectForKey:@"name"];
 }
 
 - (void)viewDidUnload {

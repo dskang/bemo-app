@@ -11,13 +11,11 @@
 #import "RendezvousAppDelegate.h"
 
 @interface RendezvousViewController ()
-@property (weak, nonatomic) NSArray* contacts;
 @property (strong, nonatomic) UITableView* tableView;
 @property int numFriends;
 @end
 
 @implementation RendezvousViewController
-@synthesize contacts = _contacts;
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
 
@@ -32,8 +30,7 @@
 }
 
 - (void)gotContacts {
-    self.contacts = myAppDelegate.contactArray;
-    self.numFriends = [self.contacts count];
+    self.numFriends = [myAppDelegate.contactArray count];
     [self.tableView reloadData];
 }
 
@@ -50,12 +47,17 @@
     static NSString* cellID = @"cellID";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    cell.textLabel.text = [[self.contacts objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.textLabel.text = [[myAppDelegate.contactArray objectAtIndex:indexPath.row] valueForKey:@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    myAppDelegate.contactFBinfo = [self.contacts objectAtIndex:indexPath.row];
+    myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
+    [myAppDelegate.locationRelay initiateConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestPlaced) name:@"connRequested" object:nil];
+}
+
+- (void)requestPlaced {
     [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
 }
 

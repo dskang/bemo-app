@@ -12,10 +12,8 @@
 @interface LocationRelay : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) CLLocation *partnerLocation;
-@property (nonatomic) long long user;
-@property (nonatomic) long long contact;
 
-- (void)sendLocationToServer;
+- (void)pushLocation;
 
 - (void)startSelfUpdates;
 - (void)stopSelfUpdates;
@@ -25,4 +23,6 @@
 
 - (void)loginToRendezvous;
 - (void)getFriends;
+- (void)initiateConnection;
+
 @end

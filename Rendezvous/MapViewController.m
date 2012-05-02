@@ -33,10 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Contact ID: %lld", strtoull([[myAppDelegate.contactFBinfo objectForKey:@"id"] UTF8String], NULL, 0));
-    self.locationRelay.contact = strtoull([[myAppDelegate.contactFBinfo objectForKey:@"id"] UTF8String], NULL, 0);
-    NSLog(@"My own ID: %lld", strtoull([[myAppDelegate.myFBinfo objectForKey:@"id"] UTF8String], NULL, 0));
-    self.locationRelay.contact = strtoull([[myAppDelegate.myFBinfo objectForKey:@"id"] UTF8String], NULL, 0);
+    NSLog(@"Contact ID: %lld", strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0));
+    self.locationRelay.contact = strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0);
+    NSLog(@"My own ID: %lld", strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0));
+    self.locationRelay.contact = strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0);
     [self startUpdating];
 }
 
