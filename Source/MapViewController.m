@@ -1,6 +1,6 @@
 //
 //  MapViewController.m
-//  Rendezvous
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/10/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import "Pin.h"
 #import "LocationRelay.h"
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
 @interface MapViewController ()
 @property (strong, nonatomic) Pin *contactPin;
@@ -34,9 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Contact ID: %lld", strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0));
-    self.locationRelay.contact = strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0);
+    // FIXME
+    //self.locationRelay.contact = strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0);
     NSLog(@"My own ID: %lld", strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0));
-    self.locationRelay.contact = strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0);
+    //self.locationRelay.contact = strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0);
     [self startUpdating];
 }
 
@@ -57,7 +58,7 @@
 
 }
 
-- (Pin*)contactPin {
+- (Pin *)contactPin {
     if (!_contactPin) {
         _contactPin = [[Pin alloc] init];
         // Put pin on map
@@ -66,7 +67,7 @@
     return _contactPin;
 }
 
-- (LocationRelay*)locationRelay {
+- (LocationRelay *)locationRelay {
     if (!_locationRelay) {
         _locationRelay = [[LocationRelay alloc] init];
     }
@@ -103,17 +104,17 @@
     [self stopPartnerUpdatesOnMap];
 }
 
-- (IBAction)endRendezvous:(id)sender {
+- (IBAction)endLumo:(id)sender {
     [self stopUpdating];
-    NSLog(@"endRendezvous called. Time to stop updating.");
+    NSLog(@"endLumo called. Time to stop updating.");
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 
 // This is called each time an annotation is added to the map
-- (MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString* contactPinID = @"contactPin";
+- (MKAnnotationView *)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *contactPinID = @"contactPin";
     //static NSString* myPinID = @"myPin";
-    MKPinAnnotationView* annotView = nil;
+    MKPinAnnotationView *annotView = nil;
     
     // This code for the contact pin
     if ([annotation isKindOfClass:[Pin class]]) {

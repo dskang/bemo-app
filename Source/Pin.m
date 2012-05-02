@@ -1,6 +1,6 @@
 //
 //  Pin.m
-//  Rendezvous
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/11/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
@@ -17,7 +17,7 @@
 @synthesize title = _devID;
 @synthesize coordinate = _coord;
 
-- (id)initID:(NSString*)devID atCoord:(CLLocationCoordinate2D)coordinate {
+- (id)initID:(NSString *)devID atCoord:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
         _devID = [devID copy];
         _coord = coordinate;

@@ -33,19 +33,19 @@
 		1AF444FB152E695A0006B5DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444FA152E695A0006B5DB /* CoreGraphics.framework */; };
 		1AF44501152E695A0006B5DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AF444FF152E695A0006B5DB /* InfoPlist.strings */; };
 		1AF44503152E695A0006B5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44502152E695A0006B5DB /* main.m */; };
-		1AF44507152E695A0006B5DB /* RendezvousAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */; };
+		1AF44507152E695A0006B5DB /* LumoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* LumoAppDelegate.m */; };
 		1AF4450A152E695A0006B5DB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */; };
 		1AF4450F152E695A0006B5DB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF4450E152E695A0006B5DB /* first.png */; };
 		1AF44511152E695A0006B5DB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44510152E695A0006B5DB /* first@2x.png */; };
-		1AF44514152E695A0006B5DB /* RendezvousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* RendezvousViewController.m */; };
+		1AF44514152E695A0006B5DB /* LumoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* LumoViewController.m */; };
 		1AF44516152E695A0006B5DB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44515152E695A0006B5DB /* second.png */; };
 		1AF44518152E695A0006B5DB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44517152E695A0006B5DB /* second@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A06AD541533EC3C0023E769 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectingViewController.h; sourceTree = "<group>"; };
-		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectingViewController.m; sourceTree = "<group>"; };
+		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConnectingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConnectingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A2D33C815387E7E003FC6A3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		1A2D33C915387E7E003FC6A3 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -62,7 +62,6 @@
 		1A2D33D415387E7E003FC6A3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		1A2D33D515387E7E003FC6A3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		1A2D33D615387E7E003FC6A3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		1A2D33D915387EE2003FC6A3 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook_ios_sdk.a; path = "facebook-ios-sdk/libfacebook_ios_sdk.a"; sourceTree = "<group>"; };
 		1A6C93DE153D049400C7D6ED /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		1A6C93DF153D049400C7D6ED /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		1A6C93E0153D049400C7D6ED /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -84,33 +83,33 @@
 		1A6C93F0153D049400C7D6ED /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		1A6C93F1153D049400C7D6ED /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		1A6C9401153D137000C7D6ED /* LocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationRelay.h; sourceTree = "<group>"; };
-		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationRelay.m; sourceTree = "<group>"; };
-		1A7535E01540EDB400FBC5E6 /* FBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBContacts.h; sourceTree = "<group>"; };
+		1A6C9401153D137000C7D6ED /* LocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocationRelay.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocationRelay.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1A7535E01540EDB400FBC5E6 /* FBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FBContacts.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A7535E11540EDB400FBC5E6 /* FBContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBContacts.m; sourceTree = "<group>"; };
-		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
-		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
-		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
-		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
-		1AE29FA01533F33800E651E4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		1AE29FA11533F33800E651E4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		1AF444F2152E695A0006B5DB /* Rendezvous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rendezvous.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FavoritesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FavoritesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Pin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AE29FA01533F33800E651E4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SettingsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1AE29FA11533F33800E651E4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SettingsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MapViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MapViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AF444F2152E695A0006B5DB /* Lumo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF444F6152E695A0006B5DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1AF444F8152E695A0006B5DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AF444FA152E695A0006B5DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1AF444FE152E695A0006B5DB /* Rendezvous-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rendezvous-Info.plist"; sourceTree = "<group>"; };
+		1AF444FE152E695A0006B5DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AF44500152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1AF44502152E695A0006B5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1AF44504152E695A0006B5DB /* Rendezvous-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rendezvous-Prefix.pch"; sourceTree = "<group>"; };
-		1AF44505152E695A0006B5DB /* RendezvousAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendezvousAppDelegate.h; sourceTree = "<group>"; };
-		1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendezvousAppDelegate.m; sourceTree = "<group>"; };
+		1AF44502152E695A0006B5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AF44504152E695A0006B5DB /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Prefix.pch; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AF44505152E695A0006B5DB /* LumoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LumoAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1AF44506152E695A0006B5DB /* LumoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1AF4450E152E695A0006B5DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		1AF44510152E695A0006B5DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		1AF44512152E695A0006B5DB /* RendezvousViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendezvousViewController.h; sourceTree = "<group>"; };
-		1AF44513152E695A0006B5DB /* RendezvousViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendezvousViewController.m; sourceTree = "<group>"; };
+		1AF44512152E695A0006B5DB /* LumoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LumoViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1AF44513152E695A0006B5DB /* LumoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF44515152E695A0006B5DB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		1AF44517152E695A0006B5DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +150,8 @@
 				1A2D33D515387E7E003FC6A3 /* SBJsonParser.h */,
 				1A2D33D615387E7E003FC6A3 /* SBJsonWriter.h */,
 			);
-			path = "facebook-ios-sdk";
+			name = "facebook-ios-sdk";
+			path = "External/facebook-ios-sdk";
 			sourceTree = "<group>";
 		};
 		1A6C93DD153D049400C7D6ED /* AFNetworking */ = {
@@ -179,17 +179,15 @@
 				1A6C93F1153D049400C7D6ED /* UIImageView+AFNetworking.h */,
 				1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */,
 			);
-			path = AFNetworking;
+			name = AFNetworking;
+			path = External/AFNetworking;
 			sourceTree = "<group>";
 		};
 		1AF444E7152E695A0006B5DB = {
 			isa = PBXGroup;
 			children = (
-				1A6C93DD153D049400C7D6ED /* AFNetworking */,
-				1A2D33C715387E7E003FC6A3 /* facebook-ios-sdk */,
-				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
-				1A06AD541533EC3C0023E769 /* MapKit.framework */,
-				1AF444FC152E695A0006B5DB /* Rendezvous */,
+				B5C7D8FC1551E3C90080E630 /* External */,
+				1AF444FC152E695A0006B5DB /* Source */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
 				1AF444F3152E695A0006B5DB /* Products */,
 			);
@@ -198,7 +196,7 @@
 		1AF444F3152E695A0006B5DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1AF444F2152E695A0006B5DB /* Rendezvous.app */,
+				1AF444F2152E695A0006B5DB /* Lumo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,7 +204,8 @@
 		1AF444F5152E695A0006B5DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1A2D33D915387EE2003FC6A3 /* libfacebook_ios_sdk.a */,
+				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
+				1A06AD541533EC3C0023E769 /* MapKit.framework */,
 				1AF444F6152E695A0006B5DB /* UIKit.framework */,
 				1AF444F8152E695A0006B5DB /* Foundation.framework */,
 				1AF444FA152E695A0006B5DB /* CoreGraphics.framework */,
@@ -214,13 +213,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1AF444FC152E695A0006B5DB /* Rendezvous */ = {
+		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				1A6C9401153D137000C7D6ED /* LocationRelay.h */,
 				1A6C9402153D137000C7D6ED /* LocationRelay.m */,
-				1AF44505152E695A0006B5DB /* RendezvousAppDelegate.h */,
-				1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */,
+				1AF44505152E695A0006B5DB /* LumoAppDelegate.h */,
+				1AF44506152E695A0006B5DB /* LumoAppDelegate.m */,
 				1A7535E01540EDB400FBC5E6 /* FBContacts.h */,
 				1A7535E11540EDB400FBC5E6 /* FBContacts.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
@@ -236,32 +235,41 @@
 				1AE29FA11533F33800E651E4 /* SettingsViewController.m */,
 				1AF4450E152E695A0006B5DB /* first.png */,
 				1AF44510152E695A0006B5DB /* first@2x.png */,
-				1AF44512152E695A0006B5DB /* RendezvousViewController.h */,
-				1AF44513152E695A0006B5DB /* RendezvousViewController.m */,
+				1AF44512152E695A0006B5DB /* LumoViewController.h */,
+				1AF44513152E695A0006B5DB /* LumoViewController.m */,
 				1AF44515152E695A0006B5DB /* second.png */,
 				1AF44517152E695A0006B5DB /* second@2x.png */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
 			);
-			path = Rendezvous;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		1AF444FD152E695A0006B5DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1AF444FE152E695A0006B5DB /* Rendezvous-Info.plist */,
+				1AF444FE152E695A0006B5DB /* Info.plist */,
 				1AF444FF152E695A0006B5DB /* InfoPlist.strings */,
 				1AF44502152E695A0006B5DB /* main.m */,
-				1AF44504152E695A0006B5DB /* Rendezvous-Prefix.pch */,
+				1AF44504152E695A0006B5DB /* Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5C7D8FC1551E3C90080E630 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				1A6C93DD153D049400C7D6ED /* AFNetworking */,
+				1A2D33C715387E7E003FC6A3 /* facebook-ios-sdk */,
+			);
+			name = External;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1AF444F1152E695A0006B5DB /* Rendezvous */ = {
+		1AF444F1152E695A0006B5DB /* Lumo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Rendezvous" */;
+			buildConfigurationList = 1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Lumo" */;
 			buildPhases = (
 				1AF444EE152E695A0006B5DB /* Sources */,
 				1AF444EF152E695A0006B5DB /* Frameworks */,
@@ -271,9 +279,9 @@
 			);
 			dependencies = (
 			);
-			name = Rendezvous;
+			name = Lumo;
 			productName = Rendezvous;
-			productReference = 1AF444F2152E695A0006B5DB /* Rendezvous.app */;
+			productReference = 1AF444F2152E695A0006B5DB /* Lumo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -286,7 +294,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Princeton University";
 			};
-			buildConfigurationList = 1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Rendezvous" */;
+			buildConfigurationList = 1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Lumo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -298,7 +306,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1AF444F1152E695A0006B5DB /* Rendezvous */,
+				1AF444F1152E695A0006B5DB /* Lumo */,
 			);
 		};
 /* End PBXProject section */
@@ -326,8 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF44503152E695A0006B5DB /* main.m in Sources */,
-				1AF44507152E695A0006B5DB /* RendezvousAppDelegate.m in Sources */,
-				1AF44514152E695A0006B5DB /* RendezvousViewController.m in Sources */,
+				1AF44507152E695A0006B5DB /* LumoAppDelegate.m in Sources */,
+				1AF44514152E695A0006B5DB /* LumoViewController.m in Sources */,
 				1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */,
 				1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */,
@@ -419,13 +427,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rendezvous/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Rendezvous/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = Source/Prefix.pch;
+				INFOPLIST_FILE = Source/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lumo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -434,13 +442,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rendezvous/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Rendezvous/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = Source/Prefix.pch;
+				INFOPLIST_FILE = Source/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lumo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -448,7 +456,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Rendezvous" */ = {
+		1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Lumo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF44519152E695A0006B5DB /* Debug */,
@@ -457,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Rendezvous" */ = {
+		1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Lumo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF4451C152E695A0006B5DB /* Debug */,

@@ -1,21 +1,23 @@
 //
-//  RendezvousViewController.m
-//  Rendezvous
+//  LumoViewController.m
+//  Lumo
 //
 //  Created by Harvest Zhang on 4/5/12.
 //  Copyright (c) 2012 Princeton University. All rights reserved.
 //
 
-#import "RendezvousViewController.h"
+#import "LumoViewController.h"
 #import "MapViewController.h"
-#import "RendezvousAppDelegate.h"
+#import "LumoAppDelegate.h"
 
-@interface RendezvousViewController ()
-@property (strong, nonatomic) UITableView* tableView;
+@interface LumoViewController ()
+@property (weak, nonatomic) NSArray *contacts;
+@property (strong, nonatomic) UITableView *tableView;
 @property int numFriends;
 @end
 
-@implementation RendezvousViewController
+@implementation LumoViewController
+@synthesize contacts = _contacts;
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
 
@@ -44,8 +46,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* cellID = @"cellID";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     cell.textLabel.text = [[myAppDelegate.contactArray objectAtIndex:indexPath.row] valueForKey:@"name"];
     return cell;

@@ -1,6 +1,6 @@
 //
 //  LocationRelay.h
-//  Rendezvous
+//  Lumo
 //
 //  Created by Dan Kang on 4/13/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -21,7 +21,7 @@
 - (void)startPartnerUpdates;
 - (void)stopPartnerUpdates;
 
-- (void)loginToRendezvous;
+- (void)loginToLumo;
 - (void)getFriends;
 - (void)initiateConnection;
 
