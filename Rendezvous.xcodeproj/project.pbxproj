@@ -100,10 +100,10 @@
 		1AF444F6152E695A0006B5DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1AF444F8152E695A0006B5DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AF444FA152E695A0006B5DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1AF444FE152E695A0006B5DB /* Rendezvous-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rendezvous-Info.plist"; sourceTree = "<group>"; };
+		1AF444FE152E695A0006B5DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AF44500152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AF44502152E695A0006B5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1AF44504152E695A0006B5DB /* Rendezvous-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rendezvous-Prefix.pch"; sourceTree = "<group>"; };
+		1AF44504152E695A0006B5DB /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		1AF44505152E695A0006B5DB /* RendezvousAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendezvousAppDelegate.h; sourceTree = "<group>"; };
 		1AF44506152E695A0006B5DB /* RendezvousAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendezvousAppDelegate.m; sourceTree = "<group>"; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -249,10 +249,10 @@
 		1AF444FD152E695A0006B5DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1AF444FE152E695A0006B5DB /* Rendezvous-Info.plist */,
+				1AF444FE152E695A0006B5DB /* Info.plist */,
 				1AF444FF152E695A0006B5DB /* InfoPlist.strings */,
 				1AF44502152E695A0006B5DB /* main.m */,
-				1AF44504152E695A0006B5DB /* Rendezvous-Prefix.pch */,
+				1AF44504152E695A0006B5DB /* Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -429,8 +429,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Source/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Source/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = Source/Prefix.pch;
+				INFOPLIST_FILE = Source/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
@@ -444,8 +444,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Source/Rendezvous-Prefix.pch";
-				INFOPLIST_FILE = "Source/Rendezvous-Info.plist";
+				GCC_PREFIX_HEADER = Source/Prefix.pch;
+				INFOPLIST_FILE = Source/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
