@@ -62,7 +62,6 @@
 		1A2D33D415387E7E003FC6A3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		1A2D33D515387E7E003FC6A3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		1A2D33D615387E7E003FC6A3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		1A2D33D915387EE2003FC6A3 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook_ios_sdk.a; path = "facebook-ios-sdk/libfacebook_ios_sdk.a"; sourceTree = "<group>"; };
 		1A6C93DE153D049400C7D6ED /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		1A6C93DF153D049400C7D6ED /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		1A6C93E0153D049400C7D6ED /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -207,7 +206,6 @@
 			children = (
 				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
 				1A06AD541533EC3C0023E769 /* MapKit.framework */,
-				1A2D33D915387EE2003FC6A3 /* libfacebook_ios_sdk.a */,
 				1AF444F6152E695A0006B5DB /* UIKit.framework */,
 				1AF444F8152E695A0006B5DB /* Foundation.framework */,
 				1AF444FA152E695A0006B5DB /* CoreGraphics.framework */,
