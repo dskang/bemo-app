@@ -156,6 +156,7 @@
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
+                          @"facebook", @"service",
                           myAppDelegate.sessionToken, @"token", nil];
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
     
