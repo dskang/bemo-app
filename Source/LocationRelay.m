@@ -90,11 +90,13 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
+    NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
     
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
                           deviceKey, @"device_id",
+                          deviceToken, @"device_token",
                           @"facebook", @"service",
                           serviceKey, @"service_token", nil];
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        

@@ -23,7 +23,14 @@
         _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
     }
     return _facebook;
-}       
+}
+
+- (LocationRelay *)locationRelay {
+    if (!_locationRelay) {
+        _locationRelay = [[LocationRelay alloc] init];
+    }
+    return _locationRelay;
+}
 
 - (void)loginToFB {
     // Check for previously saved access token information
@@ -36,19 +43,20 @@
     
     if (![self.facebook isSessionValid]) {
         [self.facebook authorize:nil];
+    } else {
+        [self loginToLumo];
     }
 }
 
 - (void)loginToLumo {
-    if (!_locationRelay) _locationRelay = [[LocationRelay alloc] init];
-    [self.locationRelay loginToLumo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
+    [self.locationRelay loginToLumo];
 }
 
 - (void)getLumoFriends {
     NSLog(@"Login successful. Session token is %@", self.sessionToken); //HEFFALUMPS
-    [self.locationRelay getFriends];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
+    [self.locationRelay getFriends];
 }
 
 - (void)loginAndFriendsDone {
@@ -83,6 +91,8 @@
     [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+
+    [self loginToLumo];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
@@ -102,16 +112,17 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-
+{    
     // Register for push notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
-    [self loginToFB];
+    // Generate device ID
     [self generateDeviceKey];
-    [self loginToLumo];
+
+    // Authentication
+    [self loginToFB];
+
     return YES;
 }
 
@@ -148,7 +159,15 @@
  ******************************************************************************/
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-	NSLog(@"My token is: %@", deviceToken);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* token;
+    if (![defaults objectForKey:@"deviceToken"]) {
+        token = [[[deviceToken description]
+                  stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] 
+                 stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [defaults setObject:token forKey:@"deviceToken"];
+    }
+	NSLog(@"Obtained device token: %@", deviceToken);
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
