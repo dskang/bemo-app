@@ -134,7 +134,8 @@
 		if (incomingCall)
 		{
             NSString *sourceID = [incomingCall objectForKey:@"source_id"];
-            NSLog(@"Incoming call from %@", sourceID);
+            NSLog(@"Received call from %@", sourceID);
+            // TODO: Start polling and show map
 		}
     }
 
@@ -204,6 +205,7 @@
 {
 	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
     NSLog(@"Incoming call from %@", sourceID);
+    // TODO: Show accept or decline screen
 }
 
 @end
