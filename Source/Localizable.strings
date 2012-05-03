@@ -7,3 +7,4 @@
 */
 
 "ACCEPT" = "Accept";
+"INCOMING_CALL" = "%@ would like to share location with you!";
