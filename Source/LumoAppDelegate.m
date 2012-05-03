@@ -91,7 +91,7 @@
  * Lumo
  ******************************************************************************/
 - (void)loginToLumo {
-    // FIXME: Only log in when either FB access token or APNS token changes to save bandwidth!
+    // TODO: Only log in when either FB access token or APNS token changes to save bandwidth!
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
     [self.locationRelay loginToLumo];
 }
@@ -152,6 +152,13 @@
     return YES;
 }
 
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
+{
+	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
+    NSLog(@"Incoming call from %@", sourceID);
+    // TODO: Show accept or decline screen
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -199,13 +206,6 @@
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);
-}
-
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
-{
-	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
-    NSLog(@"Incoming call from %@", sourceID);
-    // TODO: Show accept or decline screen
 }
 
 @end
