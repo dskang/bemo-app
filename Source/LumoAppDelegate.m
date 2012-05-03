@@ -23,7 +23,7 @@
         _facebook = [[Facebook alloc] initWithAppId:@"407078449305300" andDelegate:self];
     }
     return _facebook;
-}
+}       
 
 - (void)loginToFB {
     // Check for previously saved access token information
