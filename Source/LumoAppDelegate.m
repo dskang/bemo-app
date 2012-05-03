@@ -54,13 +54,13 @@
 }
 
 - (void)getLumoFriends {
-    NSLog(@"Login successful. Session token is %@", self.sessionToken); //HEFFALUMPS
+    NSLog(@"Login successful. Session token is %@", self.sessionToken);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
     [self.locationRelay getFriends];
 }
 
 - (void)loginAndFriendsDone {
-    NSLog(@"Getting friends successful."); //HEFFALUMPS
+    NSLog(@"Getting friends successful.");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAndFriendsSuccess" object:self];
 }
 

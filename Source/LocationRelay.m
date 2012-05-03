@@ -140,7 +140,6 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             myAppDelegate.contactArray = [JSON objectForKey:@"data"];
-            //NSLog(@"%@", [myAppDelegate.contactArray objectAtIndex:0]); // HEFFALUMPS
             [[NSNotificationCenter defaultCenter] postNotificationName:@"getFriendsSuccess" object:self]; 
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
