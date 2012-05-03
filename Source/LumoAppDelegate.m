@@ -32,6 +32,9 @@
     return _locationRelay;
 }
 
+/******************************************************************************
+ * Facebook
+ ******************************************************************************/
 - (void)loginToFB {
     // Check for previously saved access token information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -45,33 +48,6 @@
         [self.facebook authorize:nil];
     } else {
         [self loginToLumo];
-    }
-}
-
-- (void)loginToLumo {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
-    [self.locationRelay loginToLumo];
-}
-
-- (void)getLumoFriends {
-    NSLog(@"Login successful. Session token is %@", self.sessionToken);
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
-    [self.locationRelay getFriends];
-}
-
-- (void)loginAndFriendsDone {
-    NSLog(@"Getting friends successful.");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAndFriendsSuccess" object:self];
-}
-
-- (void)generateDeviceKey {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* deviceKey;
-    if (!(deviceKey = [defaults objectForKey:@"deviceKey"])) {
-        CFUUIDRef newDeviceKey = CFUUIDCreate(NULL);
-        deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
-        [defaults setObject:deviceKey forKey:@"deviceKey"];
-        CFRelease(newDeviceKey);
     }
 }
 
@@ -91,7 +67,7 @@
     [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
-
+    
     [self loginToLumo];
 }
 
@@ -111,6 +87,42 @@
     
 }
 
+/******************************************************************************
+ * Lumo
+ ******************************************************************************/
+- (void)loginToLumo {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
+    [self.locationRelay loginToLumo];
+}
+
+- (void)getLumoFriends {
+    NSLog(@"Login successful. Session token is %@", self.sessionToken);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
+    [self.locationRelay getFriends];
+}
+
+- (void)loginAndFriendsDone {
+    NSLog(@"Getting friends successful.");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAndFriendsSuccess" object:self];
+}
+
+/******************************************************************************
+ * Device ID generation
+ ******************************************************************************/
+- (void)generateDeviceKey {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* deviceKey;
+    if (!(deviceKey = [defaults objectForKey:@"deviceKey"])) {
+        CFUUIDRef newDeviceKey = CFUUIDCreate(NULL);
+        deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
+        [defaults setObject:deviceKey forKey:@"deviceKey"];
+        CFRelease(newDeviceKey);
+    }
+}
+
+/******************************************************************************
+ * Application states
+ ******************************************************************************/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
     // Register for push notification
