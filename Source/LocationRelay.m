@@ -36,8 +36,7 @@
  ******************************************************************************/
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
+           fromLocation:(CLLocation *)oldLocation {
     NSDate *eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     // Only use update if it's from the last 15 seconds
@@ -54,8 +53,7 @@
 /******************************************************************************
  * Start updating own location
  ******************************************************************************/
-- (void)startSelfUpdates
-{
+- (void)startSelfUpdates {
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -85,6 +83,10 @@
 
 /******************************************************************************
  * Login to the Rendezvous server
+ * 
+ * Sets notifications:
+ * "loginSuccess" upon successful login
+ * "auth" upon authentication failure
  ******************************************************************************/
 - (void)loginToLumo {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -127,6 +129,9 @@
 
 /******************************************************************************
  * Get FB friends who use the app, save to app delegate
+ *
+ * Sets notifications:
+ * "getFriendsSuccess" for successful friend retrieval
  ******************************************************************************/
 - (void)getFriends {
     NSString *partnerUrl;
@@ -138,7 +143,6 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             myAppDelegate.contactArray = [JSON objectForKey:@"data"];
-            //NSLog(@"%@", [myAppDelegate.contactArray objectAtIndex:0]); // HEFFALUMPS
             [[NSNotificationCenter defaultCenter] postNotificationName:@"getFriendsSuccess" object:self]; 
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
@@ -151,6 +155,10 @@
 
 /******************************************************************************
  * Initiate connection to a contact
+ *
+ * Sets notifications:
+ * "connRequested" for successful requesting of a call
+ * "auth" upon authentication failure
  ******************************************************************************/
 - (void)initiateConnection {
     // Convert data to JSON
@@ -176,7 +184,7 @@
         
         if ([status isEqualToString:@"success"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"connRequested" object:self];
-            NSLog(@"initConnection(): init request succeeded!");
+            NSLog(@"LocationRelay.m | initiateConnection(): init request succeeded!");
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"auth" object:self];  
         }
@@ -187,30 +195,134 @@
 }
 
 /******************************************************************************
- * Push location to server (NOT YET UPDATED)
+ * Receive connection from a contact
+ * (Push notification MUST establish caller ID!)
+ *
+ * Sets notifications:
+ * "connReceived" for successful reception of a call
+ * "disconnected" if the caller disconnected
+ * "auth" upon authentication failure
  ******************************************************************************/
-- (void)pushLocation {
-    NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
-    NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
+- (void)receiveConnection {
     // Convert data to JSON
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:latitude, @"latitude", longitude, @"longitude", nil];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];       
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"iphone", @"device",
+                          myAppDelegate.sessionToken, @"token", nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
+    
     // Form POST request
     NSString *partnerUrl;
-    // FIX partnerUrl = [NSString stringWithFormat:@"%@/call/", BASE_URL, self.user];
+    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/receive", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     [mutableRequest setHTTPMethod:@"POST"];
     [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [mutableRequest setHTTPBody:data];
-    // Push location to server
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:nil failure:nil];
+    
+    // Send request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
+        NSString* status = [JSON valueForKeyPath:@"status"];
+        
+        if ([status isEqualToString:@"success"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"connReceived" object:self];
+            NSLog(@"LocationRelay.m | receiveConnection(): Connection successfully received!");
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:[JSON valueForKeyPath:@"error"] object:self];  
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+    }];
     [operation start];
 }
 
 /******************************************************************************
- * Poll for partner location from server (IN PROGRESS)
+ * End an active connection
+ *
+ * Sets notifications:
+ * "connEnded" for successful ending of a connection
+ * "auth" upon authentication failure
+ ******************************************************************************/
+- (void)endConnection {
+    // Convert data to JSON
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: myAppDelegate.sessionToken, @"token", nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
+    
+    // Form POST request
+    NSString *partnerUrl;
+    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
+    NSURL *url = [NSURL URLWithString:partnerUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    [mutableRequest setHTTPMethod:@"POST"];
+    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest setHTTPBody:data];
+    
+    // Send request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
+        NSString* status = [JSON valueForKeyPath:@"status"];
+        
+        if ([status isEqualToString:@"success"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"connEnded" object:self];
+            NSLog(@"LocationRelay.m | endConnection(): Connection successfully ended!");
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:[JSON valueForKeyPath:@"error"] object:self];  
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+    }];
+    [operation start];
+}
+
+/******************************************************************************
+ * Push location to server
+ *
+ * Sets notifications:
+ * "locationPushed" upon successful push to server (Not really used)
+ * "auth" upon authentication failure
+ ******************************************************************************/
+- (void)pushLocation {
+    NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"iphone", @"device",
+                          latitude, @"latitude",
+                          longitude, @"longitude",
+                          myAppDelegate.sessionToken, @"token", nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil]; 
+    // Form POST request
+    NSString *partnerUrl;
+    partnerUrl = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
+    NSURL *url = [NSURL URLWithString:partnerUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    [mutableRequest setHTTPMethod:@"POST"];
+    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest setHTTPBody:data];
+    
+    // Send request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest *request, NSHTTPURLResponse*response, id JSON) {
+        NSString *status = [JSON valueForKeyPath:@"status"];
+        
+        if ([status isEqualToString:@"success"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"locationPushed" object:self];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"auth" object:self];
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+    }];
+    [operation start];
+}
+
+/******************************************************************************
+ * Poll for partner location from server
+ * 
+ * Sets notifications:
+ * "connected" for successful location retrieval
+ * "waiting" for a pending request
+ * "disconnected" for failure (by timeout or disconnect)
+ * "receive call" if there is already a pending call incoming
  ******************************************************************************/
 - (void)pollForLocation {
     NSString *partnerUrl;
@@ -220,35 +332,21 @@
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        NSString* status = [JSON valueForKeyPath:@"status"];
+        NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
-            NSLog(@"pollForLocation(): connection established!");
+            NSLog(@"pollForLocation(): connection established!"); // HEFFALUMPS
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"connEstablished" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"connected" object:self];
         } 
         
         else if ([status isEqualToString:@"failure"]) {
-            
             NSString* error = [JSON valueForKeyPath:@"error"];
-            
-            if ([error isEqualToString:@"waiting"]) {
-                
-            }
-            
-            else if ([error isEqualToString:@"disconnected"]) {
-                
-            }
-            
-            else if ([error isEqualToString:@"receive call"]) {
-                
-            }
-            
-            else if ([error isEqualToString:@"invalid"]) {
-                NSLog(@"pollForLocation(): Oops, we sent an incorrect target ID.");
-            }
+            if ([error isEqualToString:@"invalid"]) 
+                NSLog(@"LocationRelay.m | pollForLocation(): invalid target_id.");
+            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];

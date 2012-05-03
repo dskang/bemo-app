@@ -55,8 +55,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
-    [myAppDelegate.locationRelay initiateConnection];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestPlaced) name:@"connRequested" object:nil];
+    [myAppDelegate.locationRelay initiateConnection];
 }
 
 - (void)requestPlaced {
