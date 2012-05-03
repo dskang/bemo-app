@@ -23,7 +23,6 @@
 		1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F0153D049400C7D6ED /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C9402153D137000C7D6ED /* LocationRelay.m */; };
-		1A7535E21540EDB400FBC5E6 /* FBContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7535E11540EDB400FBC5E6 /* FBContacts.m */; };
 		1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* FavoritesViewController.m */; };
 		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
 		1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* SettingsViewController.m */; };
@@ -86,8 +85,6 @@
 		1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		1A6C9401153D137000C7D6ED /* LocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocationRelay.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocationRelay.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1A7535E01540EDB400FBC5E6 /* FBContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FBContacts.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1A7535E11540EDB400FBC5E6 /* FBContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBContacts.m; sourceTree = "<group>"; };
 		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FavoritesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FavoritesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -222,8 +219,6 @@
 				1A6C9402153D137000C7D6ED /* LocationRelay.m */,
 				1AF44505152E695A0006B5DB /* LumoAppDelegate.h */,
 				1AF44506152E695A0006B5DB /* LumoAppDelegate.m */,
-				1A7535E01540EDB400FBC5E6 /* FBContacts.h */,
-				1A7535E11540EDB400FBC5E6 /* FBContacts.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
 				1A0876F3154A5D360079276F /* ConnectingViewController.h */,
 				1A0876F4154A5D360079276F /* ConnectingViewController.m */,
@@ -355,7 +350,6 @@
 				1A6C93FB153D049400C7D6ED /* AFXMLRequestOperation.m in Sources */,
 				1A6C93FC153D049400C7D6ED /* UIImageView+AFNetworking.m in Sources */,
 				1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */,
-				1A7535E21540EDB400FBC5E6 /* FBContacts.m in Sources */,
 				1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
