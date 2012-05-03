@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBContacts.h"
 
 @interface LumoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 }
