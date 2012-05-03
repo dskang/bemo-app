@@ -91,6 +91,7 @@
  * Lumo
  ******************************************************************************/
 - (void)loginToLumo {
+    // FIXME: Only log in when either FB access token or APNS token changes to save bandwidth!
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
     [self.locationRelay loginToLumo];
 }
@@ -125,6 +126,18 @@
  ******************************************************************************/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
+    
+    // Check if app was opened from a push notification
+    if (launchOptions)
+	{
+		NSDictionary* incomingCall = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (incomingCall)
+		{
+            NSString *sourceID = [incomingCall objectForKey:@"source_id"];
+            NSLog(@"Incoming call from %@", sourceID);
+		}
+    }
+
     // Register for push notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -185,6 +198,12 @@
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
+{
+	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
+    NSLog(@"Incoming call from %@", sourceID);
 }
 
 @end
