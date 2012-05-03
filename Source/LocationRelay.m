@@ -94,7 +94,7 @@
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
-                          deviceKey, @"device_token",
+                          deviceKey, @"device_id",
                           @"facebook", @"service",
                           serviceKey, @"service_token", nil];
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
