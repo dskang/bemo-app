@@ -11,6 +11,7 @@
 #import "LocationRelay.h"
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define BASE_URL @"http://lumo.herokuapp.com"
 
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
 

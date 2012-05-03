@@ -101,7 +101,7 @@
     
     // Form POST request
     NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/login"];
+    partnerUrl = [NSString stringWithFormat:@"%@/login", BASE_URL];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
@@ -130,7 +130,7 @@
  ******************************************************************************/
 - (void)getFriends {
     NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/friends?token=%@", myAppDelegate.sessionToken];
+    partnerUrl = [NSString stringWithFormat:@"%@/friends?token=%@", BASE_URL, myAppDelegate.sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -156,12 +156,13 @@
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
+                          @"facebook", @"service",
                           myAppDelegate.sessionToken, @"token", nil];
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
     
     // Form POST request
     NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/call/%@/init", [myAppDelegate.contactInfo valueForKey:@"id"]];
+    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/init", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
@@ -196,7 +197,7 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];       
     // Form POST request
     NSString *partnerUrl;
-    // FIX partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/call/", self.user];
+    // FIX partnerUrl = [NSString stringWithFormat:@"%@/call/", BASE_URL, self.user];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
@@ -213,7 +214,7 @@
  ******************************************************************************/
 - (void)pollForLocation {
     NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"http://mapperapi.herokuapp.com/call/%@/poll?token=%@", [myAppDelegate.contactInfo valueForKey:@"id"], myAppDelegate.sessionToken];
+    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"], myAppDelegate.sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
