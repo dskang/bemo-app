@@ -33,11 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Contact ID: %lld", strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0));
-    // FIXME
-    //self.locationRelay.contact = strtoull([[myAppDelegate.contactInfo objectForKey:@"id"] UTF8String], NULL, 0);
-    NSLog(@"My own ID: %lld", strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0));
-    //self.locationRelay.contact = strtoull([[myAppDelegate.myInfo objectForKey:@"id"] UTF8String], NULL, 0);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
     [self startUpdating];
 }
 
@@ -45,17 +41,16 @@
     [self setMapView:nil];
     [super viewDidUnload];
     [self stopUpdating];
-    // Release any retained subviews of the main view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:(BOOL)animated];
-
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
-
+    [[NSNotificationCenter defaultCenter] removeObserver:@"disconnected"];
 }
 
 - (Pin *)contactPin {
@@ -105,8 +100,12 @@
 }
 
 - (IBAction)endLumo:(id)sender {
+    [self disconnectLumo];
+}
+
+- (void)disconnectLumo {
     [self stopUpdating];
-    NSLog(@"endLumo called. Time to stop updating.");
+    [myAppDelegate.locationRelay endConnection];
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 

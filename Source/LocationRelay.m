@@ -92,7 +92,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
-    NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
+    //NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
+    NSString *deviceToken = @"this is a fake device push token";
     
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -280,7 +281,7 @@
  * Push location to server
  *
  * Sets notifications:
- * "locationPushed" upon successful push to server (Not really used)
+ * "locationPushed" upon successful push to server (Not used as callback)
  * "auth" upon authentication failure
  ******************************************************************************/
 - (void)pushLocation {

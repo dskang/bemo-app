@@ -45,6 +45,7 @@
     }
     
     if (![self.facebook isSessionValid]) {
+        
         [self.facebook authorize:nil];
     } else {
         [self loginToLumo];
@@ -97,14 +98,22 @@
 }
 
 - (void)getLumoFriends {
-    NSLog(@"Login successful. Session token is %@", self.sessionToken);
+    NSLog(@"LumoAppDelegate | getLumoFriends(): Login successful. Session token is %@", self.sessionToken);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAndFriendsDone) name:@"getFriendsSuccess" object:nil];
     [self.locationRelay getFriends];
 }
 
 - (void)loginAndFriendsDone {
-    NSLog(@"Getting friends successful.");
+    NSLog(@"LumoAppDelegate | loginAndFriendsDone(): Getting friends successful.");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAndFriendsSuccess" object:self];
+}
+
+- (void)serverFailure {
+    NSLog(@"LumoAppDelegate | serverFailure(): Uh oh, massive server failure.");
+}
+
+- (void)authFailure {
+    NSLog(@"LumoAppDelegate | authFailure(): Uh oh, auth failure.");
 }
 
 /******************************************************************************
@@ -138,17 +147,20 @@
             // TODO: Start polling and show map
 		}
     }
-
-    // Register for push notification
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-
-    // Generate device ID
+    
+    // Register for push notification (Comment out on simulator!)
+    //[[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    // Generate device ID if necessary
     [self generateDeviceKey];
-
-    // Authentication
+    
+    // Create notification observer for server failure or auth failure
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverFailure) name:@"serverFailure" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:@"auth" object:nil];
+    
+    // Authentication on FB and Lumo (FB authentication calls Lumo auth)
     [self loginToFB];
-
+    
     return YES;
 }
 
