@@ -7,4 +7,4 @@
 */
 
 "ACCEPT" = "Accept";
-"INCOMING_CALL" = "%@ would like to share location with you.";
+"INCOMING_CALL" = "%@ would like to share their location with you.";
