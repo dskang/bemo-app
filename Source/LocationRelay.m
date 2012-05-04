@@ -190,7 +190,6 @@
     // Send request
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
-        
         if ([status isEqualToString:@"success"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"connRequested" object:self];
             NSLog(@"LocationRelay.m | initiateConnection(): init request succeeded!");
@@ -344,7 +343,7 @@
         NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
-            NSLog(@"pollForLocation(): connection established!"); // HEFFALUMPS
+            NSLog(@"pollForLocation(): connection established!");
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
