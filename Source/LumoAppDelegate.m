@@ -144,7 +144,14 @@
 		{
             NSString *sourceID = [incomingCall objectForKey:@"source_id"];
             NSLog(@"Received call from %@", sourceID);
-            // TODO: Start polling and show map
+            // Save contact info
+            // FIXME: Save source's name
+            self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", nil];
+            // Push location
+            // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
+            [self.locationRelay pushLocation];
+            // Receive call
+            [self.locationRelay receiveConnection];
 		}
     }
     
@@ -171,6 +178,15 @@
 	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
     NSLog(@"Incoming call from %@", sourceID);
     // TODO: Show accept or decline screen
+    // FIXME: Currently automatically accepting call
+    // Save contact info
+    // FIXME: Save source's name
+    self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", nil];
+    // Push location
+    // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
+    [self.locationRelay pushLocation];
+    // Receive call
+    [self.locationRelay receiveConnection];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

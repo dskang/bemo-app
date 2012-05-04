@@ -24,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:@"loginAndFriendsSuccess" object:nil];
+    
+    // Listen for received calls
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connReceived" object:nil];
 }
 
 - (void)viewDidUnload {
@@ -32,6 +35,7 @@
 }
 
 - (void)gotContacts {
+    // Reload data into contacts table
     self.numFriends = [myAppDelegate.contactArray count];
     [self.tableView reloadData];
 }
@@ -55,11 +59,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestPlaced) name:@"connRequested" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connRequested" object:nil];
     [myAppDelegate.locationRelay initiateConnection];
 }
 
-- (void)requestPlaced {
+- (void)showConnScreen {
+    NSLog(@"showConnScreen called");
     [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
 }
 

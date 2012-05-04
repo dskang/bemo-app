@@ -38,7 +38,7 @@
     // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pollLocation) name:@"waiting" object:nil];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
     
-    // Set polling timer
+    // Poll for a connection every 5 seconds
     self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
 }
 

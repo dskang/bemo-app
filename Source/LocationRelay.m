@@ -344,9 +344,12 @@
         
         if ([status isEqualToString:@"success"]) {
             NSLog(@"pollForLocation(): connection established!");
+            // Save partner's location
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+            // Announce connection
+            // FIXME: Do we want to be announcing this at every successful poll?
             [[NSNotificationCenter defaultCenter] postNotificationName:@"connected" object:self];
         } 
         

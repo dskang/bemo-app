@@ -78,6 +78,7 @@
 }
 
 - (void)startPartnerUpdatesOnMap {
+    // FIXME: Replace by listening to notification center for a successful location poll
     self.partnerTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updatePartnerLocationOnMap) userInfo:nil repeats:YES];
 }
 
@@ -86,14 +87,14 @@
 }
 
 - (void)startUpdating {
-    NSLog(@"Start updating.");
+    NSLog(@"Start updating map view.");
     [self.locationRelay startSelfUpdates];
     [self.locationRelay startPartnerUpdates];
     [self startPartnerUpdatesOnMap];
 }
 
 - (void)stopUpdating {
-    NSLog(@"Stop updating.");
+    NSLog(@"Stop updating map view.");
     [self.locationRelay stopSelfUpdates];
     [self.locationRelay stopPartnerUpdates];
     [self stopPartnerUpdatesOnMap];
