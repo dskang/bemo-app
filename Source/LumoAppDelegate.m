@@ -148,8 +148,10 @@
 		}
     }
     
-    // Register for push notification (Comment out on simulator!)
-    //[[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    // Register for push notification
+#if !(TARGET_IPHONE_SIMULATOR)
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
     
     // Generate device ID if necessary
     [self generateDeviceKey];

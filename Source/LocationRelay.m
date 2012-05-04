@@ -9,6 +9,8 @@
 #import "LocationRelay.h"
 #import "AFJSONRequestOperation.h"
 #import "LumoAppDelegate.h"
+// Used to check if using device or simulator
+#import "TargetConditionals.h"
 
 @interface LocationRelay()
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -92,8 +94,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
-    //NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
-    NSString *deviceToken = @"this is a fake device push token";
+
+#if !(TARGET_IPHONE_SIMULATOR)
+    NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
+#else
+    NSString *deviceToken = @"FAKE_DEVICE_TOKEN";
+#endif
     
     // Convert data to JSON
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
