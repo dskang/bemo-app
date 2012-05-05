@@ -227,11 +227,11 @@
 		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B560090A1555D2AE008936C9 /* Controllers */,
-				B56009091555D2A8008936C9 /* Models */,
 				1AF44505152E695A0006B5DB /* LumoAppDelegate.h */,
 				1AF44506152E695A0006B5DB /* LumoAppDelegate.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
+				B560090A1555D2AE008936C9 /* Controllers */,
+				B56009091555D2A8008936C9 /* Models */,
 				B560090B1555D2E5008936C9 /* Images */,
 				1AF444FD152E695A0006B5DB /* Supporting Files */,
 			);
