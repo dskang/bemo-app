@@ -101,11 +101,7 @@
     [self stopPartnerUpdatesOnMap];
 }
 
-- (IBAction)endLumo:(id)sender {
-    [self disconnectLumo];
-}
-
-- (void)disconnectLumo {
+- (IBAction)endConnection:(id)sender {
     [self stopUpdating];
     [CallManager endConnection];
     [self performSegueWithIdentifier:@"endMapView" sender:nil];

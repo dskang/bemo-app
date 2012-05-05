@@ -27,11 +27,11 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
-            NSLog(@"%@", successNotification);
             if ([successNotification isEqualToString:@"loginSuccess"]) {
                 myAppDelegate.sessionToken = [JSON valueForKeyPath:@"data.token"];
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self];
+            NSLog(@"Posted notfication: %@", successNotification);
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:[JSON valueForKeyPath:@"error"] object:self];
         }

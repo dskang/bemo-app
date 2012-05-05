@@ -156,7 +156,7 @@
                                     <barButtonItem title="End Connection" width="222" id="W6z-ds-jCb">
                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="endLumo:" destination="fpt-Cj-heB" id="4CQ-B2-2EN"/>
+                                            <action selector="endConnection:" destination="fpt-Cj-heB" id="Fll-Fc-lIg"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="pageCurl" id="7Rf-6A-kFN"/>
