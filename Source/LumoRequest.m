@@ -29,7 +29,7 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self userInfo:JSON];
-            NSLog(@"Posted notfication: %@", successNotification);
+            NSLog(@"Notification: %@", successNotification);
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:[JSON valueForKeyPath:@"error"] object:self];
         }
