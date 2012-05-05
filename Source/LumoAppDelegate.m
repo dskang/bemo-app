@@ -126,9 +126,9 @@
 // Called when notifcation comes in while app is active or suspended
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
 {
-    NSArray *args = [[[incomingCall objectForKey:@"aps"] objectForKey:@"alert"] objectForKey:@"loc-args"];
+    NSArray *args = [incomingCall valueForKeyPath:@"aps.alert.loc-args"];
     NSString *sourceName = [args objectAtIndex:0];
-	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
+	NSString *sourceID = [incomingCall valueForKey:@"source_id"];
     // TODO: Show accept or decline screen
     [self receiveCallFromSourceName:sourceName sourceID:sourceID];
 }
