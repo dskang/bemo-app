@@ -11,19 +11,17 @@
 #import "LumoAppDelegate.h"
 
 @interface LumoViewController ()
-@property (weak, nonatomic) NSArray *contacts;
 @property (strong, nonatomic) UITableView *tableView;
 @property int numFriends;
 @end
 
 @implementation LumoViewController
-@synthesize contacts = _contacts;
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:@"loginAndFriendsSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:@"getFriendsSuccess" object:nil];
     
     // Listen for received calls
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connReceived" object:nil];
