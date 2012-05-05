@@ -21,8 +21,6 @@
 - (void)startPartnerUpdates;
 - (void)stopPartnerUpdates;
 
-// These interact with the server. They all set notifications.
-- (void)getFriends;
 - (void)pushLocation;
 - (void)pollForLocation;
 

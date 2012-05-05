@@ -9,6 +9,7 @@
 #import "LumoAppDelegate.h"
 #import "Authentication.h"
 #import "CallManager.h"
+#import "ContactsManager.h"
 
 @interface LumoAppDelegate()
 @property (nonatomic, strong) Authentication *auth;
@@ -46,7 +47,7 @@
  ******************************************************************************/
 - (void)getLumoFriends {
     NSLog(@"LumoAppDelegate | getLumoFriends(): Login successful. Session token is %@", self.sessionToken);
-    [self.locationRelay getFriends];
+    [ContactsManager getFriends];
 }
 
 - (void)serverFailure {
