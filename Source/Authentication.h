@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBConnect.h"
 
-@interface Authentication : NSObject
+@interface Authentication : NSObject <FBSessionDelegate>
 
-- (void)loginToLumo;
+- (void)authenticate;
 
 @end

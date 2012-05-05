@@ -10,7 +10,86 @@
 #import "LumoAppDelegate.h"
 #import "AFJSONRequestOperation.h"
 
+@interface Authentication()
+@property (strong, nonatomic) Facebook *facebook;
+@end
+
 @implementation Authentication
+
+@synthesize facebook = _facebook;
+
+/******************************************************************************
+ * Getters
+ ******************************************************************************/
+- (Facebook *)facebook {
+    if (!_facebook) {
+        _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
+    }
+    return _facebook;
+}
+
+/******************************************************************************
+ * Facebook
+ ******************************************************************************/
+- (void)loginToFB {
+    // Check for previously saved access token information
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil];
+    } else {
+        [self loginToLumo];
+    }
+}
+
+// Pre iOS 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.facebook handleOpenURL:url]; 
+}
+
+// For iOS 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self.facebook handleOpenURL:url]; 
+}
+
+- (void)fbDidLogin {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    // TODO: Only log in when either FB access token or APNS token changes to save bandwidth!
+    [self loginToLumo];
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled {
+    
+}
+
+- (void)fbDidExtendToken:(NSString*)accessToken expiresAt:(NSDate*)expiresAt {
+    
+}
+
+- (void)fbDidLogout {
+    
+}
+
+- (void)fbSessionInvalidated {
+    
+}
+
+/******************************************************************************
+ * Lumo
+ ******************************************************************************/
+- (void)authenticate {
+    [self loginToFB];
+}
 
 /******************************************************************************
  * Login to the Lumo server

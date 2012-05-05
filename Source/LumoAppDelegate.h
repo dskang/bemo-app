@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBConnect.h"
 #import "LocationRelay.h"
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"
 
-@interface LumoAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
+@interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) Facebook *facebook;
 @property (strong, nonatomic) LocationRelay *locationRelay;
 @property (strong, nonatomic) NSArray *contactArray;
 @property (strong, nonatomic) NSDictionary *myInfo;

@@ -16,7 +16,6 @@
 @implementation LumoAppDelegate
 
 @synthesize window = _window;
-@synthesize facebook = _facebook;
 @synthesize auth = _auth;
 @synthesize locationRelay = _locationRelay;
 @synthesize contactArray = _contactArray;
@@ -27,13 +26,6 @@
 /******************************************************************************
  * Getters
  ******************************************************************************/
-- (Facebook *)facebook {
-    if (!_facebook) {
-        _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
-    }
-    return _facebook;
-}
-
 - (LocationRelay *)locationRelay {
     if (!_locationRelay) {
         _locationRelay = [[LocationRelay alloc] init];
@@ -49,70 +41,8 @@
 }
 
 /******************************************************************************
- * Facebook
- ******************************************************************************/
-- (void)loginToFB {
-    // Check for previously saved access token information
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"] 
-        && [defaults objectForKey:@"FBExpirationDateKey"]) {
-        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
-    }
-    
-    if (![self.facebook isSessionValid]) {
-        
-        [self.facebook authorize:nil];
-    } else {
-        [self loginToLumo];
-    }
-}
-
-// Pre iOS 4.2 support
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [self.facebook handleOpenURL:url]; 
-}
-
-// For iOS 4.2+ support
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [self.facebook handleOpenURL:url]; 
-}
-
-- (void)fbDidLogin {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
-    
-    [self loginToLumo];
-}
-
-- (void)fbDidNotLogin:(BOOL)cancelled {
-    
-}
-
-- (void)fbDidExtendToken:(NSString*)accessToken expiresAt:(NSDate*)expiresAt {
-    
-}
-
-- (void)fbDidLogout {
-    
-}
-
-- (void)fbSessionInvalidated {
-    
-}
-
-/******************************************************************************
  * Lumo
  ******************************************************************************/
-- (void)loginToLumo {
-    // TODO: Only log in when either FB access token or APNS token changes to save bandwidth!
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
-    [self.auth loginToLumo];
-}
-
 - (void)getLumoFriends {
     NSLog(@"LumoAppDelegate | getLumoFriends(): Login successful. Session token is %@", self.sessionToken);
     [self.locationRelay getFriends];
@@ -171,8 +101,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverFailure) name:@"serverFailure" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:@"auth" object:nil];
     
-    // Authentication on FB and Lumo (FB authentication calls Lumo auth)
-    [self loginToFB];
+    // Create notification observer for app flow
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
+
+    // Authenticate user
+    [self.auth authenticate];
     
     return YES;
 }
