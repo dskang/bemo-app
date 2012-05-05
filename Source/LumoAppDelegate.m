@@ -103,12 +103,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:@"auth" object:nil];
     
     // Create notification observer for app flow
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:LOGIN_SUCCESS object:nil];
 
     // Authenticate user
     [self.auth authenticate];
     
     return YES;
+}
+
+- (void)saveSessionToken:(NSNotification *)notification {
+    self.sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
 }
 
 - (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
