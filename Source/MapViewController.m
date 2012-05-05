@@ -88,25 +88,25 @@
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 
-// This is called each time an annotation is added to the map
+// Called each time an annotation is added to the map
 - (MKAnnotationView *)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     static NSString *contactPinID = @"contactPin";
-    //static NSString* myPinID = @"myPin";
     MKPinAnnotationView *annotView = nil;
     
-    // This code for the contact pin
     if ([annotation isKindOfClass:[Pin class]]) {
         annotView = (MKPinAnnotationView*) [_mapView dequeueReusableAnnotationViewWithIdentifier:contactPinID];
-        if (annotView == nil) annotView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:contactPinID];
-        else annotView.annotation = annotation;
+        if (!annotView) {
+            annotView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:contactPinID];   
+        } else {
+            annotView.annotation = annotation;   
+        }
     }
-    
+
     if (annotView) {
         annotView.enabled = YES;
         annotView.canShowCallout = YES;
         return annotView;
     }
-    
     return nil;
 }
 
