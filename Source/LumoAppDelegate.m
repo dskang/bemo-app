@@ -120,11 +120,7 @@
 - (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
     // FIXME: Currently automatically accepting call
     // Save contact info
-    // FIXME: Save source's name
     self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
-    // Push location
-    // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
-    [self.locationRelay pushLocation];
     // Receive call
     [CallManager receiveConnection];
 }

@@ -34,7 +34,7 @@
 }
 
 /******************************************************************************
- * Delegate method from the CLLocationManagerDelegate protocol.
+ * Push user's location whenever we get an update
  ******************************************************************************/
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
@@ -70,10 +70,10 @@
 }
 
 /******************************************************************************
- * Start fetching partner location every 2 seconds
+ * Start fetching partner location every 3 seconds
  ******************************************************************************/
 - (void)startPartnerUpdates {
-    self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(pollForLocation) userInfo:nil repeats:YES];
+    self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(pollForLocation) userInfo:nil repeats:YES];
 }
 
 /******************************************************************************
@@ -87,8 +87,7 @@
  * Push location to server
  *
  * Sets notifications:
- * "locationPushed" upon successful push to server (Not used as callback)
- * "auth" upon authentication failure
+ * LOC_PUSHED upon successful push to server
  ******************************************************************************/
 - (void)pushLocation {
     NSString *url = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
@@ -99,14 +98,14 @@
                           latitude, @"latitude",
                           longitude, @"longitude",
                           myAppDelegate.sessionToken, @"token", nil];
-    [LumoRequest postRequestToURL:url withDict:dict successNotification:@"locationPushed"];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:LOC_PUSHED];
 }
 
 /******************************************************************************
  * Poll for partner location from server
  * 
  * Sets notifications:
- * "connected" for successful location retrieval
+ * PARTER_LOC_UPDATED for successful location retrieval
  * "waiting" for a pending request
  * "disconnected" for failure (by timeout or disconnect)
  * "receive call" if there is already a pending call incoming
@@ -122,14 +121,12 @@
         NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
-            NSLog(@"pollForLocation(): connection established!");
             // Save partner's location
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-            // Announce connection
-            // FIXME: Do we want to be announcing this at every successful poll?
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"connected" object:self];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:PARTER_LOC_UPDATED object:self];
         } 
         
         else if ([status isEqualToString:@"failure"]) {

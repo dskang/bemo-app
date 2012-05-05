@@ -33,7 +33,7 @@
 	self.contactName.text = [myAppDelegate.contactInfo objectForKey:@"name"];
     
     // Set notification observers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:@"connected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTER_LOC_UPDATED object:nil];
     // FIXME: Harvest, what is this for?
     // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pollLocation) name:@"waiting" object:nil];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
@@ -50,7 +50,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
     [self.pollTimer invalidate];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"connected"];
+    [[NSNotificationCenter defaultCenter] removeObserver:PARTER_LOC_UPDATED];
     [[NSNotificationCenter defaultCenter] removeObserver:@"disconnected"];
 }
 

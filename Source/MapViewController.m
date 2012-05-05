@@ -14,14 +14,12 @@
 
 @interface MapViewController ()
 @property (strong, nonatomic) Pin *contactPin;
-@property (strong, nonatomic) LocationRelay *locationRelay;
 @property (strong, nonatomic) NSTimer *partnerTimer;
 @end
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
 @synthesize contactPin = _contactPin;
-@synthesize locationRelay = _locationRelay;
 @synthesize partnerTimer = _partnerTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -63,16 +61,9 @@
     return _contactPin;
 }
 
-- (LocationRelay *)locationRelay {
-    if (!_locationRelay) {
-        _locationRelay = [[LocationRelay alloc] init];
-    }
-    return _locationRelay;
-}
-
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
-    self.contactPin.coordinate = self.locationRelay.partnerLocation.coordinate;
+    self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
     NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
           self.contactPin.coordinate.latitude,
           self.contactPin.coordinate.longitude);
@@ -89,15 +80,15 @@
 
 - (void)startUpdating {
     NSLog(@"Start updating map view.");
-    [self.locationRelay startSelfUpdates];
-    [self.locationRelay startPartnerUpdates];
+    [myAppDelegate.locationRelay startSelfUpdates];
+    [myAppDelegate.locationRelay startPartnerUpdates];
     [self startPartnerUpdatesOnMap];
 }
 
 - (void)stopUpdating {
     NSLog(@"Stop updating map view.");
-    [self.locationRelay stopSelfUpdates];
-    [self.locationRelay stopPartnerUpdates];
+    [myAppDelegate.locationRelay stopSelfUpdates];
+    [myAppDelegate.locationRelay stopPartnerUpdates];
     [self stopPartnerUpdatesOnMap];
 }
 
@@ -133,7 +124,7 @@
 // See: http://stackoverflow.com/questions/1336370/positioning-mkmapview-to-show-multiple-annotations-at-once
 
 - (IBAction)recenter:(id)sender {
-    CLLocation *currentLocation = self.locationRelay.currentLocation;
+    CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
     CLLocationCoordinate2D southWest;
     CLLocationCoordinate2D northEast;
     
