@@ -9,6 +9,7 @@
 #import "LumoViewController.h"
 #import "MapViewController.h"
 #import "LumoAppDelegate.h"
+#import "CallManager.h"
 
 @interface LumoViewController ()
 @property (strong, nonatomic) UITableView *tableView;
@@ -60,7 +61,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connRequested" object:nil];
-    [myAppDelegate.locationRelay initiateConnection];
+    [CallManager initiateConnection];
 }
 
 - (void)showConnScreen {

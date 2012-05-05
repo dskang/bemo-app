@@ -23,9 +23,6 @@
 
 // These interact with the server. They all set notifications.
 - (void)getFriends;
-- (void)initiateConnection;
-- (void)receiveConnection;
-- (void)endConnection;
 - (void)pushLocation;
 - (void)pollForLocation;
 

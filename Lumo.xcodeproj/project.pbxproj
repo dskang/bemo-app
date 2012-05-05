@@ -40,6 +40,7 @@
 		1AF44516152E695A0006B5DB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44515152E695A0006B5DB /* second.png */; };
 		1AF44518152E695A0006B5DB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44517152E695A0006B5DB /* second@2x.png */; };
 		B56008FE15550569008936C9 /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B56008FD15550569008936C9 /* Authentication.m */; };
+		B560090215550C09008936C9 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090115550C09008936C9 /* CallManager.m */; };
 		B5C7D90515523E250080E630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C7D90415523E250080E630 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,8 @@
 		1AF44517152E695A0006B5DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		B56008FC15550568008936C9 /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
 		B56008FD15550569008936C9 /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
+		B560090015550C09008936C9 /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
+		B560090115550C09008936C9 /* CallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
 		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +221,8 @@
 		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B560090015550C09008936C9 /* CallManager.h */,
+				B560090115550C09008936C9 /* CallManager.m */,
 				B56008FC15550568008936C9 /* Authentication.h */,
 				B56008FD15550569008936C9 /* Authentication.m */,
 				1A6C9401153D137000C7D6ED /* LocationRelay.h */,
@@ -293,7 +298,7 @@
 		1AF444E9152E695A0006B5DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = rdv;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Princeton University";
 			};
@@ -357,6 +362,7 @@
 				1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */,
 				1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */,
 				B56008FE15550569008936C9 /* Authentication.m in Sources */,
+				B560090215550C09008936C9 /* CallManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "Pin.h"
 #import "LocationRelay.h"
 #import "LumoAppDelegate.h"
+#import "CallManager.h"
 
 @interface MapViewController ()
 @property (strong, nonatomic) Pin *contactPin;
@@ -106,7 +107,7 @@
 
 - (void)disconnectLumo {
     [self stopUpdating];
-    [myAppDelegate.locationRelay endConnection];
+    [CallManager endConnection];
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 

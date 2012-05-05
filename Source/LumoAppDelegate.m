@@ -8,6 +8,7 @@
 
 #import "LumoAppDelegate.h"
 #import "Authentication.h"
+#import "CallManager.h"
 
 @interface LumoAppDelegate()
 @property (nonatomic, strong) Authentication *auth;
@@ -119,7 +120,7 @@
     // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
     [self.locationRelay pushLocation];
     // Receive call
-    [self.locationRelay receiveConnection];
+    [CallManager receiveConnection];
 }
 
 // Called when notifcation comes in while app is active or suspended
