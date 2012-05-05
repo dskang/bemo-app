@@ -22,7 +22,6 @@
 - (void)stopPartnerUpdates;
 
 // These interact with the server. They all set notifications.
-- (void)loginToLumo;
 - (void)getFriends;
 - (void)initiateConnection;
 - (void)receiveConnection;

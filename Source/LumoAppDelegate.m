@@ -7,17 +7,26 @@
 //
 
 #import "LumoAppDelegate.h"
+#import "Authentication.h"
+
+@interface LumoAppDelegate()
+@property (nonatomic, strong) Authentication *auth;
+@end
 
 @implementation LumoAppDelegate
 
 @synthesize window = _window;
 @synthesize facebook = _facebook;
+@synthesize auth = _auth;
 @synthesize locationRelay = _locationRelay;
 @synthesize contactArray = _contactArray;
 @synthesize myInfo = _myInfo;
 @synthesize contactInfo = _contactInfo;
 @synthesize sessionToken = _sessionToken;
 
+/******************************************************************************
+ * Getters
+ ******************************************************************************/
 - (Facebook *)facebook {
     if (!_facebook) {
         _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
@@ -30,6 +39,13 @@
         _locationRelay = [[LocationRelay alloc] init];
     }
     return _locationRelay;
+}
+
+- (Authentication *)auth {
+    if (!_auth) {
+        _auth = [[Authentication alloc] init];
+    }
+    return _auth;
 }
 
 /******************************************************************************
@@ -94,7 +110,7 @@
 - (void)loginToLumo {
     // TODO: Only log in when either FB access token or APNS token changes to save bandwidth!
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
-    [self.locationRelay loginToLumo];
+    [self.auth loginToLumo];
 }
 
 - (void)getLumoFriends {
