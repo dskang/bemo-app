@@ -133,25 +133,19 @@
 /******************************************************************************
  * Application states
  ******************************************************************************/
+// Application launched from a non-running state
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-    
     // Check if app was opened from a push notification
     if (launchOptions)
 	{
 		NSDictionary* incomingCall = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (incomingCall)
 		{
+            NSArray *args = [[[incomingCall objectForKey:@"aps"] objectForKey:@"alert"] objectForKey:@"loc-args"];
+            NSString *sourceName = [args objectAtIndex:0];
             NSString *sourceID = [incomingCall objectForKey:@"source_id"];
-            NSLog(@"Received call from %@", sourceID);
-            // Save contact info
-            // FIXME: Save source's name
-            self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", nil];
-            // Push location
-            // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
-            [self.locationRelay pushLocation];
-            // Receive call
-            [self.locationRelay receiveConnection];
+            [self receiveCallFromSourceName:sourceName sourceID:sourceID];
 		}
     }
     
@@ -173,20 +167,26 @@
     return YES;
 }
 
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
-{
-	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
-    NSLog(@"Incoming call from %@", sourceID);
-    // TODO: Show accept or decline screen
+- (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
     // FIXME: Currently automatically accepting call
     // Save contact info
     // FIXME: Save source's name
-    self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", nil];
+    self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
     // Push location
     // FIXME: This is a temporary fix to have a location on the server so that poll will return successfully
     [self.locationRelay pushLocation];
     // Receive call
     [self.locationRelay receiveConnection];
+}
+
+// Called when notifcation comes in while app is active or suspended
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
+{
+    NSArray *args = [[[incomingCall objectForKey:@"aps"] objectForKey:@"alert"] objectForKey:@"loc-args"];
+    NSString *sourceName = [args objectAtIndex:0];
+	NSString *sourceID = [incomingCall objectForKey:@"source_id"];
+    // TODO: Show accept or decline screen
+    [self receiveCallFromSourceName:sourceName sourceID:sourceID];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
