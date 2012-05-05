@@ -112,7 +112,7 @@
                           deviceToken, @"device_token",
                           @"facebook", @"service",
                           serviceKey, @"service_token", nil];
-    [LumoRequest postRequestToURL:url withDict:dict successNotification:@"loginSuccess"];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:LOGIN_SUCCESS];
 }
 
 @end

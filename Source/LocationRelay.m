@@ -87,7 +87,7 @@
  * Get FB friends who use the app, save to app delegate
  *
  * Sets notifications:
- * "getFriendsSuccess" for successful friend retrieval
+ * GET_FRIENDS_SUCCESS for successful friend retrieval
  ******************************************************************************/
 - (void)getFriends {
     NSString *partnerUrl;
@@ -99,12 +99,12 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             myAppDelegate.contactArray = [JSON objectForKey:@"data"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"getFriendsSuccess" object:self]; 
+            [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
     }];
     [operation start];
 }
@@ -165,7 +165,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
     }];
     [operation start];
 }

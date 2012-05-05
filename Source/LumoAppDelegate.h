@@ -13,6 +13,14 @@
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"
 
+// Notfications
+#define REQUEST_FAILED @"requestFailure"
+#define LOGIN_SUCCESS @"loginSuccess"
+#define GET_FRIENDS_SUCCESS @"getFriendsSuccess"
+#define CONN_REQUESTED @"connRequested"
+#define CONN_RECEIVED @"connReceived"
+#define CONN_ENDED @"connEnded"
+
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

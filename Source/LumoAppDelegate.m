@@ -99,11 +99,11 @@
     [self generateDeviceKey];
     
     // Create notification observer for server failure or auth failure
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverFailure) name:@"serverFailure" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverFailure) name:REQUEST_FAILED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:@"auth" object:nil];
     
     // Create notification observer for app flow
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:@"loginSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:LOGIN_SUCCESS object:nil];
 
     // Authenticate user
     [self.auth authenticate];

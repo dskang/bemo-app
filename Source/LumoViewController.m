@@ -22,10 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:@"getFriendsSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotContacts) name:GET_FRIENDS_SUCCESS object:nil];
     
     // Listen for received calls
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_RECEIVED object:nil];
 }
 
 - (void)viewDidUnload {
@@ -60,7 +60,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:@"connRequested" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
     [CallManager initiateConnection];
 }
 
