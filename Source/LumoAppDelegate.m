@@ -50,12 +50,12 @@
     [ContactsManager getFriends];
 }
 
-- (void)serverFailure {
-    NSLog(@"LumoAppDelegate | serverFailure(): Uh oh, massive server failure.");
+- (void)requestFailure {
+    NSLog(@"LumoAppDelegate | requestFailure(): Request failed.");
 }
 
 - (void)authFailure {
-    NSLog(@"LumoAppDelegate | authFailure(): Uh oh, auth failure.");
+    NSLog(@"LumoAppDelegate | authFailure(): Auth failed.");
 }
 
 /******************************************************************************
@@ -100,8 +100,8 @@
     [self generateDeviceKey];
     
     // Create notification observer for server failure or auth failure
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverFailure) name:REQUEST_FAILED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:@"auth" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailure) name:REQUEST_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:AUTH_FAILED object:nil];
     
     // Create notification observer for app flow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];

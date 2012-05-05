@@ -15,6 +15,8 @@
 
 // Notfications
 #define REQUEST_FAILED @"requestFailure"
+#define AUTH_FAILED @"auth"
+
 #define LOGIN_SUCCESS @"loginSuccess"
 #define GET_FRIENDS_SUCCESS @"getFriendsSuccess"
 
