@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 Princeton University. All rights reserved.
 //
 
-#import "LumoViewController.h"
+#import "ContactsViewController.h"
 #import "MapViewController.h"
 #import "LumoAppDelegate.h"
 #import "CallManager.h"
 
-@interface LumoViewController ()
+@interface ContactsViewController ()
 @property (strong, nonatomic) UITableView *tableView;
 @property int numFriends;
 @end
 
-@implementation LumoViewController
+@implementation ContactsViewController
 @synthesize tableView = _tableView;
 @synthesize numFriends = _numFriends;
 

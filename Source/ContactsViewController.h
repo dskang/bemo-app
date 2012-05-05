@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LumoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ContactsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 }
 
 @end
