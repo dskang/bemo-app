@@ -12,6 +12,7 @@
 
 @implementation LumoRequest
 
+// TODO: Convert code to use AFHTTPClient!
 + (void)postRequestToURL:(NSString *)url withDict:(NSDictionary *)dict successNotification:(NSString *)successNotification  {
     // Convert data to JSON
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];        
