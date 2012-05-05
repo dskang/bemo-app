@@ -41,6 +41,7 @@
 		1AF44518152E695A0006B5DB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44517152E695A0006B5DB /* second@2x.png */; };
 		B56008FE15550569008936C9 /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B56008FD15550569008936C9 /* Authentication.m */; };
 		B560090215550C09008936C9 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090115550C09008936C9 /* CallManager.m */; };
+		B560090515550FE6008936C9 /* LumoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090415550FE6008936C9 /* LumoRequest.m */; };
 		B5C7D90515523E250080E630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C7D90415523E250080E630 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,8 @@
 		B56008FD15550569008936C9 /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
 		B560090015550C09008936C9 /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
 		B560090115550C09008936C9 /* CallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
+		B560090315550FE6008936C9 /* LumoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumoRequest.h; sourceTree = "<group>"; };
+		B560090415550FE6008936C9 /* LumoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumoRequest.m; sourceTree = "<group>"; };
 		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +224,8 @@
 		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B560090315550FE6008936C9 /* LumoRequest.h */,
+				B560090415550FE6008936C9 /* LumoRequest.m */,
 				B560090015550C09008936C9 /* CallManager.h */,
 				B560090115550C09008936C9 /* CallManager.m */,
 				B56008FC15550568008936C9 /* Authentication.h */,
@@ -363,6 +368,7 @@
 				1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */,
 				B56008FE15550569008936C9 /* Authentication.m in Sources */,
 				B560090215550C09008936C9 /* CallManager.m in Sources */,
+				B560090515550FE6008936C9 /* LumoRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

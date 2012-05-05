@@ -117,6 +117,7 @@
  * "auth" upon authentication failure
  ******************************************************************************/
 - (void)pushLocation {
+    NSString *url = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
     NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -124,30 +125,7 @@
                           latitude, @"latitude",
                           longitude, @"longitude",
                           myAppDelegate.sessionToken, @"token", nil];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil]; 
-    // Form POST request
-    NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
-    NSURL *url = [NSURL URLWithString:partnerUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    [mutableRequest setHTTPMethod:@"POST"];
-    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest setHTTPBody:data];
-    
-    // Send request
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest *request, NSHTTPURLResponse*response, id JSON) {
-        NSString *status = [JSON valueForKeyPath:@"status"];
-        
-        if ([status isEqualToString:@"success"]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"locationPushed" object:self];
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"auth" object:self];
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"serverFailure" object:self];
-    }];
-    [operation start];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:@"locationPushed"];
 }
 
 /******************************************************************************
