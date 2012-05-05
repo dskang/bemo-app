@@ -227,7 +227,7 @@
 		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B560090A1555D2AE008936C9 /* View Controllers */,
+				B560090A1555D2AE008936C9 /* Controllers */,
 				B56009091555D2A8008936C9 /* Models */,
 				1AF44505152E695A0006B5DB /* LumoAppDelegate.h */,
 				1AF44506152E695A0006B5DB /* LumoAppDelegate.m */,
@@ -269,7 +269,7 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		B560090A1555D2AE008936C9 /* View Controllers */ = {
+		B560090A1555D2AE008936C9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				1A0876F3154A5D360079276F /* ConnectingViewController.h */,
@@ -283,7 +283,7 @@
 				1AF44512152E695A0006B5DB /* ContactsViewController.h */,
 				1AF44513152E695A0006B5DB /* ContactsViewController.m */,
 			);
-			name = "View Controllers";
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		B560090B1555D2E5008936C9 /* Images */ = {
