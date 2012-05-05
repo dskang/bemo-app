@@ -12,11 +12,13 @@
 
 @implementation CallManager
 
+@synthesize partnerInfo = _partnerInfo;
+
 /******************************************************************************
  * Initiate connection to a contact
  ******************************************************************************/
 + (void)initiateConnection {
-    NSString *url = [NSString stringWithFormat:@"%@/call/%@/init", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
+    NSString *url = [NSString stringWithFormat:@"%@/call/%@/init", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"]];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
                           @"facebook", @"service",
@@ -28,7 +30,7 @@
  * Receive connection from a contact
  ******************************************************************************/
 + (void)receiveConnection {
-    NSString *url = [NSString stringWithFormat:@"%@/call/%@/receive", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
+    NSString *url = [NSString stringWithFormat:@"%@/call/%@/receive", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"]];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
                           myAppDelegate.sessionToken, @"token", nil];
@@ -39,7 +41,7 @@
  * End an active connection
  ******************************************************************************/
 + (void)endConnection {
-    NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"]];
+    NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"]];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: myAppDelegate.sessionToken, @"token", nil];
 [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
 }

@@ -35,7 +35,7 @@
 
 - (void)gotContacts {
     // Reload data into contacts table
-    self.numFriends = [myAppDelegate.contactArray count];
+    self.numFriends = [myAppDelegate.contactsManager.contactsArray count];
     [self.tableView reloadData];
 }
 
@@ -54,12 +54,12 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
     }
-    cell.textLabel.text = [[myAppDelegate.contactArray objectAtIndex:indexPath.row] valueForKey:@"name"];
+    cell.textLabel.text = [[myAppDelegate.contactsManager.contactsArray objectAtIndex:indexPath.row] valueForKey:@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    myAppDelegate.contactInfo = [myAppDelegate.contactArray objectAtIndex:indexPath.row];
+    myAppDelegate.callManager.partnerInfo = [myAppDelegate.contactsManager.contactsArray objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
     [CallManager initiateConnection];
 }

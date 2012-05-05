@@ -12,6 +12,8 @@
 
 @implementation ContactsManager
 
+@synthesize contactsArray = _contactsArray;
+
 /******************************************************************************
  * Get FB friends who use the app, save to app delegate
  *
@@ -26,7 +28,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
-            myAppDelegate.contactArray = [JSON objectForKey:@"data"];
+            myAppDelegate.contactsManager.contactsArray = [JSON objectForKey:@"data"];
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];

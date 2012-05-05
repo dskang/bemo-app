@@ -112,7 +112,7 @@
  ******************************************************************************/
 - (void)pollForLocation {
     NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.contactInfo valueForKey:@"id"], myAppDelegate.sessionToken];
+    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"], myAppDelegate.sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
