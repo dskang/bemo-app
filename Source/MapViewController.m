@@ -64,32 +64,22 @@
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
     self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
-    NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
-          self.contactPin.coordinate.latitude,
-          self.contactPin.coordinate.longitude);
-}
-
-- (void)startPartnerUpdatesOnMap {
-    // FIXME: Replace by listening to notification center for a successful location poll
-    self.partnerTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updatePartnerLocationOnMap) userInfo:nil repeats:YES];
-}
-
-- (void)stopPartnerUpdatesOnMap {
-    [self.partnerTimer invalidate];
 }
 
 - (void)startUpdating {
     NSLog(@"Start updating map view.");
     [myAppDelegate.locationRelay startSelfUpdates];
     [myAppDelegate.locationRelay startPartnerUpdates];
-    [self startPartnerUpdatesOnMap];
+    // Listen for partner updates
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTER_LOC_UPDATED object:nil];
 }
 
 - (void)stopUpdating {
     NSLog(@"Stop updating map view.");
     [myAppDelegate.locationRelay stopSelfUpdates];
     [myAppDelegate.locationRelay stopPartnerUpdates];
-    [self stopPartnerUpdatesOnMap];
+    // Stop listening for partner updates
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)endConnection:(id)sender {

@@ -46,8 +46,8 @@
     {
         self.currentLocation = newLocation;
         NSLog(@"self: latitude %+.6f, longitude %+.6f\n",
-              newLocation.coordinate.latitude,
-              newLocation.coordinate.longitude);
+              self.currentLocation.coordinate.latitude,
+              self.currentLocation.coordinate.longitude);
         [self pushLocation];
     }
 }
@@ -125,6 +125,9 @@
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+            NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
+                  self.partnerLocation.coordinate.latitude,
+                  self.partnerLocation.coordinate.longitude);
 
             [[NSNotificationCenter defaultCenter] postNotificationName:PARTER_LOC_UPDATED object:self];
         } 
