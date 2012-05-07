@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:@"disconnected" object:nil];
     [self startUpdating];
 }
 
