@@ -82,7 +82,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (IBAction)endConnection:(id)sender {
+- (IBAction)endConnection {
+    // FIXME: This shows connecting screen instead of contacts screen
     [self stopUpdating];
     [CallManager endConnection];
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
