@@ -13,12 +13,10 @@
 
 @interface ContactsViewController ()
 @property (strong, nonatomic) UITableView *tableView;
-@property int numFriends;
 @end
 
 @implementation ContactsViewController
 @synthesize tableView = _tableView;
-@synthesize numFriends = _numFriends;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,8 +32,6 @@
 }
 
 - (void)gotContacts {
-    // Reload data into contacts table
-    self.numFriends = [myAppDelegate.contactsManager.contactsArray count];
     [self.tableView reloadData];
 }
 
@@ -44,20 +40,20 @@
  ******************************************************************************/
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return[NSArray arrayWithObjects:@"a", @"e", @"i", @"m", @"p", nil];
+    return [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return index;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.tableView = tableView; // Super hacky. Is there a better way?
-    return 5;
+    return [[myAppDelegate.contactsManager.sections allKeys] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.numFriends;
+    return [[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -66,12 +62,12 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
     }
-    cell.textLabel.text = [[myAppDelegate.contactsManager.contactsArray objectAtIndex:indexPath.row] valueForKey:@"name"];
+    cell.textLabel.text = [[[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] valueForKey:@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    myAppDelegate.callManager.partnerInfo = [myAppDelegate.contactsManager.contactsArray objectAtIndex:indexPath.row];
+    myAppDelegate.callManager.partnerInfo = [[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
     [CallManager initiateConnection];
 }

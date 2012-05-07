@@ -12,16 +12,46 @@
 
 @implementation ContactsManager
 
-@synthesize contactsArray = _contactsArray;
+@synthesize sections = _sections;
+
+/******************************************************************************
+ * Override init to allocate and initialize the sections dictionary
+ ******************************************************************************/
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.sections = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 /******************************************************************************
  * Format the array of contacts in alphabetized and indexed order
  ******************************************************************************/
-+ (void)setContactArray:(NSArray *)unsortedContacts {
++ (void)organizeContactArray:(NSArray *)unsortedContacts {
+    
+    // Sort the contacts
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray * alphaArray = [unsortedContacts sortedArrayUsingDescriptors:
-                             [NSArray arrayWithObject:descriptor]];
-    myAppDelegate.contactArray = alphaArray;
+    NSArray *alphaArray = [unsortedContacts sortedArrayUsingDescriptors:
+                           [NSArray arrayWithObject:descriptor]];
+    
+    // Create section headers
+    bool inserted = NO;
+    for (NSDictionary *contact in alphaArray) {
+        inserted = NO;
+        NSString *newIndex = [[contact valueForKey:@"name"] substringToIndex:1];
+        for (NSString *index in [myAppDelegate.contactsManager.sections allKeys]) {
+            if ([index isEqualToString:newIndex]) inserted = YES;
+        }
+        if (!inserted) {
+            [myAppDelegate.contactsManager.sections setValue:[[NSMutableArray alloc] init] forKey:newIndex];
+        }
+    }
+    
+    // Insert contacts into appropriate sections
+    for (NSDictionary *contact in alphaArray) {
+        [[myAppDelegate.contactsManager.sections valueForKey:[[contact valueForKey:@"name"] substringToIndex:1]] addObject:contact];
+    }
 }
 
 /******************************************************************************
@@ -38,7 +68,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
-            [self setContactArray:[JSON objectForKey:@"data"]];
+            [self organizeContactArray:[JSON objectForKey:@"data"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
