@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.contactName.text = [myAppDelegate.contactInfo objectForKey:@"name"];
+	self.contactName.text = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTER_LOC_UPDATED object:nil];

@@ -12,6 +12,8 @@
 
 @implementation ContactsManager
 
+@synthesize contactsArray = _contactsArray;
+
 /******************************************************************************
  * Format the array of contacts in alphabetized and indexed order
  ******************************************************************************/

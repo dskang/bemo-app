@@ -8,8 +8,6 @@
 
 #import "LumoAppDelegate.h"
 #import "Authentication.h"
-#import "CallManager.h"
-#import "ContactsManager.h"
 
 @interface LumoAppDelegate()
 @property (nonatomic, strong) Authentication *auth;
@@ -20,9 +18,8 @@
 @synthesize window = _window;
 @synthesize auth = _auth;
 @synthesize locationRelay = _locationRelay;
-@synthesize contactArray = _contactArray;
-@synthesize myInfo = _myInfo;
-@synthesize contactInfo = _contactInfo;
+@synthesize callManager = _callManager;
+@synthesize contactsManager = _contactsManager;
 @synthesize sessionToken = _sessionToken;
 
 /******************************************************************************
@@ -33,6 +30,20 @@
         _locationRelay = [[LocationRelay alloc] init];
     }
     return _locationRelay;
+}
+
+- (CallManager *)callManager {
+    if (!_callManager) {
+        _callManager = [[CallManager alloc] init];
+    }
+    return _callManager;
+}
+
+- (ContactsManager *)contactsManager {
+    if (!_contactsManager) {
+        _contactsManager = [[ContactsManager alloc] init];
+    }
+    return _contactsManager;
 }
 
 - (Authentication *)auth {
@@ -120,7 +131,7 @@
 - (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
     // FIXME: Currently automatically accepting call
     // Save contact info
-    self.contactInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
+    self.callManager.partnerInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
     // Receive call
     [CallManager receiveConnection];
 }
@@ -161,6 +172,20 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+/******************************************************************************
+ * Facebook
+ ******************************************************************************/
+// Pre iOS 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.auth.facebook handleOpenURL:url]; 
+}
+
+// For iOS 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self.auth.facebook handleOpenURL:url]; 
 }
 
 /******************************************************************************

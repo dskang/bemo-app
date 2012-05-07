@@ -10,6 +10,8 @@
 
 @interface ContactsManager : NSObject
 
+@property (strong, nonatomic) NSArray *contactsArray;
+
 + (void)getFriends;
 
 @end

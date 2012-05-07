@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LocationRelay.h"
 #import "LumoRequest.h"
+#import "ContactsManager.h"
+#import "CallManager.h"
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"
@@ -31,9 +33,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LocationRelay *locationRelay;
-@property (strong, nonatomic) NSArray *contactArray;
-@property (strong, nonatomic) NSDictionary *myInfo;
-@property (strong, nonatomic) NSDictionary *contactInfo;
+@property (strong, nonatomic) CallManager *callManager;
+@property (strong, nonatomic) ContactsManager *contactsManager;
 @property (strong, nonatomic) NSString *sessionToken;
 
 @end

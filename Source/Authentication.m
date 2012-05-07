@@ -10,10 +10,6 @@
 #import "LumoAppDelegate.h"
 #import "AFJSONRequestOperation.h"
 
-@interface Authentication()
-@property (strong, nonatomic) Facebook *facebook;
-@end
-
 @implementation Authentication
 
 @synthesize facebook = _facebook;
@@ -45,17 +41,6 @@
     } else {
         [self loginToLumo];
     }
-}
-
-// Pre iOS 4.2 support
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [self.facebook handleOpenURL:url]; 
-}
-
-// For iOS 4.2+ support
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [self.facebook handleOpenURL:url]; 
 }
 
 - (void)fbDidLogin {

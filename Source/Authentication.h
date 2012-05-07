@@ -11,6 +11,8 @@
 
 @interface Authentication : NSObject <FBSessionDelegate>
 
+@property (strong, nonatomic) Facebook *facebook;
+
 - (void)authenticate;
 
 @end
