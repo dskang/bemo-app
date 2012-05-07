@@ -175,6 +175,20 @@
 }
 
 /******************************************************************************
+ * Facebook
+ ******************************************************************************/
+// Pre iOS 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.auth.facebook handleOpenURL:url]; 
+}
+
+// For iOS 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self.auth.facebook handleOpenURL:url]; 
+}
+
+/******************************************************************************
  * Push notifications
  ******************************************************************************/
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
