@@ -40,6 +40,7 @@
  ******************************************************************************/
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    // FIXME: Return A-Z
     return [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
