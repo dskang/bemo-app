@@ -82,11 +82,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (IBAction)endConnection {
+- (void)endConnection {
     // FIXME: This shows connecting screen instead of contacts screen
     [self stopUpdating];
-    [CallManager endConnection];
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
+}
+
+- (IBAction)endConnectionButton:(id)sender {
+    [CallManager endConnection];
+    [self endConnection];
 }
 
 // Called each time an annotation is added to the map
