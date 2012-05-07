@@ -13,6 +13,16 @@
 @implementation ContactsManager
 
 /******************************************************************************
+ * Format the array of contacts in alphabetized and indexed order
+ ******************************************************************************/
++ (void)setContactArray:(NSArray *)unsortedContacts {
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray * alphaArray = [unsortedContacts sortedArrayUsingDescriptors:
+                             [NSArray arrayWithObject:descriptor]];
+    myAppDelegate.contactArray = alphaArray;
+}
+
+/******************************************************************************
  * Get FB friends who use the app, save to app delegate
  *
  * Sets notifications:
@@ -26,7 +36,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
-            myAppDelegate.contactArray = [JSON objectForKey:@"data"];
+            [self setContactArray:[JSON objectForKey:@"data"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];

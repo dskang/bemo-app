@@ -39,9 +39,21 @@
     [self.tableView reloadData];
 }
 
+/******************************************************************************
+ * Table view setup functions
+ ******************************************************************************/
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return[NSArray arrayWithObjects:@"a", @"e", @"i", @"m", @"p", nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return index;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.tableView = tableView; // Super hacky. Is there a better way?
-    return 1;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
