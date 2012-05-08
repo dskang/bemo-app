@@ -50,8 +50,6 @@
 }
 
 - (void)viewDidUnload {
-    [self setTitleBar:nil];
-    [self setTimeLeftLabel:nil];
     [super viewDidUnload];
 }
 

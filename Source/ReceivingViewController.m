@@ -31,9 +31,11 @@
 }
 
 - (void)viewDidUnload {
-    [self setTitleBar:nil];
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)stopConnecting {
