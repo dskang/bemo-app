@@ -12,10 +12,12 @@
 #import "CallManager.h"
 
 @interface ContactsViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) UITableView *tableView;
 @end
 
 @implementation ContactsViewController
+@synthesize spinner = _spinner;
 @synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
@@ -27,6 +29,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setSpinner:nil];
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -54,7 +57,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.tableView = tableView; // Super hacky. Is there a better way?
-    return [[myAppDelegate.contactsManager.sections allKeys] count];
+    NSInteger count = [[myAppDelegate.contactsManager.sections allKeys] count];
+    if (count > 0) [self.spinner stopAnimating];
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -73,18 +78,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     myAppDelegate.callManager.partnerInfo = [[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
-    [CallManager initiateConnection];
+    [self showConnScreen];
+}
+
+- (void)showConnScreen {
+    [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
-}
-
-- (void)showConnScreen {
-    NSLog(@"showConnScreen called");
-    [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -23,7 +23,8 @@
 #define GET_FRIENDS_SUCCESS @"getFriendsSuccess"
 
 #define LOC_PUSHED @"locPushed"
-#define PARTER_LOC_UPDATED @"parterLocUpdated"
+#define PARTNER_LOC_UPDATED @"partnerLocUpdated"
+#define DISCONNECTED @"disconnected"
 
 #define CONN_REQUESTED @"connRequested"
 #define CONN_RECEIVED @"connReceived"

@@ -71,7 +71,7 @@
     [myAppDelegate.locationRelay startSelfUpdates];
     [myAppDelegate.locationRelay startPartnerUpdates];
     // Listen for partner updates
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTER_LOC_UPDATED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
 }
 
 - (void)stopUpdating {
@@ -83,8 +83,9 @@
 }
 
 - (void)endConnection {
-    // FIXME: This shows connecting screen instead of contacts screen
+    // FIXME: This shows connecting screen instead of contacts screen (when run from signal, not button)
     [self stopUpdating];
+    
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }
 
@@ -147,7 +148,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

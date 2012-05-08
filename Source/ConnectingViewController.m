@@ -11,14 +11,19 @@
 #import "LumoAppDelegate.h"
 
 @interface ConnectingViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *contactName;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleBar;
+@property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (strong, nonatomic) NSTimer *pollTimer;
-
+@property (strong, nonatomic) NSTimer *countdownTimer;
+@property (nonatomic) NSInteger timeLeft;
 @end
 
 @implementation ConnectingViewController
-@synthesize contactName = _contactName;
+@synthesize titleBar = _titleBar;
+@synthesize timeLeftLabel = _timeLeftLabel;
 @synthesize pollTimer = _pollTimer;
+@synthesize countdownTimer = _timeoutTimer;
+@synthesize timeLeft = _timeLeft;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,46 +35,68 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.contactName.text = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
+	self.titleBar.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     // Set notification observers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTER_LOC_UPDATED object:nil];
-    // FIXME: Harvest, what is this for?
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pollLocation) name:@"waiting" object:nil];    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTNER_LOC_UPDATED object:nil];  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     
-    // Poll for a connection every 5 seconds
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
+    // Request connection, which then starts polling
+    [CallManager initiateConnection];
+    
+    // Set timeLeft from defaults (TODO - temporarily hardcoded)
+    self.timeLeft = 60;
 }
 
 - (void)viewDidUnload {
-    [self setContactName:nil];
+    [self setTitleBar:nil];
+    [self setTimeLeftLabel:nil];
     [super viewDidUnload];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
     [self.pollTimer invalidate];
-    [[NSNotificationCenter defaultCenter] removeObserver:PARTER_LOC_UPDATED];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"disconnected"];
+    [self.countdownTimer invalidate];
+    [[NSNotificationCenter defaultCenter] removeObserver:PARTNER_LOC_UPDATED];
+    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
+    [[NSNotificationCenter defaultCenter] removeObserver:CONN_REQUESTED];
 }
 
+// Called from timer
 - (void)pollLocation {
     NSLog(@"ConnectingViewController | pollLocation() polling.");
     [myAppDelegate.locationRelay pollForLocation];
 }
 
+// Called from observer
 - (void)gotoMapView {
     [self performSegueWithIdentifier:@"gotoMapView" sender:nil];
 }
 
-- (void)disconnectLumo {
-    NSLog(@"ConnectingViewController | disconnectLumo(): timeout or declined.");
-    [self cancelLumo];
+// Called from observer
+- (void)startPolling {
+    // Poll for a connection every 3 seconds
+    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
+    
+    // Start the countdown timer
+    self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
 }
 
-- (IBAction)cancelLumo {
+- (void)countdown {
+    if (self.timeLeft <= 0) [self stopConnecting];
+    self.timeLeftLabel.text = [NSString stringWithFormat:@"%02d:%02d", self.timeLeft/60, self.timeLeft%60];
+    self.timeLeft--;
+}
+
+// Called from observer, cancel button, and countdown timeout
+- (void)stopConnecting {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)cancelButton {
+    [self stopConnecting];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

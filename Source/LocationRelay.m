@@ -105,7 +105,7 @@
  * Poll for partner location from server
  * 
  * Sets notifications:
- * PARTER_LOC_UPDATED for successful location retrieval
+ * PARTNER_LOC_UPDATED for successful location retrieval
  * "waiting" for a pending request
  * "disconnected" for failure (by timeout or disconnect)
  * "receive call" if there is already a pending call incoming
@@ -129,7 +129,7 @@
                   self.partnerLocation.coordinate.latitude,
                   self.partnerLocation.coordinate.longitude);
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:PARTER_LOC_UPDATED object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
         } 
         
         else if ([status isEqualToString:@"failure"]) {
