@@ -8,3 +8,4 @@
 
 "ACCEPT" = "Accept";
 "INCOMING_CALL" = "%@ would like to share their location with you.";
+"MISSING_CALL" = "You missed a Lumo request from %@";
