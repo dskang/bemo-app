@@ -107,7 +107,7 @@
  * Sets notifications:
  * PARTNER_LOC_UPDATED for successful location retrieval
  * "waiting" for a pending request
- * "disconnected" for failure (by timeout or disconnect)
+ * DISCONNECTED for failure (by timeout or disconnect)
  * "receive call" if there is already a pending call incoming
  ******************************************************************************/
 - (void)pollForLocation {
@@ -134,8 +134,7 @@
         
         else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
-            if ([error isEqualToString:@"invalid"]) 
-                NSLog(@"LocationRelay.m | pollForLocation(): invalid target_id.");
+            NSLog(@"Notification: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

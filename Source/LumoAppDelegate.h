@@ -30,12 +30,14 @@
 #define CONN_RECEIVED @"connReceived"
 #define CONN_ENDED @"connEnded"
 
+#define DISCONNECTED @"disconnected"
+
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) LocationRelay *locationRelay;
-@property (strong, nonatomic) CallManager *callManager;
-@property (strong, nonatomic) ContactsManager *contactsManager;
-@property (strong, nonatomic) NSString *sessionToken;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) LocationRelay *locationRelay;
+@property (nonatomic, strong) CallManager *callManager;
+@property (nonatomic, strong) ContactsManager *contactsManager;
+@property (nonatomic, strong) NSString *sessionToken;
 
 @end
