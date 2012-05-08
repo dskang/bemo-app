@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-}
+@interface ContactsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
