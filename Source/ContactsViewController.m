@@ -79,6 +79,9 @@
     myAppDelegate.callManager.partnerInfo = contact;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
     [CallManager initiateConnection];
+
+    // Deselect row
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)showConnScreen {
