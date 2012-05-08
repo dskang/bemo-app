@@ -8,6 +8,7 @@
 
 #import "LumoAppDelegate.h"
 #import "Authentication.h"
+#import "ReceivingViewController.h"
 
 @interface LumoAppDelegate()
 @property (nonatomic, strong) Authentication *auth;

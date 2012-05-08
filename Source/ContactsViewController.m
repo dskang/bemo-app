@@ -13,29 +13,26 @@
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation ContactsViewController
 @synthesize contactsTableView = _contactsTableView;
-@synthesize spinner = _spinner;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
-    
+
     // Listen for received calls (HEFFALUMPS- TAKE OUT LATER!)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_RECEIVED object:nil];
 }
 
 - (void)viewDidUnload {
-    [self setSpinner:nil];
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)reloadTable {
-    [self.contactsTableView reloadData];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
@@ -58,7 +55,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger count = [[myAppDelegate.contactsManager.sections allKeys] count];
-    if (count > 0) [self.spinner stopAnimating];
     return count;
 }
 
@@ -86,11 +82,6 @@
 
 - (void)showConnScreen {
     [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

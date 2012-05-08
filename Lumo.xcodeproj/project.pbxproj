@@ -10,6 +10,9 @@
 		1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A06AD541533EC3C0023E769 /* MapKit.framework */; };
 		1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0876F4154A5D360079276F /* ConnectingViewController.m */; };
 		1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A18B343153808FF006C8BF7 /* CoreLocation.framework */; };
+		1A2597001559A09C00131467 /* ReceivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2596FF1559A09C00131467 /* ReceivingViewController.m */; };
+		1A2597031559A56500131467 /* lumofish.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2597021559A56500131467 /* lumofish.png */; };
+		1A2597061559A74500131467 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2597051559A74500131467 /* SplashViewController.m */; };
 		1A2D33D715387E7E003FC6A3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2D33CA15387E7E003FC6A3 /* FBDialog.bundle */; };
 		1A2D33D815387E7E003FC6A3 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2D33D015387E7E003FC6A3 /* libfacebook_ios_sdk.a */; };
 		1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93DF153D049400C7D6ED /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -53,6 +56,11 @@
 		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConnectingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConnectingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1A2596FE1559A09C00131467 /* ReceivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivingViewController.h; sourceTree = "<group>"; };
+		1A2596FF1559A09C00131467 /* ReceivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivingViewController.m; sourceTree = "<group>"; };
+		1A2597021559A56500131467 /* lumofish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lumofish.png; sourceTree = "<group>"; };
+		1A2597041559A74500131467 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		1A2597051559A74500131467 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		1A2D33C815387E7E003FC6A3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		1A2D33C915387E7E003FC6A3 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		1A2D33CA15387E7E003FC6A3 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -276,6 +284,10 @@
 		B560090A1555D2AE008936C9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1A2597041559A74500131467 /* SplashViewController.h */,
+				1A2597051559A74500131467 /* SplashViewController.m */,
+				1A2596FE1559A09C00131467 /* ReceivingViewController.h */,
+				1A2596FF1559A09C00131467 /* ReceivingViewController.m */,
 				1A0876F3154A5D360079276F /* ConnectingViewController.h */,
 				1A0876F4154A5D360079276F /* ConnectingViewController.m */,
 				1A9AA68215366AFC001B5614 /* FavoritesViewController.h */,
@@ -293,6 +305,7 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A2597021559A56500131467 /* lumofish.png */,
 				1A96B6D81558AE390089CDC7 /* lumofish114.png */,
 				1A96B6D61558AE340089CDC7 /* lumofish57.png */,
 				1AF4450E152E695A0006B5DB /* first.png */,
@@ -374,6 +387,7 @@
 				B5C7D90515523E250080E630 /* Localizable.strings in Resources */,
 				1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */,
 				1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */,
+				1A2597031559A56500131467 /* lumofish.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +421,8 @@
 				B560090215550C09008936C9 /* CallManager.m in Sources */,
 				B560090515550FE6008936C9 /* LumoRequest.m in Sources */,
 				B560090815559BF7008936C9 /* ContactsManager.m in Sources */,
+				1A2597001559A09C00131467 /* ReceivingViewController.m in Sources */,
+				1A2597061559A74500131467 /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
