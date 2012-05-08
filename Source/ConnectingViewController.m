@@ -11,8 +11,8 @@
 #import "LumoAppDelegate.h"
 
 @interface ConnectingViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *contactName;
-@property (strong, nonatomic) NSTimer *pollTimer;
+@property (nonatomic, weak) IBOutlet UILabel *contactName;
+@property (nonatomic, strong) NSTimer *pollTimer;
 
 @end
 

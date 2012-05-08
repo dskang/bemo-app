@@ -13,8 +13,8 @@
 #import "CallManager.h"
 
 @interface MapViewController ()
-@property (strong, nonatomic) Pin *contactPin;
-@property (strong, nonatomic) NSTimer *partnerTimer;
+@property (nonatomic, strong) Pin *contactPin;
+@property (nonatomic, strong) NSTimer *partnerTimer;
 @end
 
 @implementation MapViewController

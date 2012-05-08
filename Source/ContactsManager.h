@@ -10,7 +10,7 @@
 
 @interface ContactsManager : NSObject
 
-@property (strong, nonatomic) NSMutableDictionary *sections;
+@property (nonatomic, strong) NSMutableDictionary *sections;
 
 + (void)getFriends;
 
