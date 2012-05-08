@@ -59,9 +59,7 @@
     [super viewDidDisappear:YES];
     [self.pollTimer invalidate];
     [self.countdownTimer invalidate];
-    [[NSNotificationCenter defaultCenter] removeObserver:PARTNER_LOC_UPDATED];
-    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
-    [[NSNotificationCenter defaultCenter] removeObserver:CONN_REQUESTED];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // Called from timer
