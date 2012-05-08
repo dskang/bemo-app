@@ -91,8 +91,8 @@
 		1A6C93F2153D049400C7D6ED /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		1A6C9401153D137000C7D6ED /* LocationRelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocationRelay.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocationRelay.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1A96B6D61558AE340089CDC7 /* lumofish57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lumofish57.png; sourceTree = "<group>"; };
-		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lumofish114.png; sourceTree = "<group>"; };
+		1A96B6D61558AE340089CDC7 /* lumofish57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish57.png; path = ../Images/lumofish57.png; sourceTree = "<group>"; };
+		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish114.png; path = ../Images/lumofish114.png; sourceTree = "<group>"; };
 		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FavoritesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FavoritesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -201,8 +201,6 @@
 		1AF444E7152E695A0006B5DB = {
 			isa = PBXGroup;
 			children = (
-				1A96B6D81558AE390089CDC7 /* lumofish114.png */,
-				1A96B6D61558AE340089CDC7 /* lumofish57.png */,
 				B5C7D8FC1551E3C90080E630 /* External */,
 				1AF444FC152E695A0006B5DB /* Source */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
@@ -295,6 +293,8 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A96B6D81558AE390089CDC7 /* lumofish114.png */,
+				1A96B6D61558AE340089CDC7 /* lumofish57.png */,
 				1AF4450E152E695A0006B5DB /* first.png */,
 				1AF44510152E695A0006B5DB /* first@2x.png */,
 				1AF44515152E695A0006B5DB /* second.png */,
