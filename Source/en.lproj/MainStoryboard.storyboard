@@ -55,6 +55,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" image="second" id="6"/>
                     <connections>
+                        <outlet property="contactsTableView" destination="RYO-vK-t6Z" id="Zyo-fe-JVg"/>
                         <outlet property="spinner" destination="Ykh-Ad-Bw9" id="eCQ-WT-Vha"/>
                         <segue destination="iQH-OS-b7J" kind="modal" identifier="gotoConnecting" modalTransitionStyle="coverVertical" id="opd-06-k5V"/>
                     </connections>
@@ -257,6 +258,7 @@
         <class className="ContactsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="contactsTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>

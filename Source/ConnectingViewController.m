@@ -92,6 +92,7 @@
 
 // Called from observer, cancel button, and countdown timeout
 - (void)stopConnecting {
+    [CallManager endConnection];
     [self dismissModalViewControllerAnimated:YES];
 }
 

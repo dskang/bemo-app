@@ -12,19 +12,19 @@
 #import "CallManager.h"
 
 @interface ContactsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-@property (strong, nonatomic) UITableView *tableView;
 @end
 
 @implementation ContactsViewController
+@synthesize contactsTableView = _contactsTableView;
 @synthesize spinner = _spinner;
-@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
     
-    // Listen for received calls
+    // Listen for received calls (HEFFALUMPS- TAKE OUT LATER!)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_RECEIVED object:nil];
 }
 
@@ -49,12 +49,7 @@
 # pragma mark UITableViewDataSource
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    
-    // If we want all indices
-    return [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",nil];
-    
-    // If we only want existing indices
-    //return [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -62,7 +57,6 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    self.tableView = tableView; // Super hacky. Is there a better way?
     NSInteger count = [[myAppDelegate.contactsManager.sections allKeys] count];
     if (count > 0) [self.spinner stopAnimating];
     return count;
@@ -96,7 +90,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+    [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

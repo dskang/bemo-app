@@ -480,6 +480,7 @@
 		1AF4451C152E695A0006B5DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Kang (MD8XMS6B2J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
 				INFOPLIST_FILE = Source/Info.plist;
@@ -488,6 +489,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
+				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -495,6 +497,7 @@
 		1AF4451D152E695A0006B5DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Kang (MD8XMS6B2J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
 				INFOPLIST_FILE = Source/Info.plist;
@@ -503,6 +506,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
+				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

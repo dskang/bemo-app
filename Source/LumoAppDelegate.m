@@ -69,6 +69,11 @@
     NSLog(@"LumoAppDelegate | authFailure(): Auth failed.");
 }
 
+// Called when we receive an incoming call.
+- (void)showReceiveScreen {
+    //TODO
+}
+
 /******************************************************************************
  * Device ID generation
  ******************************************************************************/
@@ -117,7 +122,10 @@
     // Create notification observer for app flow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:LOGIN_SUCCESS object:nil];
-
+    
+    // Listen for received calls
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CONN_RECEIVED object:nil];
+    
     // Authenticate user
     [self.auth authenticate];
     
