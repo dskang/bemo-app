@@ -134,8 +134,7 @@
         
         else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
-            if ([error isEqualToString:@"invalid"]) 
-                NSLog(@"LocationRelay.m | pollForLocation(): invalid target_id.");
+            NSLog(@"Notification: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
