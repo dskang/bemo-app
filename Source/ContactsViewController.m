@@ -35,6 +35,14 @@
     [self.contactsTableView reloadData];
 }
 
+- (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
+    NSArray *sortedSections = [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    NSString *firstLetterOfContactName = [sortedSections objectAtIndex:section];
+    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:firstLetterOfContactName];
+    return [contacts objectAtIndex:row];
+
+}
+
 # pragma mark UITableViewDataSource
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -59,14 +67,16 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
     }
-    cell.textLabel.text = [[[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] valueForKey:@"name"];
+    NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
+    cell.textLabel.text = [contact valueForKey:@"name"];
     return cell;
 }
 
 # pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    myAppDelegate.callManager.partnerInfo = [[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
+    myAppDelegate.callManager.partnerInfo = contact;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_REQUESTED object:nil];
     [CallManager initiateConnection];
 }
