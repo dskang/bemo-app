@@ -33,10 +33,8 @@
 	self.contactName.text = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     // Set notification observers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTER_LOC_UPDATED object:nil];
-    // FIXME: Harvest, what is this for?
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pollLocation) name:@"waiting" object:nil];    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:@"disconnected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTER_LOC_UPDATED object:nil];  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectLumo) name:DISCONNECTED object:nil];
     
     // Poll for a connection every 5 seconds
     self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
@@ -51,7 +49,7 @@
     [super viewDidDisappear:YES];
     [self.pollTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:PARTER_LOC_UPDATED];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"disconnected"];
+    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
 }
 
 - (void)pollLocation {

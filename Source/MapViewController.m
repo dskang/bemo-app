@@ -32,14 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:@"disconnected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
     [self startUpdating];
 }
 
 - (void)viewDidUnload {
     [self setMapView:nil];
     [super viewDidUnload];
-    [self stopUpdating];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,7 +48,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"disconnected"];
+    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
 }
 
 - (Pin *)contactPin {

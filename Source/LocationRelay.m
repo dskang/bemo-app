@@ -107,7 +107,7 @@
  * Sets notifications:
  * PARTER_LOC_UPDATED for successful location retrieval
  * "waiting" for a pending request
- * "disconnected" for failure (by timeout or disconnect)
+ * DISCONNECTED for failure (by timeout or disconnect)
  * "receive call" if there is already a pending call incoming
  ******************************************************************************/
 - (void)pollForLocation {

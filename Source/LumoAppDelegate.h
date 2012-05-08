@@ -29,6 +29,8 @@
 #define CONN_RECEIVED @"connReceived"
 #define CONN_ENDED @"connEnded"
 
+#define DISCONNECTED @"disconnected"
+
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
