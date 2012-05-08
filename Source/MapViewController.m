@@ -61,8 +61,11 @@
 }
 
 - (void)updatePartnerLocationOnMap {
+    CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
+    // Only show "real" data (Sorry, Africa)
+    if (partnerLocation.coordinate.latitude == 0 && partnerLocation.coordinate.longitude == 0) return;
     // Show partner's location on map
-    self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
+    self.contactPin.coordinate = partnerLocation.coordinate;
 }
 
 - (void)startUpdating {
