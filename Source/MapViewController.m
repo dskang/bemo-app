@@ -44,8 +44,8 @@
     [self startUpdating];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:(BOOL)animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:(BOOL)animated];
     [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
     [self stopUpdating];
 }

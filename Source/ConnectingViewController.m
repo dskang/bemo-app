@@ -55,8 +55,8 @@
     [super viewDidUnload];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.pollTimer invalidate];
     [self.countdownTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self];

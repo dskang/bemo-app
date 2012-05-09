@@ -33,8 +33,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
 }
     
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
