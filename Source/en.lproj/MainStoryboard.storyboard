@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Rbg-J4-cDc">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -23,7 +22,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gbI-r2-qCV">
-                                <rect key="frame" x="20" y="396" width="136" height="44"/>
+                                <rect key="frame" x="164" y="396" width="136" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.3058823645" green="0.69411766529999996" blue="0.0078431377190000002" alpha="1" colorSpace="deviceRGB"/>
@@ -39,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TAY-ee-egf">
-                                <rect key="frame" x="164" y="396" width="136" height="44"/>
+                                <rect key="frame" x="20" y="396" width="136" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.97138073979591832" green="0.084096136586879047" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,7 +83,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
                 <viewController title="Contacts" id="3" customClass="ContactsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RYO-vK-t6Z">
@@ -122,7 +121,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTA-dG-kC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Settings" id="mAA-3b-ghg" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ff-kd-5EO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="59" id="cyy-DK-liF">
@@ -168,7 +167,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpe-Xp-hhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Connecting" id="iQH-OS-b7J" customClass="ConnectingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjO-TU-tDZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="MVP-z6-fM1">
@@ -231,7 +230,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbJ-zR-05d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Map" id="fpt-Cj-heB" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8LX-oh-9uh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="PVn-iF-waV">
@@ -373,5 +372,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="TsD-o0-dJk"/>
+        <segue reference="mFB-e5-cgd"/>
+        <segue reference="dbc-pp-PMd"/>
     </inferredMetricsTieBreakers>
 </document>
