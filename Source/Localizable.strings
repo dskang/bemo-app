@@ -7,5 +7,5 @@
 */
 
 "ACCEPT" = "Accept";
-"INCOMING_CALL" = "%@ would like to share their location with you.";
+"INCOMING_CALL" = "%@ would like to share locations";
 "MISSED_CALL" = "You missed a Lumo request from %@";
