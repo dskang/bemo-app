@@ -85,7 +85,6 @@
 }
 
 - (void)endConnection {
-    // FIXME: This shows connecting screen instead of contacts screen (when run from signal, not button)
     [self stopUpdating];
     NSLog(@"Segue: Map -> Contacts");
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
