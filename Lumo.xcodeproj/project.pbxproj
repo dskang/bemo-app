@@ -57,7 +57,7 @@
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A2596FE1559A09C00131467 /* ReceivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivingViewController.h; sourceTree = "<group>"; };
 		1A2596FF1559A09C00131467 /* ReceivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivingViewController.m; sourceTree = "<group>"; };
-		1A2597021559A56500131467 /* lumofish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lumofish.png; sourceTree = "<group>"; };
+		1A2597021559A56500131467 /* lumofish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish.png; path = ../Images/lumofish.png; sourceTree = "<group>"; };
 		1A2597041559A74500131467 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		1A2597051559A74500131467 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		1A2D33C815387E7E003FC6A3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
@@ -117,12 +117,12 @@
 		1AF44505152E695A0006B5DB /* LumoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LumoAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AF44506152E695A0006B5DB /* LumoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		1AF4450E152E695A0006B5DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		1AF44510152E695A0006B5DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		1AF4450E152E695A0006B5DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.png; path = ../Images/first.png; sourceTree = "<group>"; };
+		1AF44510152E695A0006B5DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "first@2x.png"; path = "../Images/first@2x.png"; sourceTree = "<group>"; };
 		1AF44512152E695A0006B5DB /* ContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ContactsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AF44513152E695A0006B5DB /* ContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContactsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1AF44515152E695A0006B5DB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		1AF44517152E695A0006B5DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		1AF44515152E695A0006B5DB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = second.png; path = ../Images/second.png; sourceTree = "<group>"; };
+		1AF44517152E695A0006B5DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "second@2x.png"; path = "../Images/second@2x.png"; sourceTree = "<group>"; };
 		B56008FC15550568008936C9 /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
 		B56008FD15550569008936C9 /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
 		B560090015550C09008936C9 /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CallManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };

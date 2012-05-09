@@ -159,7 +159,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="first" id="xEv-h6-95j"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="652" y="1083"/>
+            <point key="canvasLocation" x="652" y="527"/>
         </scene>
         <!--Connecting View Controller - Connecting-->
         <scene sceneID="tnQ-NU-F1w">
@@ -320,55 +320,16 @@
     </scenes>
     <resources>
         <image name="first" width="16" height="16"/>
-        <image name="lumofish.png" width="1024" height="1024"/>
+        <image name="lumofish.png" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="ConnectingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConnectingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="timeLeftLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleBar" candidateClass="UINavigationItem"/>
-            </relationships>
-        </class>
-        <class className="ContactsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="recenter:"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="ReceivingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReceivingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="titleBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="timeToWait" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="waitingForResponseLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="waitingSpinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mFB-e5-cgd"/>
+        <segue reference="8rt-WD-1Vd"/>
         <segue reference="dbc-pp-PMd"/>
     </inferredMetricsTieBreakers>
 </document>
