@@ -101,16 +101,7 @@
 		NSDictionary* pushNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (pushNotification)
 		{
-            NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
-            if ([key isEqualToString:@"INCOMING_CALL"]) {
-                NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
-                NSString *sourceName = [args objectAtIndex:0];
-                NSString *sourceID = [pushNotification objectForKey:@"source_id"];
-                // TODO: Show accept or decline screen
-                [self receiveCallFromSourceName:sourceName sourceID:sourceID];
-            } else if ([key isEqualToString:@"MISSED_CALL"]) {
-                // TODO: Show history screen
-            }
+            [self application:application didReceiveRemoteNotification:pushNotification];
 		}
     }
     
@@ -142,8 +133,8 @@
 // Called when notifcation comes in while app is active or suspended
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)pushNotification
 {
-    NSLog(@"%@", pushNotification);
     NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
+    NSLog(@"Received push notification: %@", key);
     if ([key isEqualToString:@"INCOMING_CALL"]) {
         NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
         NSString *sourceName = [args objectAtIndex:0];

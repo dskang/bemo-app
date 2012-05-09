@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Rbg-J4-cDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Rbg-J4-cDc">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -91,7 +91,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1116" y="498"/>
+            <point key="canvasLocation" x="80" y="-90"/>
         </scene>
         <!--Contacts View Controller - Rendezvous-->
         <scene sceneID="13">
@@ -387,7 +387,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="mFB-e5-cgd"/>
         <segue reference="dbc-pp-PMd"/>
-        <segue reference="8rt-WD-1Vd"/>
     </inferredMetricsTieBreakers>
 </document>
