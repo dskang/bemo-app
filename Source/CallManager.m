@@ -23,7 +23,7 @@
                           @"iphone", @"device",
                           @"facebook", @"service",
                           myAppDelegate.sessionToken, @"token", nil];
-[LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
 }
 
 /******************************************************************************
@@ -34,7 +34,7 @@
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
                           myAppDelegate.sessionToken, @"token", nil];
-[LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
 }
 
 /******************************************************************************
@@ -43,7 +43,7 @@
 + (void)endConnection {
     NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"]];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: myAppDelegate.sessionToken, @"token", nil];
-[LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
+    [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
 }
 
 @end
