@@ -40,13 +40,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:(BOOL)animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
     [self startUpdating];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:(BOOL)animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
     [self stopUpdating];
 }
 
@@ -74,6 +72,7 @@
     [myAppDelegate.locationRelay startPartnerUpdates];
     // Listen for partner updates
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
 }
 
 - (void)stopUpdating {
