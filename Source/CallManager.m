@@ -18,8 +18,10 @@
  * Initiate connection to a contact
  ******************************************************************************/
 + (void)initiateConnection {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
-    if (partnerID) {
+    if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/init", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"iphone", @"device",
@@ -33,12 +35,14 @@
  * Receive connection from a contact
  ******************************************************************************/
 + (void)receiveConnection {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
-    if (partnerID) {
+    if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/receive", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"iphone", @"device",
-                              myAppDelegate.sessionToken, @"token", nil];
+                              sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
     }
 }
@@ -47,8 +51,10 @@
  * End an active connection
  ******************************************************************************/
 + (void)endConnection {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
-    if (partnerID) {
+    if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: myAppDelegate.sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];

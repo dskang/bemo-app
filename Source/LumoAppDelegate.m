@@ -147,7 +147,11 @@
 }
 
 - (void)saveSessionToken:(NSNotification *)notification {
-    self.sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
+    NSString *sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:sessionToken forKey:LUMO_SESSION_TOKEN];
+
+    self.sessionToken = sessionToken;
 }
 
 - (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {

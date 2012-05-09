@@ -15,6 +15,9 @@
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"
 
+// User defaults
+#define LUMO_SESSION_TOKEN @"LumoSessionToken"
+
 // Notfications
 #define REQUEST_FAILED @"requestFailure"
 #define AUTH_FAILED @"auth"
