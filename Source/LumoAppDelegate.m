@@ -58,7 +58,7 @@
  * Lumo
  ******************************************************************************/
 - (void)getLumoFriends {
-    NSLog(@"LumoAppDelegate | getLumoFriends(): Login successful. Session token is %@", self.sessionToken);
+    NSLog(@"Login successful. Session token: %@", self.sessionToken);
     [ContactsManager getFriends];
 }
 
@@ -67,7 +67,8 @@
 }
 
 - (void)authFailure {
-    NSLog(@"LumoAppDelegate | authFailure(): Auth failed.");
+    NSLog(@"Auth failed.");
+    [self.auth authenticate];
 }
 
 // Called when we receive an incoming call.
