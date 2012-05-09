@@ -13,6 +13,7 @@
 @interface ConnectingViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *connectionStatus;
 @property (strong, nonatomic) NSTimer *pollTimer;
 @property (strong, nonatomic) NSTimer *countdownTimer;
 @property (nonatomic) NSInteger timeLeft;
@@ -21,6 +22,7 @@
 @implementation ConnectingViewController
 @synthesize contactName = _contactName;
 @synthesize timeLeftLabel = _timeLeftLabel;
+@synthesize connectionStatus = _connectionStatus;
 @synthesize pollTimer = _pollTimer;
 @synthesize countdownTimer = _timeoutTimer;
 @synthesize timeLeft = _timeLeft;
@@ -42,6 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
+    self.connectionStatus.text = @"Sending Request";
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
@@ -52,6 +55,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setConnectionStatus:nil];
     [super viewDidUnload];
 }
 
@@ -76,6 +80,9 @@
 
 // Called from observer
 - (void)startPolling {
+    // Update connection status
+    self.connectionStatus.text = @"Waiting for Response";
+
     // Poll for a connection every 3 seconds
     self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
     
