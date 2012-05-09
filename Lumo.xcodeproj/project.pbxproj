@@ -28,7 +28,6 @@
 		1A6C9403153D137000C7D6ED /* LocationRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C9402153D137000C7D6ED /* LocationRelay.m */; };
 		1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D61558AE340089CDC7 /* lumofish57.png */; };
 		1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D81558AE390089CDC7 /* lumofish114.png */; };
-		1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68315366AFC001B5614 /* FavoritesViewController.m */; };
 		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
 		1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* SettingsViewController.m */; };
 		1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* MapViewController.m */; };
@@ -101,8 +100,6 @@
 		1A6C9402153D137000C7D6ED /* LocationRelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocationRelay.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A96B6D61558AE340089CDC7 /* lumofish57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish57.png; path = ../Images/lumofish57.png; sourceTree = "<group>"; };
 		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish114.png; path = ../Images/lumofish114.png; sourceTree = "<group>"; };
-		1A9AA68215366AFC001B5614 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FavoritesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1A9AA68315366AFC001B5614 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FavoritesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Pin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AE29FA01533F33800E651E4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SettingsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -288,8 +285,6 @@
 				1A0876F4154A5D360079276F /* ConnectingViewController.m */,
 				1AF44512152E695A0006B5DB /* ContactsViewController.h */,
 				1AF44513152E695A0006B5DB /* ContactsViewController.m */,
-				1A9AA68215366AFC001B5614 /* FavoritesViewController.h */,
-				1A9AA68315366AFC001B5614 /* FavoritesViewController.m */,
 				1AE29FA31533FC4300E651E4 /* MapViewController.h */,
 				1AE29FA41533FC4300E651E4 /* MapViewController.m */,
 				1A2596FE1559A09C00131467 /* ReceivingViewController.h */,
@@ -403,7 +398,6 @@
 				1AF44514152E695A0006B5DB /* ContactsViewController.m in Sources */,
 				1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */,
-				1A9AA68415366AFC001B5614 /* FavoritesViewController.m in Sources */,
 				1A9AA68715368016001B5614 /* Pin.m in Sources */,
 				1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */,
 				1A6C93F4153D049400C7D6ED /* AFHTTPRequestOperation.m in Sources */,
