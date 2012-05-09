@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface Pin : NSObject <MKAnnotation>
+@interface Pin : NSObject <MKAnnotation> 
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString *title;
 
 - (id)initWithLocation:(CLLocationCoordinate2D)coordinate;
 

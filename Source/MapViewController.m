@@ -54,6 +54,7 @@
 - (Pin *)contactPin {
     if (!_contactPin) {
         _contactPin = [[Pin alloc] init];
+        
         // Put pin on map
         [self.mapView addAnnotation:_contactPin];
     }
@@ -108,9 +109,10 @@
             annotView.annotation = annotation;   
         }
     }
-
+    
     if (annotView) {
         annotView.enabled = YES;
+        annotView.canShowCallout = YES;
         return annotView;
     }
     return nil;
