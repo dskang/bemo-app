@@ -43,7 +43,8 @@
     self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:myAppDelegate.locationRelay selector:@selector(pollForLocation) userInfo:nil repeats:YES];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.partnerUpdateTimer invalidate];
 }
