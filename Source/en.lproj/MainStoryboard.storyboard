@@ -71,8 +71,8 @@
                     </view>
                     <connections>
                         <outlet property="contactName" destination="mcY-It-AxL" id="ZZq-8s-w3N"/>
-                        <segue destination="fpt-Cj-heB" kind="modal" identifier="receiverGotoMapView" modalTransitionStyle="flipHorizontal" id="dbc-pp-PMd"/>
-                        <segue destination="4" kind="modal" identifier="receiverGotoContacts" modalTransitionStyle="coverVertical" id="mFB-e5-cgd"/>
+                        <segue destination="fpt-Cj-heB" kind="modal" identifier="receiverShowMapView" modalTransitionStyle="flipHorizontal" id="dbc-pp-PMd"/>
+                        <segue destination="4" kind="modal" identifier="receiverShowContacts" modalTransitionStyle="coverVertical" id="mFB-e5-cgd"/>
                     </connections>
                 </viewController>
             </objects>

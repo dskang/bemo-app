@@ -95,7 +95,7 @@
  ******************************************************************************/
 // Application launched from a non-running state
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{  
     // Check if app was opened from a push notification
     if (launchOptions)
 	{
@@ -105,7 +105,7 @@
             [self application:application didReceiveRemoteNotification:pushNotification];
 		}
     }
-    
+
     // Generate device ID if necessary
     [self generateDeviceKey];
     
@@ -123,7 +123,7 @@
 #else
     [self.auth authenticate];
 #endif
-    
+
     return YES;
 }
 
@@ -137,7 +137,7 @@
         NSString *sourceName = [args objectAtIndex:0];
         NSString *sourceID = [pushNotification valueForKey:@"source_id"];
         // TODO: Show accept or decline screen
-        [self receiveCallFromSourceName:sourceName sourceID:sourceID];
+        [self checkCallFromSourceName:sourceName sourceID:sourceID];
     } else if ([key isEqualToString:@"MISSED_CALL"]) {
         // TODO: Show history screen
     }
@@ -156,12 +156,11 @@
     self.sessionToken = sessionToken;
 }
 
-- (void)receiveCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
-    // FIXME: Currently automatically accepting call
+- (void)checkCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
     // Save contact info
     self.callManager.partnerInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
-    // Receive call
-    [CallManager receiveConnection];
+    // Poll to see if call is still going on
+    [self.locationRelay pollForLocation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

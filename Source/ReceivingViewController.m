@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
+    // TODO: poll to make sure call has not been disconnected
 }
 
 - (void)viewDidUnload {
@@ -42,11 +42,13 @@
 
 - (void)stopConnecting {
     [CallManager endConnection];
-    [self performSegueWithIdentifier:@"receiverGotoContacts" sender:nil];
+    [self performSegueWithIdentifier:@"receiverShowContacts" sender:nil];
 }
 
 - (IBAction)acceptButton {
-    [self performSegueWithIdentifier:@"receiverGotoMapView" sender:nil];
+    // Receive connection and let the map view deal with scenario in which partner disconnected
+    [CallManager receiveConnection];
+    [self performSegueWithIdentifier:@"receiverShowMapView" sender:nil];
 }
 
 - (IBAction)declineButton {

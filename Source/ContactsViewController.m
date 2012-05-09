@@ -22,7 +22,7 @@
     [super viewDidLoad];
 
     // Show receiving screen when receiving a call
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CONN_RECEIVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
 }
 
 - (void)viewDidUnload {

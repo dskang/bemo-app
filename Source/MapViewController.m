@@ -62,7 +62,7 @@
 
 - (void)updatePartnerLocationOnMap {
     CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    // Only show "real" data (Sorry, Africa)
+    // (0, 0) means that partner has not yet sent their real location or they have not moved for a while, both for which the correct behavior would be to not move the pin
     if (partnerLocation.coordinate.latitude == 0 && partnerLocation.coordinate.longitude == 0) return;
     // Show partner's location on map
     self.contactPin.coordinate = partnerLocation.coordinate;

@@ -36,6 +36,7 @@
 #define CONN_ENDED @"connEnded"
 
 #define DISCONNECTED @"disconnected"
+#define CALL_WAITING @"receive call"
 
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
