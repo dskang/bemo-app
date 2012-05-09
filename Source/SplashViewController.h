@@ -2,8 +2,8 @@
 //  SplashViewController.h
 //  Lumo
 //
-//  Created by Harvest Zhang on 5/8/12.
-//  Copyright (c) 2012 Princeton University. All rights reserved.
+//  Created by Lumo on 5/8/12.
+//  Copyright (c) 2012 Lumo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
