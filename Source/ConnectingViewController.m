@@ -50,6 +50,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     
+    // Automatically receive a call from partner (occurs when two users call each other at the same time)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
+
     // Request connection, which then starts polling
     [CallManager initiateConnection];
 }
@@ -76,6 +79,10 @@
 - (void)showMapView {
     NSLog(@"Segue: Connecting -> Map");
     [self performSegueWithIdentifier:@"showMapView" sender:nil];
+}
+
+- (void)receiveConnection {
+    [CallManager receiveConnection];
 }
 
 // Called from observer
