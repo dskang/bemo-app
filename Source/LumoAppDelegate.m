@@ -76,11 +76,10 @@
  ******************************************************************************/
 - (void)generateDeviceKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* deviceKey;
-    if (!(deviceKey = [defaults objectForKey:@"deviceKey"])) {
+    if (![defaults objectForKey:DEVICE_KEY]) {
         CFUUIDRef newDeviceKey = CFUUIDCreate(NULL);
-        deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
-        [defaults setObject:deviceKey forKey:@"deviceKey"];
+        NSString *deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
+        [defaults setObject:deviceKey forKey:DEVICE_KEY];
         CFRelease(newDeviceKey);
     }
 }
@@ -203,14 +202,13 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* token;
-    if (![defaults objectForKey:@"deviceToken"]) {
-        token = [[[deviceToken description]
-                  stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] 
-                 stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [defaults setObject:token forKey:@"deviceToken"];
+    if (![defaults objectForKey:DEVICE_TOKEN]) {
+        NSString *token = [[[deviceToken description]
+                            stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] 
+                           stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [defaults setObject:token forKey:DEVICE_TOKEN];
     }
-	NSLog(@"Obtained device token: %@", deviceToken);
+	NSLog(@"Device token: %@", deviceToken);
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

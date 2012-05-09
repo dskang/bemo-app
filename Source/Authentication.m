@@ -82,11 +82,11 @@
 - (void)loginToLumo {
     NSString *url = [NSString stringWithFormat:@"%@/login", BASE_URL];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *deviceKey = [defaults objectForKey:@"deviceKey"];
+    NSString *deviceKey = [defaults objectForKey:DEVICE_KEY];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
     
 #if !(TARGET_IPHONE_SIMULATOR)
-    NSString *deviceToken = [defaults objectForKey:@"deviceToken"];
+    NSString *deviceToken = [defaults objectForKey:DEVICE_TOKEN];
 #else
     NSString *deviceToken = @"FAKE_DEVICE_TOKEN";
 #endif

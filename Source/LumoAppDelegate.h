@@ -16,6 +16,8 @@
 #define BASE_URL @"http://lumo.herokuapp.com"
 
 // User defaults
+#define DEVICE_KEY @"deviceKey" // unique device id
+#define DEVICE_TOKEN @"deviceToken" // push notification
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
 // Notfications
