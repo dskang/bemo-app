@@ -20,7 +20,7 @@
 #define DEVICE_TOKEN @"deviceToken" // push notification
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
-// Notfications
+// Notifications
 #define REQUEST_FAILED @"requestFailure"
 #define AUTH_FAILED @"auth"
 

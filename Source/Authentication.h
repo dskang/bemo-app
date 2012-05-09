@@ -12,6 +12,12 @@
 @interface Authentication : NSObject <FBSessionDelegate>
 
 @property (nonatomic, strong) Facebook *facebook;
+
+// Indicates if we need to log into Lumo
+// This is the case only when any of the three pieces of information changes:
+// 1. Facebook access token
+// 2. Device key (unique identifier)
+// 3. Device token (for push notifications)
 @property (nonatomic) BOOL loginRequired;
 
 - (void)authenticate;

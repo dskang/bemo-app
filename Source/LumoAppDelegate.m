@@ -58,7 +58,6 @@
  * Lumo
  ******************************************************************************/
 - (void)getLumoFriends {
-    NSLog(@"Login successful. Session token: %@", self.sessionToken);
     [ContactsManager getFriends];
 }
 
@@ -77,15 +76,18 @@
  ******************************************************************************/
 - (void)generateDeviceKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:DEVICE_KEY]) {
+    NSString *deviceKey = [defaults objectForKey:DEVICE_KEY];
+    if (!deviceKey) {
         CFUUIDRef newDeviceKey = CFUUIDCreate(NULL);
-        NSString *deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
+        deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
         [defaults setObject:deviceKey forKey:DEVICE_KEY];
         CFRelease(newDeviceKey);
+        NSLog(@"Generated new device key.");
 
         // Indicate that user's info changed
         self.auth.loginRequired = YES;
     }
+    NSLog(@"Device key: %@", deviceKey);
 }
 
 /******************************************************************************
@@ -104,11 +106,6 @@
 		}
     }
     
-    // Register for push notification
-#if !(TARGET_IPHONE_SIMULATOR)
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-#endif
-    
     // Generate device ID if necessary
     [self generateDeviceKey];
     
@@ -120,8 +117,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:LOGIN_SUCCESS object:nil];
     
-    // Authenticate user
+    // Register for push notification
+#if !(TARGET_IPHONE_SIMULATOR)
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#else
     [self.auth authenticate];
+#endif
     
     return YES;
 }
@@ -151,7 +152,7 @@
     } else {
         sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     }
-
+    NSLog(@"Session token: %@", sessionToken);
     self.sessionToken = sessionToken;
 }
 
@@ -217,10 +218,15 @@
     NSString *storedToken = [defaults objectForKey:DEVICE_TOKEN];
     if (![token isEqualToString:storedToken]) {
         [defaults setObject:token forKey:DEVICE_TOKEN];
+        NSLog(@"Generated new device token.");
         // Indicate that user's info changed
         self.auth.loginRequired = YES;
     }
+    
     NSLog(@"Device token: %@", deviceToken);
+
+    // Authenticate user
+    [self.auth authenticate];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

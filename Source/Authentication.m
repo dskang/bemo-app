@@ -29,6 +29,7 @@
  * Facebook
  ******************************************************************************/
 - (void)loginToFB {
+    NSLog(@"Logging into Facebook.");
     // Check for previously saved access token information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
@@ -86,6 +87,7 @@
  * Login to the Lumo server
  ******************************************************************************/
 - (void)loginToLumo {
+    NSLog(@"Logging into Lumo.");
     NSString *url = [NSString stringWithFormat:@"%@/login", BASE_URL];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:DEVICE_KEY];
@@ -96,7 +98,7 @@
 #else
     NSString *deviceToken = @"FAKE_DEVICE_TOKEN";
 #endif
-    
+
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"iphone", @"device",
                           deviceKey, @"device_id",
