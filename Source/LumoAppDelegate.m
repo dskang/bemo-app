@@ -119,6 +119,10 @@
     // Register for push notification
 #if !(TARGET_IPHONE_SIMULATOR)
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    // Make sure to clear notifications from Notification Center
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 #else
     [self.auth authenticate];
 #endif
@@ -139,6 +143,11 @@
     } else if ([key isEqualToString:@"MISSED_CALL"]) {
         // TODO: Show history screen
     }
+    
+    // Clear said notification from Notification Center
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)saveSessionToken:(NSNotification *)notification {
