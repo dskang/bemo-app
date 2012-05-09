@@ -68,19 +68,21 @@
 
 - (void)startUpdating {
     NSLog(@"Start updating map view.");
-    [myAppDelegate.locationRelay startSelfUpdates];
-    [myAppDelegate.locationRelay startPartnerUpdates];
     // Listen for partner updates
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
+
+    [myAppDelegate.locationRelay startSelfUpdates];
+    [myAppDelegate.locationRelay startPartnerUpdates];
 }
 
 - (void)stopUpdating {
     NSLog(@"Stop updating map view.");
-    [myAppDelegate.locationRelay stopSelfUpdates];
-    [myAppDelegate.locationRelay stopPartnerUpdates];
     // Stop listening for partner updates
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [myAppDelegate.locationRelay stopSelfUpdates];
+    [myAppDelegate.locationRelay stopPartnerUpdates];
 }
 
 - (void)endConnection {
