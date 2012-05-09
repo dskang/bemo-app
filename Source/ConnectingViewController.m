@@ -35,6 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set timeLeft from defaults (TODO - temporarily hardcoded)
+    self.timeLeft = 60;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
@@ -43,8 +49,6 @@
     
     // Request connection, which then starts polling
     [CallManager initiateConnection];
-    // Set timeLeft from defaults (TODO - temporarily hardcoded)
-    self.timeLeft = 60;
 }
 
 - (void)viewDidUnload {

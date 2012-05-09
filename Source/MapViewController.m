@@ -32,23 +32,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
-    [self startUpdating];
 }
 
 - (void)viewDidUnload {
-    [self setMapView:nil];
     [super viewDidUnload];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:(BOOL)animated];
-    
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:(BOOL)animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
+    [self startUpdating];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
     [[NSNotificationCenter defaultCenter] removeObserver:DISCONNECTED];
+    [self stopUpdating];
 }
 
 - (Pin *)contactPin {
@@ -85,7 +84,6 @@
 }
 
 - (void)endConnection {
-    [self stopUpdating];
     NSLog(@"Segue: Map -> Contacts");
     [self performSegueWithIdentifier:@"endMapView" sender:nil];
 }

@@ -26,16 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
     // Listen for received calls
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
     
     // Listen for successful login, then get contacts
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showContactsScreen) name:GET_FRIENDS_SUCCESS object:nil];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

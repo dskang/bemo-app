@@ -30,6 +30,7 @@
     [super viewWillAppear:animated];
     // Show receiving screen when receiving a call
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
 }
     
 - (void)viewDidDisappear:(BOOL)animated {
@@ -41,6 +42,10 @@
 - (void)showReceiveScreen {
     NSLog(@"Segue: Contacts -> Receive");
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
+}
+
+- (void)reloadTable {
+    [self.contactsTableView reloadData];
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
