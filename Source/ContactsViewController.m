@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Listen for received calls (HEFFALUMPS- TAKE OUT LATER!)
+    // Listen for received calls (FIXME - TAKE OUT LATER!)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_RECEIVED object:nil];
 }
 
