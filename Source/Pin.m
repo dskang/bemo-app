@@ -12,21 +12,14 @@
 @end
 
 @implementation Pin
+@synthesize coordinate = _coordinate;
 
-@synthesize subtitle;
-@synthesize title = _devID;
-@synthesize coordinate = _coord;
-
-- (id)initID:(NSString *)devID atCoord:(CLLocationCoordinate2D)coordinate {
-    if ((self = [super init])) {
-        _devID = [devID copy];
-        _coord = coordinate;
+- (id)initWithLocation:(CLLocationCoordinate2D)coordinate {
+    self = [super init];
+    if (self) {
+        self.coordinate = coordinate;
     }
     return self;
 }
-
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
-    _coord = newCoordinate;
-}
-
 @end
+

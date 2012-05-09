@@ -112,7 +112,6 @@
 
     if (annotView) {
         annotView.enabled = YES;
-        annotView.canShowCallout = YES;
         return annotView;
     }
     return nil;
