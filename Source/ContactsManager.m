@@ -71,6 +71,7 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             [self organizeContactArray:[JSON objectForKey:@"data"]];
+            NSLog(@"Notification: %@", GET_FRIENDS_SUCCESS);
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             NSString *error = [JSON valueForKey:@"error"];
