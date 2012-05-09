@@ -9,8 +9,6 @@
 #import "LocationRelay.h"
 #import "AFJSONRequestOperation.h"
 #import "LumoAppDelegate.h"
-// Used to check if using device or simulator
-#import "TargetConditionals.h"
 
 @interface LocationRelay()
 @property (nonatomic, strong) CLLocationManager *locationManager;
