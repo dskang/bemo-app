@@ -63,7 +63,7 @@
 }
 
 - (void)requestFailure {
-    NSLog(@"LumoAppDelegate | requestFailure(): Request failed.");
+    NSLog(@"Request failed: request operation was unsuccessful or server returned non-JSON data.");
 }
 
 - (void)authFailure {
