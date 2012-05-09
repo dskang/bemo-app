@@ -134,7 +134,7 @@
         
         else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
-            NSLog(@"Notification: %@", error);
+            NSLog(@"Error Notification: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

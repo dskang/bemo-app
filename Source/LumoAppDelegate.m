@@ -72,7 +72,7 @@
 
 // Called when we receive an incoming call.
 - (void)showReceiveScreen {
-    //TODO
+    // TODO
 }
 
 /******************************************************************************
@@ -98,13 +98,19 @@
     // Check if app was opened from a push notification
     if (launchOptions)
 	{
-		NSDictionary* incomingCall = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-		if (incomingCall)
+		NSDictionary* pushNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (pushNotification)
 		{
-            NSArray *args = [[[incomingCall objectForKey:@"aps"] objectForKey:@"alert"] objectForKey:@"loc-args"];
-            NSString *sourceName = [args objectAtIndex:0];
-            NSString *sourceID = [incomingCall objectForKey:@"source_id"];
-            [self receiveCallFromSourceName:sourceName sourceID:sourceID];
+            NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
+            if ([key isEqualToString:@"INCOMING_CALL"]) {
+                NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
+                NSString *sourceName = [args objectAtIndex:0];
+                NSString *sourceID = [pushNotification objectForKey:@"source_id"];
+                // TODO: Show accept or decline screen
+                [self receiveCallFromSourceName:sourceName sourceID:sourceID];
+            } else if ([key isEqualToString:@"MISSED_CALL"]) {
+                // TODO: Show history screen
+            }
 		}
     }
     
@@ -133,6 +139,22 @@
     return YES;
 }
 
+// Called when notifcation comes in while app is active or suspended
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)pushNotification
+{
+    NSLog(@"%@", pushNotification);
+    NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
+    if ([key isEqualToString:@"INCOMING_CALL"]) {
+        NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
+        NSString *sourceName = [args objectAtIndex:0];
+        NSString *sourceID = [pushNotification valueForKey:@"source_id"];
+        // TODO: Show accept or decline screen
+        [self receiveCallFromSourceName:sourceName sourceID:sourceID];
+    } else if ([key isEqualToString:@"MISSED_CALL"]) {
+        // TODO: Show history screen
+    }
+}
+
 - (void)saveSessionToken:(NSNotification *)notification {
     self.sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
 }
@@ -143,16 +165,6 @@
     self.callManager.partnerInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
     // Receive call
     [CallManager receiveConnection];
-}
-
-// Called when notifcation comes in while app is active or suspended
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)incomingCall
-{
-    NSArray *args = [incomingCall valueForKeyPath:@"aps.alert.loc-args"];
-    NSString *sourceName = [args objectAtIndex:0];
-	NSString *sourceID = [incomingCall valueForKey:@"source_id"];
-    // TODO: Show accept or decline screen
-    [self receiveCallFromSourceName:sourceName sourceID:sourceID];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

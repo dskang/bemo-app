@@ -31,7 +31,9 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self userInfo:JSON];
             NSLog(@"Notification: %@", successNotification);
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:[JSON valueForKeyPath:@"error"] object:self];
+            NSString *error = [JSON valueForKey:@"error"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
+            NSLog(@"Error Notification: %@", error);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
