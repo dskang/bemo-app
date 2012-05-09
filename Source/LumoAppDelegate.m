@@ -68,6 +68,7 @@
 
 - (void)authFailure {
     NSLog(@"Auth failed.");
+    self.auth.loginRequired = YES;
     [self.auth authenticate];
 }
 
@@ -81,6 +82,9 @@
         NSString *deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
         [defaults setObject:deviceKey forKey:DEVICE_KEY];
         CFRelease(newDeviceKey);
+
+        // Indicate that user's info changed
+        self.auth.loginRequired = YES;
     }
 }
 
@@ -139,9 +143,14 @@
 }
 
 - (void)saveSessionToken:(NSNotification *)notification {
-    NSString *sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:sessionToken forKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken;
+    if ([notification userInfo]) {
+        sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
+        [defaults setObject:sessionToken forKey:LUMO_SESSION_TOKEN];
+    } else {
+        sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    }
 
     self.sessionToken = sessionToken;
 }
@@ -208,10 +217,10 @@
     NSString *storedToken = [defaults objectForKey:DEVICE_TOKEN];
     if (![token isEqualToString:storedToken]) {
         [defaults setObject:token forKey:DEVICE_TOKEN];
-        NSLog(@"New device token: %@", deviceToken);
-    } else {
-        NSLog(@"Same device token: %@", deviceToken);
+        // Indicate that user's info changed
+        self.auth.loginRequired = YES;
     }
+    NSLog(@"Device token: %@", deviceToken);
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

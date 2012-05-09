@@ -13,6 +13,7 @@
 @implementation Authentication
 
 @synthesize facebook = _facebook;
+@synthesize loginRequired;
 
 /******************************************************************************
  * Getters
@@ -39,7 +40,13 @@
     if (![self.facebook isSessionValid]) {
         [self.facebook authorize:nil];
     } else {
-        [self loginToLumo];
+        // Only log in if user's info changed
+        if (self.loginRequired) {
+            [self loginToLumo];
+        } else {
+            NSLog(@"Skipped Lumo login.");
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCCESS object:self];
+        }
     }
 }
 
@@ -49,7 +56,6 @@
     [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
     
-    // TODO: Only log in when either FB access token or APNS token changes to save bandwidth!
     [self loginToLumo];
 }
 
@@ -98,6 +104,8 @@
                           @"facebook", @"service",
                           serviceKey, @"service_token", nil];
     [LumoRequest postRequestToURL:url withDict:dict successNotification:LOGIN_SUCCESS];
+
+    self.loginRequired = NO;
 }
 
 @end

@@ -12,6 +12,7 @@
 @interface Authentication : NSObject <FBSessionDelegate>
 
 @property (nonatomic, strong) Facebook *facebook;
+@property (nonatomic) BOOL loginRequired;
 
 - (void)authenticate;
 

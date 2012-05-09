@@ -71,7 +71,9 @@
             [self organizeContactArray:[JSON objectForKey:@"data"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
+            NSString *error = [JSON valueForKey:@"error"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
+            NSLog(@"Error Notification: %@", error);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
