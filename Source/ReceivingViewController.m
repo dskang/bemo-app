@@ -12,10 +12,12 @@
 
 @interface ReceivingViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
+@property (nonatomic, strong) NSTimer *partnerUpdateTimer;
 @end
 
 @implementation ReceivingViewController
 @synthesize contactName = _contactName;
+@synthesize partnerUpdateTimer = _partnerUpdateTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,7 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
-    // TODO: poll to make sure call has not been disconnected
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
+    // Poll to check if partner has disconnected
+    self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:myAppDelegate.locationRelay selector:@selector(pollForLocation) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidUnload {
@@ -38,6 +42,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.partnerUpdateTimer invalidate];
 }
 
 - (void)stopConnecting {
@@ -46,7 +51,8 @@
 }
 
 - (IBAction)acceptButton {
-    // Receive connection and let the map view deal with scenario in which partner disconnected
+    // Need to remove observer so that stopConnecting is not called if receive returns disconnected
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [CallManager receiveConnection];
     [self performSegueWithIdentifier:@"receiverShowMapView" sender:nil];
 }
