@@ -21,7 +21,6 @@
 @synthesize locationRelay = _locationRelay;
 @synthesize callManager = _callManager;
 @synthesize contactsManager = _contactsManager;
-@synthesize sessionToken = _sessionToken;
 
 /******************************************************************************
  * Getters
@@ -153,7 +152,6 @@
         sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     }
     NSLog(@"Session token: %@", sessionToken);
-    self.sessionToken = sessionToken;
 }
 
 - (void)checkCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {

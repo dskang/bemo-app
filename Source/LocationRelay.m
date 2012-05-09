@@ -90,6 +90,8 @@
  * LOC_PUSHED upon successful push to server
  ******************************************************************************/
 - (void)pushLocation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *url = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
     NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
@@ -97,7 +99,7 @@
                           @"iphone", @"device",
                           latitude, @"latitude",
                           longitude, @"longitude",
-                          myAppDelegate.sessionToken, @"token", nil];
+                          sessionToken, @"token", nil];
     [LumoRequest postRequestToURL:url withDict:dict successNotification:LOC_PUSHED];
 }
 
@@ -111,8 +113,9 @@
  * "receive call" if there is already a pending call incoming
  ******************************************************************************/
 - (void)pollForLocation {
-    NSString *partnerUrl;
-    partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"], myAppDelegate.sessionToken];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"], sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     

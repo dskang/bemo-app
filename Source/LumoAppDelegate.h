@@ -44,6 +44,5 @@
 @property (nonatomic, strong) LocationRelay *locationRelay;
 @property (nonatomic, strong) CallManager *callManager;
 @property (nonatomic, strong) ContactsManager *contactsManager;
-@property (nonatomic, strong) NSString *sessionToken;
 
 @end

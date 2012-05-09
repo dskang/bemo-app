@@ -61,7 +61,9 @@
  * GET_FRIENDS_SUCCESS for successful friend retrieval
  ******************************************************************************/
 + (void)getFriends {
-    NSString *partnerUrl = [NSString stringWithFormat:@"%@/friends?token=%@", BASE_URL, myAppDelegate.sessionToken];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *partnerUrl = [NSString stringWithFormat:@"%@/friends?token=%@", BASE_URL, sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     

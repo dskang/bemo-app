@@ -26,7 +26,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"iphone", @"device",
                               @"facebook", @"service",
-                              myAppDelegate.sessionToken, @"token", nil];
+                              sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
     }
 }
@@ -56,7 +56,7 @@
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
     if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, partnerID];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: myAppDelegate.sessionToken, @"token", nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
     }
 }
