@@ -47,6 +47,7 @@
 
 - (void)stopConnecting {
     [CallManager endConnection];
+    NSLog(@"Segue: Receive -> Contacts");
     [self performSegueWithIdentifier:@"receiverShowContacts" sender:nil];
 }
 
@@ -54,6 +55,7 @@
     // Need to remove observer so that stopConnecting is not called if receive returns disconnected
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [CallManager receiveConnection];
+    NSLog(@"Segue: Receive -> Map");
     [self performSegueWithIdentifier:@"receiverShowMapView" sender:nil];
 }
 

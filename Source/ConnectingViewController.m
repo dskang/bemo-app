@@ -68,6 +68,7 @@
 
 // Called from observer
 - (void)showMapView {
+    NSLog(@"Segue: Connecting -> Map");
     [self performSegueWithIdentifier:@"showMapView" sender:nil];
 }
 
@@ -89,6 +90,7 @@
 // Called from observer, cancel button, and countdown timeout
 - (void)stopConnecting {
     [CallManager endConnection];
+    NSLog(@"Segue: Connecting dismissed");
     [self dismissModalViewControllerAnimated:YES];
 }
 

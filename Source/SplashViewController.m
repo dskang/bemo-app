@@ -44,10 +44,12 @@
 }
 
 - (void)showReceiveScreen {
+    NSLog(@"Segue: Splash -> Receive");
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
 - (void)showContactsScreen {
+    NSLog(@"Segue: Splash -> Contacts");
     [self performSegueWithIdentifier:@"showContacts" sender:nil];
 }
 

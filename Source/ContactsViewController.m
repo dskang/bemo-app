@@ -36,6 +36,7 @@
 }
 
 - (void)showReceiveScreen {
+    NSLog(@"Segue: Contacts -> Receive");
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
@@ -85,6 +86,7 @@
 }
 
 - (void)showConnScreen {
+    NSLog(@"Segue: Contacts -> Connecting");
     [self performSegueWithIdentifier:@"showConnecting" sender:nil];
 }
 

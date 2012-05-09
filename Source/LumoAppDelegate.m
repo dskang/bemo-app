@@ -135,7 +135,6 @@
         NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
         NSString *sourceName = [args objectAtIndex:0];
         NSString *sourceID = [pushNotification valueForKey:@"source_id"];
-        // TODO: Show accept or decline screen
         [self checkCallFromSourceName:sourceName sourceID:sourceID];
     } else if ([key isEqualToString:@"MISSED_CALL"]) {
         // TODO: Show history screen
