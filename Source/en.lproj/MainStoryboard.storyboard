@@ -70,7 +70,7 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="titleBar" destination="pcX-e6-wMQ" id="Zki-hJ-ApF"/>
+                        <outlet property="contactName" destination="mcY-It-AxL" id="ZZq-8s-w3N"/>
                         <segue destination="fpt-Cj-heB" kind="modal" identifier="receiverGotoMapView" modalTransitionStyle="flipHorizontal" id="dbc-pp-PMd"/>
                         <segue destination="4" kind="modal" identifier="receiverGotoContacts" modalTransitionStyle="coverVertical" id="mFB-e5-cgd"/>
                     </connections>

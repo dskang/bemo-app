@@ -11,7 +11,7 @@
 #import "LumoAppDelegate.h"
 
 @interface ConnectingViewController ()
-@property (weak, nonatomic) IBOutlet UINavigationItem *titleBar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (strong, nonatomic) NSTimer *pollTimer;
 @property (strong, nonatomic) NSTimer *countdownTimer;
@@ -19,7 +19,7 @@
 @end
 
 @implementation ConnectingViewController
-@synthesize titleBar = _titleBar;
+@synthesize contactName = _contactName;
 @synthesize timeLeftLabel = _timeLeftLabel;
 @synthesize pollTimer = _pollTimer;
 @synthesize countdownTimer = _timeoutTimer;
@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.titleBar.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
+	self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  

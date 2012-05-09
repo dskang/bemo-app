@@ -11,11 +11,11 @@
 #import "LumoAppDelegate.h"
 
 @interface ReceivingViewController ()
-@property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
 @end
 
 @implementation ReceivingViewController
-@synthesize titleBar = _titleBar;
+@synthesize contactName = _contactName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,10 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
 }
 
 - (void)viewDidUnload {
+    [self setContactName:nil];
     [super viewDidUnload];
 }
 
