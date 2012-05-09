@@ -20,15 +20,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Show receiving screen when receiving a call
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // Show receiving screen when receiving a call
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
+}
+    
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
