@@ -44,11 +44,11 @@
 }
 
 - (void)showReceiveScreen {
-    [self performSegueWithIdentifier:@"startInReceive" sender:nil];
+    [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
 - (void)showContactsScreen {
-    [self performSegueWithIdentifier:@"startInContacts" sender:nil];
+    [self performSegueWithIdentifier:@"showContacts" sender:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

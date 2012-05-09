@@ -38,7 +38,7 @@
 	self.titleBar.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     // Set notification observers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoMapView) name:PARTNER_LOC_UPDATED object:nil];  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     
@@ -67,8 +67,8 @@
 }
 
 // Called from observer
-- (void)gotoMapView {
-    [self performSegueWithIdentifier:@"gotoMapView" sender:nil];
+- (void)showMapView {
+    [self performSegueWithIdentifier:@"showMapView" sender:nil];
 }
 
 // Called from observer

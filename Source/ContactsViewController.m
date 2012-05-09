@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Listen for received calls (FIXME - TAKE OUT LATER!)
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConnScreen) name:CONN_RECEIVED object:nil];
+    // Show receiving screen when receiving a call
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CONN_RECEIVED object:nil];
 }
 
 - (void)viewDidUnload {
@@ -33,6 +33,10 @@
     [super viewDidDisappear:animated];
     [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)showReceiveScreen {
+    [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
@@ -81,7 +85,7 @@
 }
 
 - (void)showConnScreen {
-    [self performSegueWithIdentifier:@"gotoConnecting" sender:nil];
+    [self performSegueWithIdentifier:@"showConnecting" sender:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
