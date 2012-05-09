@@ -20,17 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Show receiving screen when receiving a call
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // Show receiving screen when receiving a call
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
+}
+    
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -38,6 +42,10 @@
 - (void)showReceiveScreen {
     NSLog(@"Segue: Contacts -> Receive");
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
+}
+
+- (void)reloadTable {
+    [self.contactsTableView reloadData];
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {

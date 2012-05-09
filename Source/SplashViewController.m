@@ -9,12 +9,7 @@
 #import "SplashViewController.h"
 #import "LumoAppDelegate.h"
 
-@interface SplashViewController ()
-@property (strong, nonatomic) NSTimer *splashTimer;
-@end
-
 @implementation SplashViewController
-@synthesize splashTimer = _splashTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,7 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
     // Listen for received calls
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];
     
@@ -34,12 +37,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showContactsScreen) name:GET_FRIENDS_SUCCESS object:nil];
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [self.splashTimer invalidate];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
