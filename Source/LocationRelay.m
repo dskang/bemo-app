@@ -135,15 +135,18 @@
         NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
-            // Save partner's location
+            // Save partner's location if it's not (0,0)
+            // (0, 0) means that partner has not yet sent their real location or they have not moved for a while, both for which the correct behavior would be to not update partner's location
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
-            self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-            NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
-                  self.partnerLocation.coordinate.latitude,
-                  self.partnerLocation.coordinate.longitude);
+            if (!(lat == 0.0 && lon == 0.0)) {
+                self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+                NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
+                      self.partnerLocation.coordinate.latitude,
+                      self.partnerLocation.coordinate.longitude);
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
+                [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
+            }
         } 
         
         else if ([status isEqualToString:@"failure"]) {
