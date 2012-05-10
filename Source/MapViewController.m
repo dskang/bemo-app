@@ -88,7 +88,7 @@
 
 - (void)endConnection {
     NSLog(@"Segue: Map -> Contacts");
-    [self performSegueWithIdentifier:@"endMapView" sender:nil];
+    [self performSegueWithIdentifier:@"mapShowContacts" sender:nil];
 }
 
 - (IBAction)endConnectionButton:(id)sender {

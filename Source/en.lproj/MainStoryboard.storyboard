@@ -74,10 +74,11 @@
                         <outlet property="contactName" destination="mcY-It-AxL" id="ZZq-8s-w3N"/>
                         <outlet property="partnerImage" destination="uYC-VJ-0Fp" id="MfM-di-Uqy"/>
                         <segue destination="fpt-Cj-heB" kind="modal" identifier="receiverShowMapView" modalTransitionStyle="flipHorizontal" id="dbc-pp-PMd"/>
+                        <segue destination="3" kind="modal" identifier="receiverShowContacts" modalTransitionStyle="crossDissolve" id="pbJ-kr-sX4"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="62" y="-218"/>
+            <point key="canvasLocation" x="109" y="-230"/>
         </scene>
         <!--Contacts View Controller - Contacts-->
         <scene sceneID="13">
@@ -111,11 +112,11 @@
                     <connections>
                         <outlet property="contactsTableView" destination="RYO-vK-t6Z" id="Zyo-fe-JVg"/>
                         <segue destination="iQH-OS-b7J" kind="modal" identifier="showConnecting" modalTransitionStyle="coverVertical" id="opd-06-k5V"/>
-                        <segue destination="djH-3Q-yMj" kind="modal" identifier="showReceive" modalTransitionStyle="crossDissolve" id="pl9-t9-NBw"/>
+                        <segue destination="djH-3Q-yMj" kind="modal" identifier="showReceive" id="lEC-dD-lIA"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="62" y="498"/>
+            <point key="canvasLocation" x="109" y="540"/>
         </scene>
         <!--Connecting View Controller - Connecting-->
         <scene sceneID="tnQ-NU-F1w">
@@ -230,10 +231,11 @@
                     <navigationItem key="navigationItem" title="Title" id="Wi8-U3-mKL"/>
                     <connections>
                         <outlet property="mapView" destination="PVn-iF-waV" id="eha-OJ-GcL"/>
+                        <segue destination="3" kind="modal" identifier="mapShowContacts" modalTransitionStyle="flipHorizontal" id="x2M-Iq-af6"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1392" y="114"/>
+            <point key="canvasLocation" x="888" y="-200"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="fo1-Dc-jdw">
@@ -265,47 +267,9 @@
         <image name="lumofish.png" width="1024" height="1024"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="ConnectingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConnectingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="connectionStatus" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contactName" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="partnerImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="timeLeftLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ContactsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="recenter:"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="ReceivingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReceivingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactName" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="partnerImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="pl9-t9-NBw"/>
-        <segue reference="G1U-7I-kiZ"/>
-    </inferredMetricsTieBreakers>
 </document>
