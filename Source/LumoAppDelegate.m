@@ -139,12 +139,11 @@
         NSString *sourceID = [pushNotification valueForKey:@"id"];
         NSDictionary *sourceService = [pushNotification valueForKey:@"service"];
 
-        // FIXME: For now, ignore incoming calls when you're not idle
         if (![self.appState isEqualToString:IDLE_STATE]) {
             BOOL incomingCallFromCurrentPartner = [sourceID isEqualToString:[self.callManager.partnerInfo valueForKey:@"id"]];
             if (!incomingCallFromCurrentPartner) {
-                NSLog(@"Ignored incoming call.");
                 [CallManager endConnectionWithID:sourceID];
+                [self showMissedRequestAlertFromName:sourceName];
             }
             return;
         }
@@ -156,8 +155,22 @@
         // Poll to see if call is still going on
         [self.locationRelay pollForLocation];
     } else if ([key isEqualToString:@"MISSED_CALL"]) {
-        // TODO: Show history screen
+        NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
+        NSString *sourceName = [args objectAtIndex:0];
+        if (![self.appState isEqualToString:IDLE_STATE]) {
+            [self showMissedRequestAlertFromName:sourceName];
+        }
     }
+}
+
+- (void)showMissedRequestAlertFromName:(NSString *)name {
+    NSString *message = [NSString stringWithFormat:@"You missed a Lumo request from %@.", name];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missed Lumo Request"
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)saveSessionToken:(NSNotification *)notification {
