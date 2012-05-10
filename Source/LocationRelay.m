@@ -145,6 +145,7 @@
                       self.partnerLocation.coordinate.latitude,
                       self.partnerLocation.coordinate.longitude);
 
+                NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
                 [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
             }
         } 
