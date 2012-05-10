@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Rbg-J4-cDc">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -68,6 +69,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Reg-er-UQD"/>
                     <connections>
                         <outlet property="contactName" destination="mcY-It-AxL" id="ZZq-8s-w3N"/>
                         <outlet property="partnerImage" destination="uYC-VJ-0Fp" id="MfM-di-Uqy"/>
@@ -114,7 +116,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="608" y="-90"/>
+            <point key="canvasLocation" x="604" y="-130"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="3Cs-E8-Nkp">
@@ -225,10 +227,11 @@
                         <outlet property="partnerImage" destination="7gO-t8-cW1" id="9UG-3J-FRg"/>
                         <outlet property="timeLeftLabel" destination="3Sz-bk-GcK" id="ikb-3u-vT1"/>
                         <segue destination="fpt-Cj-heB" kind="modal" identifier="showMapView" modalTransitionStyle="flipHorizontal" id="G1U-7I-kiZ"/>
+                        <segue destination="djH-3Q-yMj" kind="modal" identifier="showReceive" modalTransitionStyle="coverVertical" id="YaY-On-uDa"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1128" y="-90"/>
+            <point key="canvasLocation" x="1116" y="-130"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="aLc-7J-tdv">
@@ -378,9 +381,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="TsD-o0-dJk"/>
-        <segue reference="mFB-e5-cgd"/>
-        <segue reference="dbc-pp-PMd"/>
-    </inferredMetricsTieBreakers>
 </document>
