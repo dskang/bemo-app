@@ -85,9 +85,11 @@
 }
 
 - (IBAction)acceptButton {
-    // Need to remove observer so that stopConnecting is not called if receive returns disconnected
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:CONN_RECEIVED object:nil];
     [CallManager receiveConnection];
+}
+
+- (void)showMapView {
     [self performSegueWithIdentifier:@"receiverShowMapView" sender:nil];
 }
 
