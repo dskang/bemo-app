@@ -43,7 +43,7 @@
     if (abs(howRecent) < 15.0)
     {
         self.currentLocation = newLocation;
-        NSLog(@"self: latitude %+.6f, longitude %+.6f\n",
+        if (DEBUG) NSLog(@"self: latitude %+.6f, longitude %+.6f\n",
               self.currentLocation.coordinate.latitude,
               self.currentLocation.coordinate.longitude);
         [self pushLocation];
@@ -141,18 +141,18 @@
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             if (!(lat == 0.0 && lon == 0.0)) {
                 self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-                NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
+                if (DEBUG) NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
                       self.partnerLocation.coordinate.latitude,
                       self.partnerLocation.coordinate.longitude);
 
-                NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
+                if (DEBUG) NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
                 [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
             }
         } 
         
         else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
-            NSLog(@"Error Notification: %@", error);
+            if (DEBUG) NSLog(@"Error Notification: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

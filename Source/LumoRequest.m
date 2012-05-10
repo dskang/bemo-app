@@ -29,11 +29,11 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self userInfo:JSON];
-            NSLog(@"Notification: %@", successNotification);
+            if (DEBUG) NSLog(@"Notification: %@", successNotification);
         } else {
             NSString *error = [JSON valueForKey:@"error"];
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
-            NSLog(@"Error Notification: %@", error);
+            if (DEBUG) NSLog(@"Error Notification: %@", error);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];

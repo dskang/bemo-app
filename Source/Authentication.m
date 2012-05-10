@@ -29,7 +29,7 @@
  * Facebook
  ******************************************************************************/
 - (void)loginToFB {
-    NSLog(@"Logging into Facebook.");
+    if (DEBUG) NSLog(@"Logging into Facebook.");
     // Check for previously saved access token information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
@@ -45,7 +45,7 @@
         if (self.loginRequired) {
             [self loginToLumo];
         } else {
-            NSLog(@"Skipped Lumo login.");
+            if (DEBUG) NSLog(@"Skipped Lumo login.");
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCCESS object:self];
         }
     }
@@ -96,7 +96,7 @@
  * Login to the Lumo server
  ******************************************************************************/
 - (void)loginToLumo {
-    NSLog(@"Logging into Lumo.");
+    if (DEBUG) NSLog(@"Logging into Lumo.");
     NSString *url = [NSString stringWithFormat:@"%@/login", BASE_URL];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:DEVICE_KEY];

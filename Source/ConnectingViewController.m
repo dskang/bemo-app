@@ -100,7 +100,7 @@
 }
 
 - (void)pollLocation {
-    NSLog(@"ConnectingViewController | pollLocation() polling.");
+    if (DEBUG) NSLog(@"ConnectingViewController | pollLocation() polling.");
     [myAppDelegate.locationRelay pollForLocation];
 }
 

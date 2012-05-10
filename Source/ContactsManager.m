@@ -71,12 +71,12 @@
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
             [self organizeContactArray:[JSON objectForKey:@"data"]];
-            NSLog(@"Notification: %@", GET_FRIENDS_SUCCESS);
+            if (DEBUG) NSLog(@"Notification: %@", GET_FRIENDS_SUCCESS);
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             NSString *error = [JSON valueForKey:@"error"];
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
-            NSLog(@"Error Notification: %@", error);
+            if (DEBUG) NSLog(@"Error Notification: %@", error);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
@@ -103,7 +103,7 @@
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    NSLog(@"FB error: %@", error);
+    if (DEBUG) NSLog(@"FB error: %@", error);
 }
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
@@ -113,7 +113,7 @@
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
     UIImage *image = [UIImage imageWithData:data];
     [myAppDelegate.callManager.partnerInfo setValue:image forKey:@"image"];
-    NSLog(@"Notification: %@", PARTNER_IMAGE_UPDATED);
+    if (DEBUG) NSLog(@"Notification: %@", PARTNER_IMAGE_UPDATED);
     [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_IMAGE_UPDATED object:self];
 }
 

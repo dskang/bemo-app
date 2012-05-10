@@ -63,11 +63,11 @@
 }
 
 - (void)requestFailure {
-    NSLog(@"Request failed: request operation was unsuccessful or server returned non-JSON data.");
+    if (DEBUG) NSLog(@"Request failed: request operation was unsuccessful or server returned non-JSON data.");
 }
 
 - (void)authFailure {
-    NSLog(@"Auth failed.");
+    if (DEBUG) NSLog(@"Auth failed.");
     self.auth.loginRequired = YES;
     [self.auth authenticate];
 }
@@ -83,12 +83,12 @@
         deviceKey = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, newDeviceKey);
         [defaults setObject:deviceKey forKey:DEVICE_KEY];
         CFRelease(newDeviceKey);
-        NSLog(@"Generated new device key.");
+        if (DEBUG) NSLog(@"Generated new device key.");
 
         // Indicate that user's info changed
         self.auth.loginRequired = YES;
     }
-    NSLog(@"Device key: %@", deviceKey);
+    if (DEBUG) NSLog(@"Device key: %@", deviceKey);
 }
 
 /******************************************************************************
@@ -132,7 +132,7 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)pushNotification
 {
     NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
-    NSLog(@"Received push notification: %@", key);
+    if (DEBUG) NSLog(@"Received push notification: %@", key);
     if ([key isEqualToString:@"INCOMING_CALL"]) {
         NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
         NSString *sourceName = [args objectAtIndex:0];
@@ -182,7 +182,7 @@
     } else {
         sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     }
-    NSLog(@"Session token: %@", sessionToken);
+    if (DEBUG) NSLog(@"Session token: %@", sessionToken);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -247,12 +247,12 @@
     NSString *storedToken = [defaults objectForKey:DEVICE_TOKEN];
     if (![token isEqualToString:storedToken]) {
         [defaults setObject:token forKey:DEVICE_TOKEN];
-        NSLog(@"Generated new device token.");
+        if (DEBUG) NSLog(@"Generated new device token.");
         // Indicate that user's info changed
         self.auth.loginRequired = YES;
     }
     
-    NSLog(@"Device token: %@", deviceToken);
+    if (DEBUG) NSLog(@"Device token: %@", deviceToken);
 
     // Authenticate user
     [self.auth authenticate];
@@ -260,7 +260,7 @@
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
-	NSLog(@"Failed to get token, error: %@", error);
+	if (DEBUG) NSLog(@"Failed to get token, error: %@", error);
 }
 
 @end
