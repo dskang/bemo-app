@@ -12,6 +12,7 @@
 @implementation LumoAppDelegate
 
 @synthesize window = _window;
+@synthesize appState = _appState;
 @synthesize auth = _auth;
 @synthesize locationRelay = _locationRelay;
 @synthesize callManager = _callManager;
@@ -20,6 +21,12 @@
 /******************************************************************************
  * Getters
  ******************************************************************************/
+- (NSString *)appState {
+    if (!_appState) {
+        _appState = IDLE_STATE;
+    }
+    return _appState;
+}
 - (LocationRelay *)locationRelay {
     if (!_locationRelay) {
         _locationRelay = [[LocationRelay alloc] init];
@@ -131,6 +138,14 @@
         NSString *sourceName = [args objectAtIndex:0];
         NSString *sourceID = [pushNotification valueForKey:@"id"];
         NSDictionary *sourceService = [pushNotification valueForKey:@"service"];
+
+        // FIXME: For now, ignore incoming calls when you're in a call or already have an incoming call
+        if ([self.appState isEqualToString:MAP_STATE] ||
+            [self.appState isEqualToString:RECEIVING_STATE]) {
+            NSLog(@"Ignored incoming call.");
+            // TODO: End connection
+            return;
+        }
 
         // Save contact info
         self.callManager.partnerInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", sourceService, @"service", nil];

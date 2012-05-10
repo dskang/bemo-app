@@ -49,6 +49,7 @@
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) NSString *appState;
 @property (nonatomic, strong) Authentication *auth;
 @property (nonatomic, strong) LocationRelay *locationRelay;
 @property (nonatomic, strong) CallManager *callManager;

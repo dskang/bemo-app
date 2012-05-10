@@ -54,6 +54,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    myAppDelegate.appState = CONNECTING_STATE;
+
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     self.connectionStatus.text = @"Sending Request";
 

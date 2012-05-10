@@ -40,6 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:(BOOL)animated];
+    myAppDelegate.appState = MAP_STATE;
     [self startUpdating];
 }
 
