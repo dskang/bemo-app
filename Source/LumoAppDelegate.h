@@ -13,6 +13,10 @@
 #import "ContactsManager.h"
 #import "CallManager.h"
 
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"
 
