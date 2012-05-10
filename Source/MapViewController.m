@@ -103,7 +103,6 @@
 }
 
 - (void)endConnection {
-    NSLog(@"Segue: Map -> Contacts");
     [self performSegueWithIdentifier:@"mapShowContacts" sender:nil];
 }
 

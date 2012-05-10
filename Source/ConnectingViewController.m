@@ -105,7 +105,6 @@
 }
 
 - (void)showMapView {
-    NSLog(@"Segue: Connecting -> Map");
     [self performSegueWithIdentifier:@"showMapView" sender:nil];
 }
 
@@ -143,7 +142,6 @@
 
 - (void)stopConnecting {
     [CallManager endConnection];
-    NSLog(@"Segue: Connecting dismissed");
     [self dismissModalViewControllerAnimated:YES];
 }
 
