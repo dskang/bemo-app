@@ -21,6 +21,7 @@
     if (self) {
         self.coordinate = coordinate;
     }
+    [self setTitle:@"Contact Name"];
     return self;
 }
 
@@ -29,7 +30,8 @@
 }
 
 - (NSString *)title {
-    return @"Contact Name Here";
+    NSLog(@"%@", self.title);
+    return self.title;
 }
 
 @end
