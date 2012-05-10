@@ -93,7 +93,7 @@
 
 - (void)disconnected {
     NSString *message = [NSString stringWithFormat:@"%@ ended the connection", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lumo Ended"
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
