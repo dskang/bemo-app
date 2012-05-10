@@ -21,6 +21,12 @@
 #define DEVICE_TOKEN @"deviceToken" // push notification
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
+// User states
+#define IDLE_STATE @"idleState" // user is idle
+#define CONNECTING_STATE @"connectingState" // user is making a connection
+#define RECEIVING_STATE @"receivingState" // user is receiving a connection
+#define MAP_STATE @"mapState" // user is in a connection
+
 // Notifications
 #define PARTNER_IMAGE_UPDATED @"partnerImageUpdated"
 #define REQUEST_FAILED @"requestFailure"
