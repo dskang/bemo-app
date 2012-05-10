@@ -15,5 +15,6 @@
 + (void)initiateConnection;
 + (void)receiveConnection;
 + (void)endConnection;
++ (void)endConnectionWithID:(NSString *)targetID;
 
 @end

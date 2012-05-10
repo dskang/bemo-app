@@ -139,11 +139,11 @@
         NSString *sourceID = [pushNotification valueForKey:@"id"];
         NSDictionary *sourceService = [pushNotification valueForKey:@"service"];
 
-        // FIXME: For now, ignore incoming calls when you're in a call or already have an incoming call
-        if ([self.appState isEqualToString:MAP_STATE] ||
-            [self.appState isEqualToString:RECEIVING_STATE]) {
+        // FIXME: For now, ignore incoming calls when you're not idle
+        if (![self.appState isEqualToString:IDLE_STATE]) {
             NSLog(@"Ignored incoming call.");
-            // TODO: End connection
+            // End connection
+            [CallManager endConnectionWithID:sourceID];
             return;
         }
 

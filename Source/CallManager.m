@@ -61,4 +61,14 @@
     }
 }
 
++ (void)endConnectionWithID:(NSString *)targetID {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    if (sessionToken && targetID) {
+        NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, targetID];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: sessionToken, @"token", nil];
+        [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
+    }
+}
+
 @end
