@@ -141,9 +141,11 @@
 
         // FIXME: For now, ignore incoming calls when you're not idle
         if (![self.appState isEqualToString:IDLE_STATE]) {
-            NSLog(@"Ignored incoming call.");
-            // End connection
-            [CallManager endConnectionWithID:sourceID];
+            BOOL incomingCallFromCurrentPartner = [sourceID isEqualToString:[self.callManager.partnerInfo valueForKey:@"id"]];
+            if (!incomingCallFromCurrentPartner) {
+                NSLog(@"Ignored incoming call.");
+                [CallManager endConnectionWithID:sourceID];
+            }
             return;
         }
 
