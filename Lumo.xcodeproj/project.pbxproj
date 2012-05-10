@@ -29,7 +29,6 @@
 		1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D61558AE340089CDC7 /* lumofish57.png */; };
 		1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D81558AE390089CDC7 /* lumofish114.png */; };
 		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
-		1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA11533F33800E651E4 /* SettingsViewController.m */; };
 		1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* MapViewController.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
 		1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F8152E695A0006B5DB /* Foundation.framework */; };
@@ -102,8 +101,6 @@
 		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish114.png; path = ../Images/lumofish114.png; sourceTree = "<group>"; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Pin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1AE29FA01533F33800E651E4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SettingsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1AE29FA11533F33800E651E4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SettingsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MapViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MapViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF444F2152E695A0006B5DB /* Lumo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,8 +286,6 @@
 				1AE29FA41533FC4300E651E4 /* MapViewController.m */,
 				1A2596FE1559A09C00131467 /* ReceivingViewController.h */,
 				1A2596FF1559A09C00131467 /* ReceivingViewController.m */,
-				1AE29FA01533F33800E651E4 /* SettingsViewController.h */,
-				1AE29FA11533F33800E651E4 /* SettingsViewController.m */,
 				1A2597041559A74500131467 /* SplashViewController.h */,
 				1A2597051559A74500131467 /* SplashViewController.m */,
 			);
@@ -396,7 +391,6 @@
 				1AF44503152E695A0006B5DB /* main.m in Sources */,
 				1AF44507152E695A0006B5DB /* LumoAppDelegate.m in Sources */,
 				1AF44514152E695A0006B5DB /* ContactsViewController.m in Sources */,
-				1AE29FA21533F33800E651E4 /* SettingsViewController.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */,
 				1A9AA68715368016001B5614 /* Pin.m in Sources */,
 				1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */,
