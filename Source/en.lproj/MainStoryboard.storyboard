@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Rbg-J4-cDc">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -171,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="MVP-z6-fM1">
-                                <rect key="frame" x="142" y="211" width="37" height="37"/>
+                                <rect key="frame" x="142" y="289" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aYb-fr-zMW">
@@ -191,14 +192,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sending Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jHg-8f-nHq">
-                                <rect key="frame" x="20" y="153" width="280" height="21"/>
+                                <rect key="frame" x="20" y="66" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="01:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3Sz-bk-GcK">
-                                <rect key="frame" x="25" y="275" width="270" height="41"/>
+                                <rect key="frame" x="25" y="334" width="270" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,12 +212,17 @@
                                     <navigationItem title="Contact Name" id="pSt-K1-ozW"/>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="7gO-t8-cW1">
+                                <rect key="frame" x="40" y="108" width="240" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="connectionStatus" destination="jHg-8f-nHq" id="IQP-2G-cHi"/>
                         <outlet property="contactName" destination="pSt-K1-ozW" id="hcV-5d-inY"/>
+                        <outlet property="partnerImage" destination="7gO-t8-cW1" id="9UG-3J-FRg"/>
                         <outlet property="timeLeftLabel" destination="3Sz-bk-GcK" id="ikb-3u-vT1"/>
                         <segue destination="fpt-Cj-heB" kind="modal" identifier="showMapView" modalTransitionStyle="flipHorizontal" id="G1U-7I-kiZ"/>
                     </connections>
@@ -331,6 +337,7 @@
             <relationships>
                 <relationship kind="outlet" name="connectionStatus" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="contactName" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="partnerImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="timeLeftLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -373,6 +380,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="TsD-o0-dJk"/>
         <segue reference="mFB-e5-cgd"/>
-        <segue reference="dbc-pp-PMd"/>
+        <segue reference="G1U-7I-kiZ"/>
     </inferredMetricsTieBreakers>
 </document>

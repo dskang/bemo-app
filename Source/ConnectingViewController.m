@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStatus;
+@property (weak, nonatomic) IBOutlet UIImageView *partnerImage;
 @property (strong, nonatomic) NSTimer *pollTimer;
 @property (strong, nonatomic) NSTimer *countdownTimer;
 @property (nonatomic) NSInteger timeLeft;
@@ -23,6 +24,7 @@
 @synthesize contactName = _contactName;
 @synthesize timeLeftLabel = _timeLeftLabel;
 @synthesize connectionStatus = _connectionStatus;
+@synthesize partnerImage = _partnerImage;
 @synthesize pollTimer = _pollTimer;
 @synthesize countdownTimer = _timeoutTimer;
 @synthesize timeLeft = _timeLeft;
@@ -45,13 +47,18 @@
     [super viewWillAppear:animated];
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     self.connectionStatus.text = @"Sending Request";
+
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
     
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
+
+    // Get partner's image
+    [myAppDelegate.contactsManager getPartnerImage];
 
     // Request connection, which then starts polling
     [CallManager initiateConnection];
@@ -59,6 +66,7 @@
 
 - (void)viewDidUnload {
     [self setConnectionStatus:nil];
+    [self setPartnerImage:nil];
     [super viewDidUnload];
 }
 
@@ -67,6 +75,13 @@
     [self.pollTimer invalidate];
     [self.countdownTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updatePartnerImage {
+    NSLog(@"updatePartnerImage called");
+    UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
+    NSLog(@"%@", image);
+    self.partnerImage.image = image;
 }
 
 // Called from timer

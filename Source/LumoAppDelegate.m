@@ -7,12 +7,7 @@
 //
 
 #import "LumoAppDelegate.h"
-#import "Authentication.h"
 #import "ReceivingViewController.h"
-
-@interface LumoAppDelegate()
-@property (nonatomic, strong) Authentication *auth;
-@end
 
 @implementation LumoAppDelegate
 
@@ -155,7 +150,7 @@
 
 - (void)checkCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
     // Save contact info
-    self.callManager.partnerInfo = [NSDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
+    self.callManager.partnerInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
     // Poll to see if call is still going on
     [self.locationRelay pollForLocation];
 }

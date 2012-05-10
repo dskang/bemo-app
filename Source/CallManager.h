@@ -10,7 +10,7 @@
 
 @interface CallManager : NSObject
 
-@property (nonatomic, strong) NSDictionary *partnerInfo;
+@property (nonatomic, strong) NSMutableDictionary *partnerInfo;
 
 + (void)initiateConnection;
 + (void)receiveConnection;

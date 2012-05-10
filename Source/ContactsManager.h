@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBRequest.h"
 
-@interface ContactsManager : NSObject
+@interface ContactsManager : NSObject <FBRequestDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *sections;
 
 + (void)getFriends;
+- (void)getPartnerImage;
 
 @end

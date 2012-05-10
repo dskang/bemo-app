@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Authentication.h"
 #import "LocationRelay.h"
 #import "LumoRequest.h"
 #import "ContactsManager.h"
@@ -21,6 +22,7 @@
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
 // Notifications
+#define PARTNER_IMAGE_UPDATED @"partnerImageUpdated"
 #define REQUEST_FAILED @"requestFailure"
 #define AUTH_FAILED @"auth"
 
@@ -41,6 +43,7 @@
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) Authentication *auth;
 @property (nonatomic, strong) LocationRelay *locationRelay;
 @property (nonatomic, strong) CallManager *callManager;
 @property (nonatomic, strong) ContactsManager *contactsManager;
