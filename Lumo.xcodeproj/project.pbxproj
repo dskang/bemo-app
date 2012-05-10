@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A06AD541533EC3C0023E769 /* MapKit.framework */; };
+		1A082377155B86D100BFD2A9 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A082376155B86D100BFD2A9 /* pin.png */; };
+		1A082379155B959200BFD2A9 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A082378155B959200BFD2A9 /* pin@2x.png */; };
 		1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0876F4154A5D360079276F /* ConnectingViewController.m */; };
 		1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A18B343153808FF006C8BF7 /* CoreLocation.framework */; };
 		1A2597001559A09C00131467 /* ReceivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2596FF1559A09C00131467 /* ReceivingViewController.m */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		1A06AD541533EC3C0023E769 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A082376155B86D100BFD2A9 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = Images/pin.png; sourceTree = SOURCE_ROOT; };
+		1A082378155B959200BFD2A9 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin@2x.png"; path = "Images/pin@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConnectingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConnectingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -300,6 +304,8 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A082378155B959200BFD2A9 /* pin@2x.png */,
+				1A082376155B86D100BFD2A9 /* pin.png */,
 				1A2597021559A56500131467 /* lumofish.png */,
 				1A96B6D81558AE390089CDC7 /* lumofish114.png */,
 				1A96B6D61558AE340089CDC7 /* lumofish57.png */,
@@ -383,6 +389,8 @@
 				1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */,
 				1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */,
 				1A2597031559A56500131467 /* lumofish.png in Resources */,
+				1A082377155B86D100BFD2A9 /* pin.png in Resources */,
+				1A082379155B959200BFD2A9 /* pin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -485,7 +493,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -503,7 +511,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -520,7 +528,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "E0DA9BEC-E544-4486-9E75-ACB1DDE1FFD5";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

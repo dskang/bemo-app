@@ -112,6 +112,7 @@
     if (annotView) {
         annotView.enabled = YES;
         annotView.canShowCallout = YES;
+        annotView.image=[UIImage imageNamed:@"pin.png"];
         return annotView;
     }
     return nil;

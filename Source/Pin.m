@@ -21,7 +21,6 @@
     if (self) {
         self.coordinate = coordinate;
     }
-    [self setTitle:@"Contact Name"];
     return self;
 }
 
@@ -30,8 +29,7 @@
 }
 
 - (NSString *)title {
-    NSLog(@"%@", self.title);
-    return self.title;
+    return [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
 }
 
 @end
