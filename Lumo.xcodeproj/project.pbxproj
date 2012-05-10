@@ -361,7 +361,7 @@
 			attributes = {
 				CLASSPREFIX = "";
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Princeton University";
+				ORGANIZATIONNAME = Lumo;
 			};
 			buildConfigurationList = 1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Lumo" */;
 			compatibilityVersion = "Xcode 3.2";
