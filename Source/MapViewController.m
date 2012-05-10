@@ -92,7 +92,7 @@
 }
 
 - (void)disconnected {
-    NSString *message = [NSString stringWithFormat:@"%@ ended the connection.", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
+    NSString *message = [NSString stringWithFormat:@"%@ ended the connection", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected"
                                                     message:message
                                                    delegate:nil

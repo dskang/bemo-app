@@ -131,7 +131,7 @@
 }
 
 - (void)disconnected {
-    NSString *message = [NSString stringWithFormat:@"%@ is not available for Lumo.", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
+    NSString *message = [NSString stringWithFormat:@"%@ is not available for Lumo", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unavailable" 
                                                     message:message
                                                    delegate:nil 

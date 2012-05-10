@@ -53,7 +53,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     if (error.code == kCLErrorDenied) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Required"
-                                                        message:@"Please enable Location Services for Lumo in Settings."
+                                                        message:@"Please enable Location Services for Lumo in Settings"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

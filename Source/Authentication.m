@@ -62,7 +62,7 @@
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login"
-                                                    message:@"You must login to Facebook to use Lumo."
+                                                    message:@"You must login to Facebook to use Lumo"
                                                    delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];

@@ -164,7 +164,7 @@
 }
 
 - (void)showMissedRequestAlertFromName:(NSString *)name {
-    NSString *message = [NSString stringWithFormat:@"You missed a Lumo request from %@.", name];
+    NSString *message = [NSString stringWithFormat:@"You missed a Lumo request from %@", name];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missed Lumo Request"
                                                     message:message
                                                    delegate:nil
