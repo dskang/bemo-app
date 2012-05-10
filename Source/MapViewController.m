@@ -123,6 +123,10 @@
 // See: http://stackoverflow.com/questions/1336370/positioning-mkmapview-to-show-multiple-annotations-at-once
 
 - (IBAction)recenter:(id)sender {
+    // Return if we don't have a location for partner
+    CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
+    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) return;
+
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
     CLLocationCoordinate2D southWest;
     CLLocationCoordinate2D northEast;
