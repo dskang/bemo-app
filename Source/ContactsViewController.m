@@ -95,6 +95,7 @@
 
 - (void)showConnScreen {
     NSLog(@"Segue: Contacts -> Connecting");
+    [myAppDelegate.contactsManager getPartnerImage];
     [self performSegueWithIdentifier:@"showConnecting" sender:nil];
 }
 

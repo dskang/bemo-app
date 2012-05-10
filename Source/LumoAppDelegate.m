@@ -134,6 +134,7 @@
 
         // Save contact info
         self.callManager.partnerInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", sourceService, @"service", nil];
+        [self.contactsManager getPartnerImage];
 
         // Poll to see if call is still going on
         [self.locationRelay pollForLocation];

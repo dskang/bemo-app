@@ -52,13 +52,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
+    
+    UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
+    if (image) {
+        self.partnerImage.image = image;
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
+    }
     
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
-
-    // Get partner's image
-    [myAppDelegate.contactsManager getPartnerImage];
 
     // Request connection, which then starts polling
     [CallManager initiateConnection];

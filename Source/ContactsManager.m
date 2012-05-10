@@ -86,8 +86,10 @@
 
 - (void)getPartnerImage {
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKeyPath:@"service.id"];
-    NSString *url = [NSString stringWithFormat:@"%@/picture?type=large", partnerID];
-    [myAppDelegate.auth.facebook requestWithGraphPath:url andDelegate:self];
+    if (partnerID) {
+        NSString *url = [NSString stringWithFormat:@"%@/picture?type=large", partnerID];
+        [myAppDelegate.auth.facebook requestWithGraphPath:url andDelegate:self];
+    }
 }
 
 # pragma mark FBRequestDelegate
@@ -111,6 +113,7 @@
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
     UIImage *image = [UIImage imageWithData:data];
     [myAppDelegate.callManager.partnerInfo setValue:image forKey:@"image"];
+    NSLog(@"Notification: %@", PARTNER_IMAGE_UPDATED);
     [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_IMAGE_UPDATED object:self];
 }
 

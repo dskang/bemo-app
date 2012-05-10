@@ -44,9 +44,13 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
-    
-    [myAppDelegate.contactsManager getPartnerImage];
+
+    UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
+    if (image) {
+        self.partnerImage.image = image;
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
+    }
 
     // Poll to check if partner has disconnected
     self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:myAppDelegate.locationRelay selector:@selector(pollForLocation) userInfo:nil repeats:YES];
