@@ -521,7 +521,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
+				PROVISIONING_PROFILE = "C5A85A5A-873F-4B7D-9883-D6CC439B2809";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -538,7 +538,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
+				PROVISIONING_PROFILE = "C5A85A5A-873F-4B7D-9883-D6CC439B2809";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
