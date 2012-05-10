@@ -34,6 +34,7 @@
 		1AC8E360155C58B4006925B7 /* dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E35F155C58B4006925B7 /* dot@2x.png */; };
 		1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E362155C639F006925B7 /* rezoom@2x.png */; };
 		1AC8E365155C6581006925B7 /* rezoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E364155C6581006925B7 /* rezoom.png */; };
+		1AC8E367155C670A006925B7 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E366155C670A006925B7 /* dot.png */; };
 		1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* MapViewController.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
 		1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F8152E695A0006B5DB /* Foundation.framework */; };
@@ -111,6 +112,7 @@
 		1AC8E35F155C58B4006925B7 /* dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dot@2x.png"; path = "Images/dot@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC8E362155C639F006925B7 /* rezoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rezoom@2x.png"; path = "Images/rezoom@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC8E364155C6581006925B7 /* rezoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rezoom.png; path = Images/rezoom.png; sourceTree = SOURCE_ROOT; };
+		1AC8E366155C670A006925B7 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot.png; path = Images/dot.png; sourceTree = SOURCE_ROOT; };
 		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MapViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MapViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF444F2152E695A0006B5DB /* Lumo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1AC8E366155C670A006925B7 /* dot.png */,
 				1AC8E364155C6581006925B7 /* rezoom.png */,
 				1AC8E362155C639F006925B7 /* rezoom@2x.png */,
 				1AC8E35F155C58B4006925B7 /* dot@2x.png */,
@@ -398,6 +401,7 @@
 				1AC8E360155C58B4006925B7 /* dot@2x.png in Resources */,
 				1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */,
 				1AC8E365155C6581006925B7 /* rezoom.png in Resources */,
+				1AC8E367155C670A006925B7 /* dot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
