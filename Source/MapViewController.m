@@ -22,6 +22,16 @@
 @synthesize contactPin = _contactPin;
 @synthesize partnerTimer = _partnerTimer;
 
+- (Pin *)contactPin {
+    if (!_contactPin) {
+        _contactPin = [[Pin alloc] init];
+        
+        // Put pin on map
+        [self.mapView addAnnotation:_contactPin];
+    }
+    return _contactPin;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -42,6 +52,7 @@
     [super viewWillAppear:(BOOL)animated];
     myAppDelegate.appState = MAP_STATE;
     [self startUpdating];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -49,14 +60,8 @@
     [self stopUpdating];
 }
 
-- (Pin *)contactPin {
-    if (!_contactPin) {
-        _contactPin = [[Pin alloc] init];
-        
-        // Put pin on map
-        [self.mapView addAnnotation:_contactPin];
-    }
-    return _contactPin;
+- (void)receiveConnection {
+    [CallManager receiveConnection];
 }
 
 - (void)updatePartnerLocationOnMap {
