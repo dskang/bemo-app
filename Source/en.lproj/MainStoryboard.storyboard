@@ -227,7 +227,6 @@
                         <outlet property="partnerImage" destination="7gO-t8-cW1" id="9UG-3J-FRg"/>
                         <outlet property="timeLeftLabel" destination="3Sz-bk-GcK" id="ikb-3u-vT1"/>
                         <segue destination="fpt-Cj-heB" kind="modal" identifier="showMapView" modalTransitionStyle="flipHorizontal" id="G1U-7I-kiZ"/>
-                        <segue destination="djH-3Q-yMj" kind="modal" identifier="showReceive" modalTransitionStyle="coverVertical" id="YaY-On-uDa"/>
                     </connections>
                 </viewController>
             </objects>

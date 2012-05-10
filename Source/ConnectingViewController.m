@@ -70,8 +70,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
     }
     
-    // Show receiving view if incoming call during outgoing call
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceive) name:CALL_WAITING object:nil];
+    // Automatically receive a call from partner (occurs when two users call each other at the same time)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
 
     // Request connection, which then starts polling
     [CallManager initiateConnection];
@@ -109,9 +109,8 @@
     [self performSegueWithIdentifier:@"showMapView" sender:nil];
 }
 
-- (void)showReceive {
-    NSLog(@"Segue: Connecting -> Receive");
-    [self performSegueWithIdentifier:@"showReceive" sender:nil];
+- (void)receiveConnection {
+    [CallManager receiveConnection];
 }
 
 - (void)startPolling {
