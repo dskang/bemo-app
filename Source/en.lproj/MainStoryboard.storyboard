@@ -62,7 +62,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="uYC-VJ-0Fp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="lumofish.png" id="uYC-VJ-0Fp">
                                 <rect key="frame" x="40" y="110" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -213,7 +213,7 @@
                                     <navigationItem title="Contact Name" id="pSt-K1-ozW"/>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="7gO-t8-cW1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="lumofish.png" id="7gO-t8-cW1">
                                 <rect key="frame" x="40" y="103" width="240" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -382,6 +382,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="TsD-o0-dJk"/>
         <segue reference="mFB-e5-cgd"/>
-        <segue reference="dbc-pp-PMd"/>
+        <segue reference="G1U-7I-kiZ"/>
     </inferredMetricsTieBreakers>
 </document>

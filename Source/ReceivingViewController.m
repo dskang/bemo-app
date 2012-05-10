@@ -9,6 +9,7 @@
 #import "ReceivingViewController.h"
 #import "LocationRelay.h"
 #import "LumoAppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ReceivingViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *contactName;
@@ -31,6 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set black border around partner image
+    self.partnerImage.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.partnerImage.layer.borderWidth = 2.0;
+    // Resize border for image
+    CGRect frame = [self getFrameSizeForImage:self.partnerImage.image inImageView:self.partnerImage];
+    CGRect imageViewFrame = CGRectMake(self.partnerImage.frame.origin.x + frame.origin.x, self.partnerImage.frame.origin.y + frame.origin.y, frame.size.width, frame.size.height);
+    self.partnerImage.frame = imageViewFrame;
 }
 
 - (void)viewDidUnload {
@@ -45,9 +53,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
 
-    UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
-    if (image) {
-        self.partnerImage.image = image;
+    if ([myAppDelegate.callManager.partnerInfo valueForKey:@"image"]) {
+        [self updatePartnerImage];
     } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerImage) name:PARTNER_IMAGE_UPDATED object:nil];
     }
@@ -65,6 +72,10 @@
 - (void)updatePartnerImage {
     UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
     self.partnerImage.image = image;
+    // Resize border for image
+    CGRect frame = [self getFrameSizeForImage:self.partnerImage.image inImageView:self.partnerImage];
+    CGRect imageViewFrame = CGRectMake(self.partnerImage.frame.origin.x + frame.origin.x, self.partnerImage.frame.origin.y + frame.origin.y, frame.size.width, frame.size.height);
+    self.partnerImage.frame = imageViewFrame;
 }
 
 - (void)stopConnecting {
@@ -87,6 +98,27 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+# pragma mark Partner Image
+
+// Stack Overflow: http://stackoverflow.com/questions/9706874/borders-dont-adjust-to-aspect-fit/9707308#9707308
+- (CGRect)getFrameSizeForImage:(UIImage *)image inImageView:(UIImageView *)imageView {
+    
+    float hfactor = image.size.width / imageView.frame.size.width;
+    float vfactor = image.size.height / imageView.frame.size.height;
+    
+    float factor = fmax(hfactor, vfactor);
+    
+    // Divide the size by the greater of the vertical or horizontal shrinkage factor
+    float newWidth = image.size.width / factor;
+    float newHeight = image.size.height / factor;
+    
+    // Then figure out if you need to offset it to center vertically or horizontally
+    float leftOffset = (imageView.frame.size.width - newWidth) / 2;
+    float topOffset = (imageView.frame.size.height - newHeight) / 2;
+    
+    return CGRectMake(leftOffset, topOffset, newWidth, newHeight);
 }
 
 @end
