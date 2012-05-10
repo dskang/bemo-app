@@ -29,6 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    myAppDelegate.appState = IDLE_STATE;
 
     // Listen for received calls
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CALL_WAITING object:nil];

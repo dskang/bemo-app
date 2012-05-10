@@ -48,6 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    myAppDelegate.appState = RECEIVING_STATE;
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     

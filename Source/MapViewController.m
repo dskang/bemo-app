@@ -40,6 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:(BOOL)animated];
+    myAppDelegate.appState = MAP_STATE;
     [self startUpdating];
 }
 
@@ -87,7 +88,7 @@
 
 - (void)endConnection {
     NSLog(@"Segue: Map -> Contacts");
-    [self performSegueWithIdentifier:@"endMapView" sender:nil];
+    [self performSegueWithIdentifier:@"mapShowContacts" sender:nil];
 }
 
 - (IBAction)endConnectionButton:(id)sender {
