@@ -115,7 +115,7 @@
     if (annotView) {
         annotView.enabled = YES;
         annotView.canShowCallout = YES;
-        annotView.image=[UIImage imageNamed:@"dot.png"];
+        annotView.image = [UIImage imageNamed:@"dot.png"];
         annotView.centerOffset = CGPointMake(-3,6);
         return annotView;
     }
