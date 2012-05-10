@@ -51,7 +51,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButton" destination="iQH-OS-b7J" eventType="touchUpInside" id="ouM-gb-Fm2"/>
                                     <action selector="declineButton" destination="djH-3Q-yMj" eventType="touchUpInside" id="nP6-lS-pwi"/>
                                 </connections>
                             </button>
@@ -267,6 +266,40 @@
         <image name="lumofish.png" width="1024" height="1024"/>
         <image name="second" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="ConnectingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConnectingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="connectionStatus" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="contactName" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="partnerImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="timeLeftLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ContactsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactsTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="recenter:"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="ReceivingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReceivingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactName" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="partnerImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SplashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
