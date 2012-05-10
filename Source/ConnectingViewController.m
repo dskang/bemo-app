@@ -61,7 +61,7 @@
 
     // Set notification observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     
     if ([myAppDelegate.callManager.partnerInfo valueForKey:@"image"]) {
@@ -130,7 +130,17 @@
     self.timeLeft--;
 }
 
-// Called from observer, cancel button, and countdown timeout
+- (void)disconnected {
+    NSString *message = [NSString stringWithFormat:@"%@ is not available for Lumo.", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unavailable" 
+                                                    message:message
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self stopConnecting];
+}
+
 - (void)stopConnecting {
     [CallManager endConnection];
     NSLog(@"Segue: Connecting dismissed");
