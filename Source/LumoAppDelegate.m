@@ -129,8 +129,14 @@
     if ([key isEqualToString:@"INCOMING_CALL"]) {
         NSArray *args = [pushNotification valueForKeyPath:@"aps.alert.loc-args"];
         NSString *sourceName = [args objectAtIndex:0];
-        NSString *sourceID = [pushNotification valueForKey:@"source_id"];
-        [self checkCallFromSourceName:sourceName sourceID:sourceID];
+        NSString *sourceID = [pushNotification valueForKey:@"id"];
+        NSDictionary *sourceService = [pushNotification valueForKey:@"service"];
+
+        // Save contact info
+        self.callManager.partnerInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", sourceService, @"service", nil];
+
+        // Poll to see if call is still going on
+        [self.locationRelay pollForLocation];
     } else if ([key isEqualToString:@"MISSED_CALL"]) {
         // TODO: Show history screen
     }
@@ -146,13 +152,6 @@
         sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     }
     NSLog(@"Session token: %@", sessionToken);
-}
-
-- (void)checkCallFromSourceName:(NSString *)sourceName sourceID:(NSString *)sourceID {
-    // Save contact info
-    self.callManager.partnerInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:sourceID, @"id", sourceName, @"name", nil];
-    // Poll to see if call is still going on
-    [self.locationRelay pollForLocation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

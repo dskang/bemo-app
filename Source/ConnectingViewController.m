@@ -78,9 +78,7 @@
 }
 
 - (void)updatePartnerImage {
-    NSLog(@"updatePartnerImage called");
     UIImage *image = [myAppDelegate.callManager.partnerInfo valueForKey:@"image"];
-    NSLog(@"%@", image);
     self.partnerImage.image = image;
 }
 
