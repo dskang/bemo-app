@@ -51,13 +51,22 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:(BOOL)animated];
     myAppDelegate.appState = MAP_STATE;
-    [self startUpdating];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
+    
+    [myAppDelegate.locationRelay startSelfUpdates];
+    [myAppDelegate.locationRelay startPartnerUpdates];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:(BOOL)animated];
-    [self stopUpdating];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [myAppDelegate.locationRelay stopSelfUpdates];
+    [myAppDelegate.locationRelay stopPartnerUpdates];
 }
 
 - (void)receiveConnection {
@@ -65,30 +74,8 @@
 }
 
 - (void)updatePartnerLocationOnMap {
-    CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    // (0, 0) means that partner has not yet sent their real location or they have not moved for a while, both for which the correct behavior would be to not move the pin
-    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) return;
     // Show partner's location on map
-    self.contactPin.coordinate = partnerLocation.coordinate;
-}
-
-- (void)startUpdating {
-    NSLog(@"Start updating map view.");
-    // Listen for partner updates
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
-
-    [myAppDelegate.locationRelay startSelfUpdates];
-    [myAppDelegate.locationRelay startPartnerUpdates];
-}
-
-- (void)stopUpdating {
-    NSLog(@"Stop updating map view.");
-    // Stop listening for partner updates
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    [myAppDelegate.locationRelay stopSelfUpdates];
-    [myAppDelegate.locationRelay stopPartnerUpdates];
+    self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
 }
 
 - (void)disconnected {
