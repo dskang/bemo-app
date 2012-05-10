@@ -76,7 +76,7 @@
     NSLog(@"Start updating map view.");
     // Listen for partner updates
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endConnection) name:DISCONNECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
 
     [myAppDelegate.locationRelay startSelfUpdates];
     [myAppDelegate.locationRelay startPartnerUpdates];
@@ -89,6 +89,17 @@
 
     [myAppDelegate.locationRelay stopSelfUpdates];
     [myAppDelegate.locationRelay stopPartnerUpdates];
+}
+
+- (void)disconnected {
+    NSString *message = [NSString stringWithFormat:@"%@ ended the connection.", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected"
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self endConnection];
 }
 
 - (void)endConnection {
