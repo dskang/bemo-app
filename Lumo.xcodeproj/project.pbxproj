@@ -31,6 +31,9 @@
 		1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D61558AE340089CDC7 /* lumofish57.png */; };
 		1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D81558AE390089CDC7 /* lumofish114.png */; };
 		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
+		1AC8E360155C58B4006925B7 /* dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E35F155C58B4006925B7 /* dot@2x.png */; };
+		1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E362155C639F006925B7 /* rezoom@2x.png */; };
+		1AC8E365155C6581006925B7 /* rezoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E364155C6581006925B7 /* rezoom.png */; };
 		1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE29FA41533FC4300E651E4 /* MapViewController.m */; };
 		1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F6152E695A0006B5DB /* UIKit.framework */; };
 		1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444F8152E695A0006B5DB /* Foundation.framework */; };
@@ -105,6 +108,9 @@
 		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish114.png; path = ../Images/lumofish114.png; sourceTree = "<group>"; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Pin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AC8E35F155C58B4006925B7 /* dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dot@2x.png"; path = "Images/dot@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AC8E362155C639F006925B7 /* rezoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rezoom@2x.png"; path = "Images/rezoom@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AC8E364155C6581006925B7 /* rezoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rezoom.png; path = Images/rezoom.png; sourceTree = SOURCE_ROOT; };
 		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MapViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MapViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF444F2152E695A0006B5DB /* Lumo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +305,9 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1AC8E364155C6581006925B7 /* rezoom.png */,
+				1AC8E362155C639F006925B7 /* rezoom@2x.png */,
+				1AC8E35F155C58B4006925B7 /* dot@2x.png */,
 				1A082378155B959200BFD2A9 /* pin@2x.png */,
 				1A082376155B86D100BFD2A9 /* pin.png */,
 				1A2597021559A56500131467 /* lumofish.png */,
@@ -386,6 +395,9 @@
 				1A2597031559A56500131467 /* lumofish.png in Resources */,
 				1A082377155B86D100BFD2A9 /* pin.png in Resources */,
 				1A082379155B959200BFD2A9 /* pin@2x.png in Resources */,
+				1AC8E360155C58B4006925B7 /* dot@2x.png in Resources */,
+				1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */,
+				1AC8E365155C6581006925B7 /* rezoom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +517,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "C5A85A5A-873F-4B7D-9883-D6CC439B2809";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -522,7 +534,7 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "C5A85A5A-873F-4B7D-9883-D6CC439B2809";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
