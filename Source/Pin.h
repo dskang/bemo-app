@@ -12,7 +12,7 @@
 @interface Pin : NSObject <MKAnnotation> 
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, readonly, copy) NSString *title;
 
 - (id)initWithLocation:(CLLocationCoordinate2D)coordinate;
 

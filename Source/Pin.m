@@ -8,13 +8,17 @@
 
 #import "Pin.h"
 #import "LumoAppDelegate.h"
-@interface Pin()
-
-@end
 
 @implementation Pin
 @synthesize coordinate = _coordinate;
 @synthesize title = _title;
+
+- (NSString *)title {
+    if (!_title) {
+        _title = [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
+    }
+    return _title;
+}
 
 - (id)initWithLocation:(CLLocationCoordinate2D)coordinate {
     self = [super init];
@@ -22,14 +26,6 @@
         self.coordinate = coordinate;
     }
     return self;
-}
-
-- (NSString *)subtitle {
-    return nil;
-}
-
-- (NSString *)title {
-    return [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
 }
 
 @end
