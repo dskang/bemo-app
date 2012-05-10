@@ -61,7 +61,16 @@
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login"
+                                                    message:@"You must login to Facebook to use Lumo."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self authenticate];
 }
 
 - (void)fbDidExtendToken:(NSString*)accessToken expiresAt:(NSDate*)expiresAt {
@@ -73,7 +82,7 @@
 }
 
 - (void)fbSessionInvalidated {
-    
+    [self authenticate];
 }
 
 /******************************************************************************
