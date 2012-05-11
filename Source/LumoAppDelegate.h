@@ -43,12 +43,13 @@
 #define PARTNER_LOC_UPDATED @"partnerLocUpdated"
 #define DISCONNECTED @"disconnected"
 
-#define CONN_REQUESTED @"connRequested"
-#define CONN_RECEIVED @"connReceived"
-#define CONN_ENDED @"connEnded"
+#define CONN_REQUESTED @"connRequested" // user successfully requested a connection
+#define CONN_RECEIVED @"connReceived" // user successfully received a connection
+#define CONN_ENDED @"connEnded" // user successfully ended a connection
 
-#define DISCONNECTED @"disconnected"
-#define CALL_WAITING @"receive call"
+#define DISCONNECTED @"disconnected" // connection was disconnected
+#define CONN_WAITING @"receive call" // there is a connection waiting to be received
+#define CONN_ESTABLISHED @"connEstablished" // connection was successfully established
 
 @interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
 

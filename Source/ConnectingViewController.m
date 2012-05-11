@@ -60,7 +60,7 @@
     self.connectionStatus.text = @"Sending Request";
 
     // Set notification observers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:PARTNER_LOC_UPDATED object:nil];  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:CONN_ESTABLISHED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     
@@ -71,7 +71,7 @@
     }
     
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CALL_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
 
     // Request connection, which then starts polling
     [CallManager initiateConnection];

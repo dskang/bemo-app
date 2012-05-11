@@ -144,13 +144,16 @@
                 if (DEBUG) NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
                       self.partnerLocation.coordinate.latitude,
                       self.partnerLocation.coordinate.longitude);
-
                 if (DEBUG) NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
                 [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
             }
-        } 
-        
-        else if ([status isEqualToString:@"failure"]) {
+
+            // Announce that connection was established if trying to connect
+            if ([myAppDelegate.appState isEqualToString:CONNECTING_STATE]) {
+                if (DEBUG) NSLog(@"Notification: %@", CONN_ESTABLISHED);
+                [[NSNotificationCenter defaultCenter] postNotificationName:CONN_ESTABLISHED object:self];
+            }
+        } else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
             if (DEBUG) NSLog(@"Error Notification: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
