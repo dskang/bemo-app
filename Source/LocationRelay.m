@@ -81,10 +81,10 @@
 }
 
 /******************************************************************************
- * Start fetching partner location every 3 seconds
+ * Start fetching partner location
  ******************************************************************************/
 - (void)startPartnerUpdates {
-    self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(pollForLocation) userInfo:nil repeats:YES];
+    self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:PARTNER_LOC_POLL_INTERVAL target:self selector:@selector(pollForLocation) userInfo:nil repeats:YES];
 }
 
 /******************************************************************************
@@ -135,6 +135,12 @@
         NSString *status = [JSON valueForKeyPath:@"status"];
         
         if ([status isEqualToString:@"success"]) {
+            // Announce that connection was established if trying to connect
+            if ([myAppDelegate.appState isEqualToString:CONNECTING_STATE]) {
+                if (DEBUG) NSLog(@"Notification: %@", CONN_ESTABLISHED);
+                [[NSNotificationCenter defaultCenter] postNotificationName:CONN_ESTABLISHED object:self];
+            }
+
             // Save partner's location if it's not (0,0)
             // (0, 0) means that partner has not yet sent their real location or they have not moved for a while, both for which the correct behavior would be to not update partner's location
             CLLocationDegrees lat = [[JSON valueForKeyPath:@"data.latitude"] doubleValue];
@@ -146,12 +152,6 @@
                       self.partnerLocation.coordinate.longitude);
                 if (DEBUG) NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
                 [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
-            }
-
-            // Announce that connection was established if trying to connect
-            if ([myAppDelegate.appState isEqualToString:CONNECTING_STATE]) {
-                if (DEBUG) NSLog(@"Notification: %@", CONN_ESTABLISHED);
-                [[NSNotificationCenter defaultCenter] postNotificationName:CONN_ESTABLISHED object:self];
             }
         } else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];

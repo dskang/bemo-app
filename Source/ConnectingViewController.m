@@ -99,8 +99,7 @@
     self.partnerImage.frame = imageViewFrame;
 }
 
-- (void)pollLocation {
-    if (DEBUG) NSLog(@"ConnectingViewController | pollLocation() polling.");
+- (void)pollConnection {
     [myAppDelegate.locationRelay pollForLocation];
 }
 
@@ -116,8 +115,8 @@
     // Update connection status
     self.connectionStatus.text = @"Waiting for Response";
 
-    // Poll for a connection every 3 seconds
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(pollLocation) userInfo:nil repeats:YES];
+    // Poll for a connection
+    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:CONNECTING_POLL_INTERVAL target:self selector:@selector(pollConnection) userInfo:nil repeats:YES];
     
     // Start the countdown timer
     self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];

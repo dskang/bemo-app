@@ -25,6 +25,10 @@
 #define DEVICE_TOKEN @"deviceToken" // push notification
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
+// Intervals in seconds
+#define CONNECTING_POLL_INTERVAL 3
+#define PARTNER_LOC_POLL_INTERVAL 3
+
 // User states
 #define IDLE_STATE @"idleState" // user is idle
 #define CONNECTING_STATE @"connectingState" // user is making a connection
