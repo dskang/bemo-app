@@ -12,10 +12,14 @@
 #import "LumoRequest.h"
 #import "ContactsManager.h"
 #import "CallManager.h"
+#import "TestFlight.h"
 
 #ifndef DEBUG
 #define DEBUG 0
 #endif
+
+// TestFlight
+#define NSLog TFLog
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"

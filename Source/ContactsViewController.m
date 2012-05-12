@@ -40,6 +40,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (IBAction)launchFeedback {
+    [TestFlight openFeedbackView];
+}
+
 - (void)showReceiveScreen {
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }

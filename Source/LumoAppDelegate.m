@@ -89,6 +89,8 @@
         self.auth.loginRequired = YES;
     }
     if (DEBUG) NSLog(@"Device key: %@", deviceKey);
+
+    if (DEBUG) [TestFlight setDeviceIdentifier:deviceKey];
 }
 
 /******************************************************************************
@@ -97,6 +99,8 @@
 // Application launched from a non-running state
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    [TestFlight takeOff:@"bfbaf3f6b1f916491e638d2777f7bf58_ODk2NDkyMDEyLTA1LTEyIDA4OjQyOjE0LjIwNTkyOQ"];
+
     // Check if app was opened from a push notification
     if (launchOptions)
 	{

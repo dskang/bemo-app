@@ -52,6 +52,10 @@
 		B560090215550C09008936C9 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090115550C09008936C9 /* CallManager.m */; };
 		B560090515550FE6008936C9 /* LumoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090415550FE6008936C9 /* LumoRequest.m */; };
 		B560090815559BF7008936C9 /* ContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090715559BF7008936C9 /* ContactsManager.m */; };
+		B5910F14155E8F3700294095 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5910F10155E8F3700294095 /* libTestFlight.a */; };
+		B5910F15155E8F3700294095 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B5910F11155E8F3700294095 /* README.txt */; };
+		B5910F16155E8F3700294095 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = B5910F12155E8F3700294095 /* release_notes.txt */; };
+		B5910F19155E917D00294095 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5910F18155E917D00294095 /* libz.dylib */; };
 		B5C7D90515523E250080E630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C7D90415523E250080E630 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +144,11 @@
 		B560090415550FE6008936C9 /* LumoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B560090615559BF7008936C9 /* ContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsManager.h; sourceTree = "<group>"; };
 		B560090715559BF7008936C9 /* ContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContactsManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B5910F10155E8F3700294095 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		B5910F11155E8F3700294095 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		B5910F12155E8F3700294095 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		B5910F13155E8F3700294095 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		B5910F18155E917D00294095 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +163,8 @@
 				1AF444F9152E695A0006B5DB /* Foundation.framework in Frameworks */,
 				1AF444FB152E695A0006B5DB /* CoreGraphics.framework in Frameworks */,
 				1A2D33D815387E7E003FC6A3 /* libfacebook_ios_sdk.a in Frameworks */,
+				B5910F19155E917D00294095 /* libz.dylib in Frameworks */,
+				B5910F14155E8F3700294095 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,9 +335,23 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		B5910F0F155E8F3700294095 /* TestFlightSDK1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				B5910F10155E8F3700294095 /* libTestFlight.a */,
+				B5910F11155E8F3700294095 /* README.txt */,
+				B5910F12155E8F3700294095 /* release_notes.txt */,
+				B5910F13155E8F3700294095 /* TestFlight.h */,
+			);
+			name = TestFlightSDK1.0;
+			path = External/TestFlightSDK1.0;
+			sourceTree = "<group>";
+		};
 		B5C7D8FC1551E3C90080E630 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				B5910F18155E917D00294095 /* libz.dylib */,
+				B5910F0F155E8F3700294095 /* TestFlightSDK1.0 */,
 				1A6C93DD153D049400C7D6ED /* AFNetworking */,
 				1A2D33C715387E7E003FC6A3 /* facebook-ios-sdk */,
 			);
@@ -402,6 +427,8 @@
 				1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */,
 				1AC8E365155C6581006925B7 /* rezoom.png in Resources */,
 				1AC8E367155C670A006925B7 /* dot.png in Resources */,
+				B5910F15155E8F3700294095 /* README.txt in Resources */,
+				B5910F16155E8F3700294095 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +546,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Lumo;
 				PROVISIONING_PROFILE = "536ADF43-245A-49AB-B015-6147E4560C9C";
@@ -536,6 +564,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Lumo;
 				PROVISIONING_PROFILE = "536ADF43-245A-49AB-B015-6147E4560C9C";

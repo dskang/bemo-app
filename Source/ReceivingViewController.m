@@ -49,6 +49,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     myAppDelegate.appState = RECEIVING_STATE;
+    [TestFlight passCheckpoint:@"RECEIVING"];
+
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     
