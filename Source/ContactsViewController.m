@@ -51,6 +51,9 @@
     [self.activityView startAnimating];
     [ContactsManager getFriends];
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
+
+    // Stop activity indicator after 5 seconds even if contacts have not been refreshed
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self.activityView selector:@selector(stopAnimating) userInfo:nil repeats:NO];
 }
 
 - (void)loadContacts {
