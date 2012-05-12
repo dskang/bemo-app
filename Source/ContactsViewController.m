@@ -51,12 +51,17 @@
 }
 
 - (IBAction)launchFeedback {
+#ifdef TESTFLIGHT
     [TestFlight openFeedbackView];
+#endif
 }
 
 - (void)refreshContacts {
     [ContactsManager getFriends];
+    
+#ifdef TESTFLIGHT
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
+#endif
 }
 
 - (void)loadContacts {

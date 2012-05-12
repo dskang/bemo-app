@@ -18,8 +18,9 @@
 #define DEBUG 0
 #endif
 
-// TestFlight
+#ifdef TESTFLIGHT
 #define NSLog TFLog
+#endif
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://lumo.herokuapp.com"

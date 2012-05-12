@@ -51,7 +51,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:(BOOL)animated];
     myAppDelegate.appState = MAP_STATE;
+    
+#ifdef TESTFLIGHT
     [TestFlight passCheckpoint:@"MAP"];
+#endif
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];

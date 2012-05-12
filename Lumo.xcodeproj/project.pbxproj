@@ -599,6 +599,52 @@
 			};
 			name = Release;
 		};
+		B5EEB26A155F0A5B00AF2FFA /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Kang (MD8XMS6B2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"TESTFLIGHT=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
+				SDKROOT = iphoneos;
+			};
+			name = TestFlight;
+		};
+		B5EEB26B155F0A5B00AF2FFA /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Kang (MD8XMS6B2J)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Source/Prefix.pch;
+				INFOPLIST_FILE = Source/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
+					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
+				);
+				PRODUCT_NAME = Lumo;
+				PROVISIONING_PROFILE = "536ADF43-245A-49AB-B015-6147E4560C9C";
+				WRAPPER_EXTENSION = app;
+			};
+			name = TestFlight;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -606,6 +652,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF44519152E695A0006B5DB /* Debug */,
+				B5EEB26A155F0A5B00AF2FFA /* TestFlight */,
 				1AF4451A152E695A0006B5DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -615,6 +662,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF4451C152E695A0006B5DB /* Debug */,
+				B5EEB26B155F0A5B00AF2FFA /* TestFlight */,
 				1AF4451D152E695A0006B5DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
