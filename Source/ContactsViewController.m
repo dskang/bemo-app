@@ -12,10 +12,12 @@
 #import "CallManager.h"
 
 @interface ContactsViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @end
 
 @implementation ContactsViewController
+@synthesize activityView = _activityView;
 @synthesize contactsTableView = _contactsTableView;
 
 - (void)viewDidLoad {
@@ -23,6 +25,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setActivityView:nil];
     [super viewDidUnload];
 }
 
@@ -31,7 +34,7 @@
     myAppDelegate.appState = IDLE_STATE;
     // Show receiving screen when receiving a call
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CONN_WAITING object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:GET_FRIENDS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadContacts) name:GET_FRIENDS_SUCCESS object:nil];
 }
     
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,12 +47,19 @@
     [TestFlight openFeedbackView];
 }
 
-- (void)showReceiveScreen {
-    [self performSegueWithIdentifier:@"showReceive" sender:nil];
+- (IBAction)refreshContacts:(id)sender {
+    [self.activityView startAnimating];
+    [ContactsManager getFriends];
+    [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
 }
 
-- (void)reloadTable {
+- (void)loadContacts {
+    [self.activityView stopAnimating];
     [self.contactsTableView reloadData];
+}
+
+- (void)showReceiveScreen {
+    [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
