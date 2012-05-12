@@ -97,8 +97,8 @@
 // Application launched from a non-running state
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
-    [TestFlight takeOff:@"bfbaf3f6b1f916491e638d2777f7bf58_ODk2NDkyMDEyLTA1LTEyIDA4OjQyOjE0LjIwNTkyOQ"];
     if (DEBUG) [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    [TestFlight takeOff:@"bfbaf3f6b1f916491e638d2777f7bf58_ODk2NDkyMDEyLTA1LTEyIDA4OjQyOjE0LjIwNTkyOQ"];
 
     // Check if app was opened from a push notification
     if (launchOptions)
