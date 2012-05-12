@@ -6,5 +6,7 @@
   Copyright (c) 2012 Lumo. All rights reserved.
 */
 
+"VIEW" = "View";
+"OK" = "OK";
 "INCOMING_CALL" = "%@ would like to share locations";
 "MISSED_CALL" = "You missed a Lumo request from %@";

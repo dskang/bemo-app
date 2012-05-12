@@ -56,6 +56,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
     
+    // Reset partner's location
+    myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+
     [myAppDelegate.locationRelay startSelfUpdates];
     [myAppDelegate.locationRelay startPartnerUpdates];
 }
@@ -128,12 +131,7 @@
 - (IBAction)recenter:(id)sender {
     // Return if we don't have a location for partner
     CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) {
-        if (DEBUG) NSLog(@"recenter(): Ignored (0, 0)");
-        return;
-    } else {
-        if (DEBUG) NSLog(@"recenter(): Recentered with partner's location at (%f, %f)", partnerLocation.coordinate.latitude, partnerLocation.coordinate.longitude);
-    }
+    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) return;
 
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
     CLLocationCoordinate2D southWest;
