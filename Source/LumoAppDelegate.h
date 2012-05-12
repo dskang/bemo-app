@@ -14,10 +14,6 @@
 #import "CallManager.h"
 #import "TestFlight.h"
 
-#ifndef DEBUG
-#define DEBUG 0
-#endif
-
 #ifdef TESTFLIGHT
 #define NSLog TFLog
 #endif

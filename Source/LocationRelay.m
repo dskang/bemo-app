@@ -43,9 +43,11 @@
     if (abs(howRecent) < 15.0)
     {
         self.currentLocation = newLocation;
-        if (DEBUG) NSLog(@"self: latitude %+.6f, longitude %+.6f\n",
+#ifdef DEBUG
+        NSLog(@"self: latitude %+.6f, longitude %+.6f\n",
               self.currentLocation.coordinate.latitude,
               self.currentLocation.coordinate.longitude);
+#endif
         [self pushLocation];
     }
 }
@@ -137,7 +139,9 @@
         if ([status isEqualToString:@"success"]) {
             // Announce that connection was established if trying to connect
             if ([myAppDelegate.appState isEqualToString:CONNECTING_STATE]) {
-                if (DEBUG) NSLog(@"Notification: %@", CONN_ESTABLISHED);
+#ifdef DEBUG
+                NSLog(@"Notification: %@", CONN_ESTABLISHED);
+#endif
                 [[NSNotificationCenter defaultCenter] postNotificationName:CONN_ESTABLISHED object:self];
             }
 
@@ -147,15 +151,21 @@
             CLLocationDegrees lon = [[JSON valueForKeyPath:@"data.longitude"] doubleValue];
             if (!(lat == 0.0 && lon == 0.0)) {
                 self.partnerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-                if (DEBUG) NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
+#ifdef DEBUG
+                NSLog(@"partner: latitude %+.6f, longitude %+.6f\n",
                       self.partnerLocation.coordinate.latitude,
                       self.partnerLocation.coordinate.longitude);
-                if (DEBUG) NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
+#endif
+#ifdef DEBUG
+                NSLog(@"Notification: %@", PARTNER_LOC_UPDATED);
+#endif
                 [[NSNotificationCenter defaultCenter] postNotificationName:PARTNER_LOC_UPDATED object:self];
             }
         } else if ([status isEqualToString:@"failure"]) {
             NSString* error = [JSON valueForKeyPath:@"error"];
-            if (DEBUG) NSLog(@"Error Notification: %@", error);
+#ifdef DEBUG
+            NSLog(@"Error Notification: %@", error);
+#endif
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
