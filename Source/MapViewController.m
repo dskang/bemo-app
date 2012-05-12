@@ -128,7 +128,12 @@
 - (IBAction)recenter:(id)sender {
     // Return if we don't have a location for partner
     CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) return;
+    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) {
+        if (DEBUG) NSLog(@"recenter(): Ignored (0, 0)");
+        return;
+    } else {
+        if (DEBUG) NSLog(@"recenter(): Recentered with partner's location at (%f, %f)", partnerLocation.coordinate.latitude, partnerLocation.coordinate.longitude);
+    }
 
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
     CLLocationCoordinate2D southWest;
