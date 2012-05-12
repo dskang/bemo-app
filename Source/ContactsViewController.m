@@ -57,9 +57,6 @@
 - (void)refreshContacts {
     [ContactsManager getFriends];
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
-
-    // Stop pull-to-refresh after 5 seconds even if contacts have not been refreshed
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self.refreshView selector:@selector(finishedLoading) userInfo:nil repeats:NO];
 }
 
 - (void)loadContacts {
