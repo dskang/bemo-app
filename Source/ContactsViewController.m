@@ -12,13 +12,11 @@
 #import "CallManager.h"
 
 @interface ContactsViewController ()
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @property (strong, nonatomic) PullToRefreshView *refreshView;
 @end
 
 @implementation ContactsViewController
-@synthesize activityView = _activityView;
 @synthesize contactsTableView = _contactsTableView;
 @synthesize refreshView = _refreshView;
 
@@ -31,8 +29,7 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    [self setActivityView:nil];
-    [self setRefreshView:nil]; // Is this right? (Releasing retained subviews)
+    [self setRefreshView:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -50,7 +47,7 @@
 }
 
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
-    [self performSelectorInBackground:@selector(refreshContacts) withObject:nil];
+    [self refreshContacts];
 }
 
 - (IBAction)launchFeedback {
@@ -58,20 +55,16 @@
 }
 
 - (void)refreshContacts {
-    [self.activityView startAnimating];
     [ContactsManager getFriends];
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
-    
-    // Stop activity indicator after 5 seconds even if contacts have not been refreshed
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self.activityView selector:@selector(stopAnimating) userInfo:nil repeats:NO];
-    
-    // Tell the refresher we've finished reloading
-    [self.refreshView finishedLoading];
+
+    // Stop pull-to-refresh after 5 seconds even if contacts have not been refreshed
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self.refreshView selector:@selector(finishedLoading) userInfo:nil repeats:NO];
 }
 
 - (void)loadContacts {
-    [self.activityView stopAnimating];
     [self.contactsTableView reloadData];
+    [self.refreshView finishedLoading];
 }
 
 - (void)showReceiveScreen {
