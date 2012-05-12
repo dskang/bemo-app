@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PullToRefreshView.h"
 
-@interface ContactsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ContactsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, PullToRefreshViewDelegate>
 
 @end

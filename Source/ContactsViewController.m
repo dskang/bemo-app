@@ -14,19 +14,25 @@
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
+@property (strong, nonatomic) PullToRefreshView *refreshView;
 @end
 
 @implementation ContactsViewController
 @synthesize activityView = _activityView;
 @synthesize contactsTableView = _contactsTableView;
+@synthesize refreshView = _refreshView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.refreshView = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *)self.contactsTableView];
+    [self.refreshView setDelegate:self];
+    [self.contactsTableView addSubview:self.refreshView];
 }
 
 - (void)viewDidUnload {
-    [self setActivityView:nil];
     [super viewDidUnload];
+    [self setActivityView:nil];
+    [self setRefreshView:nil]; // Is this right? (Releasing retained subviews)
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -36,24 +42,31 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReceiveScreen) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadContacts) name:GET_FRIENDS_SUCCESS object:nil];
 }
-    
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
+    [self performSelectorInBackground:@selector(refreshContacts) withObject:nil];
+}
+
 - (IBAction)launchFeedback {
     [TestFlight openFeedbackView];
 }
 
-- (IBAction)refreshContacts:(id)sender {
+- (void)refreshContacts {
     [self.activityView startAnimating];
     [ContactsManager getFriends];
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
-
+    
     // Stop activity indicator after 5 seconds even if contacts have not been refreshed
     [NSTimer scheduledTimerWithTimeInterval:5 target:self.activityView selector:@selector(stopAnimating) userInfo:nil repeats:NO];
+    
+    // Tell the refresher we've finished reloading
+    [self.refreshView finishedLoading];
 }
 
 - (void)loadContacts {
@@ -70,7 +83,7 @@
     NSString *firstLetterOfContactName = [sortedSections objectAtIndex:section];
     NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:firstLetterOfContactName];
     return [contacts objectAtIndex:row];
-
+    
 }
 
 # pragma mark UITableViewDataSource

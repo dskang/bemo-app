@@ -17,6 +17,7 @@
 		1A2597061559A74500131467 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2597051559A74500131467 /* SplashViewController.m */; };
 		1A2D33D715387E7E003FC6A3 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2D33CA15387E7E003FC6A3 /* FBDialog.bundle */; };
 		1A2D33D815387E7E003FC6A3 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2D33D015387E7E003FC6A3 /* libfacebook_ios_sdk.a */; };
+		1A3151BC155EF42E00ABD769 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3151BB155EF42E00ABD769 /* QuartzCore.framework */; };
 		1A6C93F3153D049400C7D6ED /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93DF153D049400C7D6ED /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93F4153D049400C7D6ED /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93E1153D049400C7D6ED /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1A6C93F5153D049400C7D6ED /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6C93E3153D049400C7D6ED /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -31,6 +32,9 @@
 		1A96B6D71558AE340089CDC7 /* lumofish57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D61558AE340089CDC7 /* lumofish57.png */; };
 		1A96B6D91558AE390089CDC7 /* lumofish114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A96B6D81558AE390089CDC7 /* lumofish114.png */; };
 		1A9AA68715368016001B5614 /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9AA68615368016001B5614 /* Pin.m */; };
+		1A9B3A9A155EEC5A00A61E5C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9B3A96155EEC5A00A61E5C /* arrow.png */; };
+		1A9B3A9B155EEC5A00A61E5C /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9B3A97155EEC5A00A61E5C /* arrow@2x.png */; };
+		1A9B3A9C155EEC5A00A61E5C /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9B3A99155EEC5A00A61E5C /* PullToRefreshView.m */; };
 		1AC8E360155C58B4006925B7 /* dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E35F155C58B4006925B7 /* dot@2x.png */; };
 		1AC8E363155C639F006925B7 /* rezoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E362155C639F006925B7 /* rezoom@2x.png */; };
 		1AC8E365155C6581006925B7 /* rezoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E364155C6581006925B7 /* rezoom.png */; };
@@ -86,6 +90,7 @@
 		1A2D33D415387E7E003FC6A3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		1A2D33D515387E7E003FC6A3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		1A2D33D615387E7E003FC6A3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		1A3151BB155EF42E00ABD769 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A6C93DE153D049400C7D6ED /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		1A6C93DF153D049400C7D6ED /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		1A6C93E0153D049400C7D6ED /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -113,6 +118,10 @@
 		1A96B6D81558AE390089CDC7 /* lumofish114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lumofish114.png; path = ../Images/lumofish114.png; sourceTree = "<group>"; };
 		1A9AA68515368016001B5614 /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Pin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A9AA68615368016001B5614 /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Pin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1A9B3A96155EEC5A00A61E5C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		1A9B3A97155EEC5A00A61E5C /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		1A9B3A98155EEC5A00A61E5C /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
+		1A9B3A99155EEC5A00A61E5C /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		1AC8E35F155C58B4006925B7 /* dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dot@2x.png"; path = "Images/dot@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC8E362155C639F006925B7 /* rezoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rezoom@2x.png"; path = "Images/rezoom@2x.png"; sourceTree = SOURCE_ROOT; };
 		1AC8E364155C6581006925B7 /* rezoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rezoom.png; path = Images/rezoom.png; sourceTree = SOURCE_ROOT; };
@@ -157,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3151BC155EF42E00ABD769 /* QuartzCore.framework in Frameworks */,
 				1A18B344153808FF006C8BF7 /* CoreLocation.framework in Frameworks */,
 				1A06AD551533EC3C0023E769 /* MapKit.framework in Frameworks */,
 				1AF444F7152E695A0006B5DB /* UIKit.framework in Frameworks */,
@@ -223,6 +233,18 @@
 			path = External/AFNetworking;
 			sourceTree = "<group>";
 		};
+		1A9B3A95155EEC5A00A61E5C /* PullToRefresh-SonnyParlin */ = {
+			isa = PBXGroup;
+			children = (
+				1A9B3A96155EEC5A00A61E5C /* arrow.png */,
+				1A9B3A97155EEC5A00A61E5C /* arrow@2x.png */,
+				1A9B3A98155EEC5A00A61E5C /* PullToRefreshView.h */,
+				1A9B3A99155EEC5A00A61E5C /* PullToRefreshView.m */,
+			);
+			name = "PullToRefresh-SonnyParlin";
+			path = "External/PullToRefresh-SonnyParlin";
+			sourceTree = "<group>";
+		};
 		1AF444E7152E695A0006B5DB = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +266,7 @@
 		1AF444F5152E695A0006B5DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A3151BB155EF42E00ABD769 /* QuartzCore.framework */,
 				1A18B343153808FF006C8BF7 /* CoreLocation.framework */,
 				1A06AD541533EC3C0023E769 /* MapKit.framework */,
 				1AF444F6152E695A0006B5DB /* UIKit.framework */,
@@ -350,6 +373,7 @@
 		B5C7D8FC1551E3C90080E630 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				1A9B3A95155EEC5A00A61E5C /* PullToRefresh-SonnyParlin */,
 				B5910F18155E917D00294095 /* libz.dylib */,
 				B5910F0F155E8F3700294095 /* TestFlightSDK1.0 */,
 				1A6C93DD153D049400C7D6ED /* AFNetworking */,
@@ -429,6 +453,8 @@
 				1AC8E367155C670A006925B7 /* dot.png in Resources */,
 				B5910F15155E8F3700294095 /* README.txt in Resources */,
 				B5910F16155E8F3700294095 /* release_notes.txt in Resources */,
+				1A9B3A9A155EEC5A00A61E5C /* arrow.png in Resources */,
+				1A9B3A9B155EEC5A00A61E5C /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +488,7 @@
 				B560090815559BF7008936C9 /* ContactsManager.m in Sources */,
 				1A2597001559A09C00131467 /* ReceivingViewController.m in Sources */,
 				1A2597061559A74500131467 /* SplashViewController.m in Sources */,
+				1A9B3A9C155EEC5A00A61E5C /* PullToRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +576,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "536ADF43-245A-49AB-B015-6147E4560C9C";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -567,7 +594,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "536ADF43-245A-49AB-B015-6147E4560C9C";
+				PROVISIONING_PROFILE = "EA876299-9110-4131-A6D8-13D88E0929A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
