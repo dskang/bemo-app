@@ -107,6 +107,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceKey = [defaults objectForKey:DEVICE_KEY];
     NSString *serviceKey = [defaults objectForKey:@"FBAccessTokenKey"];
+    NSString *deviceType = [UIDevice currentDevice].model;
     
 #if !(TARGET_IPHONE_SIMULATOR)
     NSString *deviceToken = [defaults objectForKey:DEVICE_TOKEN];
@@ -115,7 +116,7 @@
 #endif
 
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"iphone", @"device",
+                          deviceType, @"device",
                           deviceKey, @"device_id",
                           deviceToken, @"device_token",
                           @"facebook", @"service",

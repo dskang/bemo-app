@@ -21,10 +21,11 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
+    NSString *deviceType = [UIDevice currentDevice].model;
     if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/init", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"iphone", @"device",
+                              deviceType, @"device",
                               @"facebook", @"service",
                               sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
@@ -38,10 +39,11 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
+    NSString *deviceType = [UIDevice currentDevice].model;
     if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/receive", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"iphone", @"device",
+                              deviceType, @"device",
                               sessionToken, @"token", nil];
         [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
     }
