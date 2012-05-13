@@ -66,4 +66,6 @@
 @property (nonatomic, strong) CallManager *callManager;
 @property (nonatomic, strong) ContactsManager *contactsManager;
 
+- (void)showMissedRequestAlertFromName:(NSString *)name;
+
 @end

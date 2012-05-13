@@ -57,7 +57,7 @@
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopConnecting) name:DISCONNECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
 
     if ([myAppDelegate.callManager.partnerInfo valueForKey:@"image"]) {
         [self updatePartnerImage];
@@ -84,8 +84,9 @@
     self.partnerImage.frame = imageViewFrame;
 }
 
-- (void)stopConnecting {
-    [CallManager endConnection];
+- (void)disconnected {
+    NSString *name = [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
+    [myAppDelegate showMissedRequestAlertFromName:name];
     [self performSegueWithIdentifier:@"receiverShowContacts" sender:nil];
 }
 
@@ -99,7 +100,8 @@
 }
 
 - (IBAction)declineButton {
-    [self stopConnecting];
+    [CallManager endConnection];
+    [self performSegueWithIdentifier:@"receiverShowContacts" sender:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
