@@ -28,7 +28,7 @@
 
 // Intervals in seconds
 #define CONNECTING_POLL_INTERVAL 3
-#define PARTNER_LOC_POLL_INTERVAL 3
+#define PARTNER_LOC_POLL_INTERVAL 5
 
 // User states
 #define IDLE_STATE @"idleState" // user is idle
