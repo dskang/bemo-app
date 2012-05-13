@@ -57,7 +57,7 @@
 #endif
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:[CallManager class] selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
 
     [myAppDelegate.locationRelay startSelfUpdates];
@@ -76,10 +76,6 @@
     myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
 }
 
-- (void)receiveConnection {
-    [CallManager receiveConnection];
-}
-
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
     self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
@@ -93,16 +89,12 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    [self endConnection];
-}
-
-- (void)endConnection {
     [self performSegueWithIdentifier:@"mapShowContacts" sender:nil];
 }
 
 - (IBAction)endConnectionButton:(id)sender {
     [CallManager endConnection];
-    [self endConnection];
+    [self performSegueWithIdentifier:@"mapShowContacts" sender:nil];
 }
 
 // Called each time an annotation is added to the map
