@@ -13,6 +13,7 @@
 #import "CallManager.h"
 
 @interface MapViewController ()
+@property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) Pin *contactPin;
 @property (nonatomic, strong) NSTimer *partnerTimer;
 @end

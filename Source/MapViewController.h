@@ -11,8 +11,5 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
-@property (nonatomic, weak) IBOutlet MKMapView* mapView;
-
-- (IBAction)recenter:(id)sender;
 
 @end
