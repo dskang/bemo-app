@@ -107,6 +107,7 @@
 {
 
 #ifdef TESTFLIGHT
+    // NOTE: This is deprecated functionality, but we need it for TestFlight
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     [TestFlight takeOff:@"bfbaf3f6b1f916491e638d2777f7bf58_ODk2NDkyMDEyLTA1LTEyIDA4OjQyOjE0LjIwNTkyOQ"];
 #endif
