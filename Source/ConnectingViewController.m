@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *partnerImage;
 @property (strong, nonatomic) NSTimer *pollTimer;
 @property (strong, nonatomic) NSTimer *countdownTimer;
+@property (strong, nonatomic) NSTimer *connStartTimer;
 @property (nonatomic) NSInteger timeLeft;
 @end
 
@@ -27,7 +28,8 @@
 @synthesize connectionStatus = _connectionStatus;
 @synthesize partnerImage = _partnerImage;
 @synthesize pollTimer = _pollTimer;
-@synthesize countdownTimer = _timeoutTimer;
+@synthesize countdownTimer = _countdownTimer;
+@synthesize connStartTimer = _connStartTimer;
 @synthesize timeLeft = _timeLeft;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -77,7 +79,7 @@
     }
 
     // Request connection, which then starts polling
-    [NSTimer scheduledTimerWithTimeInterval:WAIT_TIME_BEFORE_INITIATING target:[CallManager class] selector:@selector(initiateConnection) userInfo:nil repeats:NO];
+    self.connStartTimer = [NSTimer scheduledTimerWithTimeInterval:WAIT_TIME_BEFORE_INITIATING target:[CallManager class] selector:@selector(initiateConnection) userInfo:nil repeats:NO];
 }
 
 - (void)viewDidUnload {
@@ -140,6 +142,7 @@
 }
 
 - (IBAction)cancelButton {
+    [self.connStartTimer invalidate];
     [self stopConnecting];
 }
 
