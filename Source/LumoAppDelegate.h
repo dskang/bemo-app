@@ -12,7 +12,10 @@
 #import "LumoRequest.h"
 #import "ContactsManager.h"
 #import "CallManager.h"
+
+#ifdef TESTFLIGHT
 #import "TestFlight.h"
+#endif
 
 #ifdef TESTFLIGHT
 #define NSLog TFLog
