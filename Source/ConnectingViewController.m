@@ -77,7 +77,7 @@
     }
 
     // Request connection, which then starts polling
-    [CallManager initiateConnection];
+    [NSTimer scheduledTimerWithTimeInterval:WAIT_TIME_BEFORE_INITIATING target:[CallManager class] selector:@selector(initiateConnection) userInfo:nil repeats:NO];
 }
 
 - (void)viewDidUnload {

@@ -27,8 +27,9 @@
 #define LUMO_SESSION_TOKEN @"LumoSessionToken"
 
 // Intervals in seconds
-#define CONNECTING_POLL_INTERVAL 3
-#define PARTNER_LOC_POLL_INTERVAL 5
+#define WAIT_TIME_BEFORE_INITIATING 2 // how long to wait on the connecting screen before sending init request
+#define CONNECTING_POLL_INTERVAL 3 // how often to poll for call status on connecting screen
+#define PARTNER_LOC_POLL_INTERVAL 5 // how often to poll for partner's location in map screen
 
 // User states
 #define IDLE_STATE @"idleState" // user is idle
