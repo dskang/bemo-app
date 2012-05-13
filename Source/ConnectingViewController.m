@@ -68,7 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:[CallManager class] selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
 
     if ([myAppDelegate.callManager.partnerInfo valueForKey:@"image"]) {
         [self updatePartnerImage];
@@ -102,16 +102,8 @@
     self.partnerImage.frame = imageViewFrame;
 }
 
-- (void)pollConnection {
-    [myAppDelegate.locationRelay pollForLocation];
-}
-
 - (void)showMapView {
     [self performSegueWithIdentifier:@"showMapView" sender:nil];
-}
-
-- (void)receiveConnection {
-    [CallManager receiveConnection];
 }
 
 - (void)startPolling {
@@ -119,7 +111,7 @@
     self.connectionStatus.text = @"Waiting for Response";
 
     // Poll for a connection
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:CONNECTING_POLL_INTERVAL target:self selector:@selector(pollConnection) userInfo:nil repeats:YES];
+    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:CONNECTING_POLL_INTERVAL target:myAppDelegate.locationRelay selector:@selector(pollForLocation) userInfo:nil repeats:YES];
     
     // Start the countdown timer
     self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
@@ -139,7 +131,7 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    [self stopConnecting];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)stopConnecting {
