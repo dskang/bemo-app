@@ -68,10 +68,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_FRIENDS_SUCCESS object:self]; 
         } else {
             NSString *error = [JSON valueForKey:@"error"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
 #ifdef DEBUG
             NSLog(@"Error Notification: %@", error);
 #endif
+            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];

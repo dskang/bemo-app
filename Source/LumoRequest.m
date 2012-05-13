@@ -28,16 +28,16 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:mutableRequest success:^(NSURLRequest* request, NSHTTPURLResponse* response, id JSON) {
         NSString* status = [JSON valueForKeyPath:@"status"];
         if ([status isEqualToString:@"success"]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self userInfo:JSON];
 #ifdef DEBUG
             NSLog(@"Notification: %@", successNotification);
 #endif
+            [[NSNotificationCenter defaultCenter] postNotificationName:successNotification object:self userInfo:JSON];
         } else {
             NSString *error = [JSON valueForKey:@"error"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
 #ifdef DEBUG
             NSLog(@"Error Notification: %@", error);
 #endif
+            [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
