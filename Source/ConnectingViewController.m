@@ -49,8 +49,7 @@
     CGRect frame = [self getFrameSizeForImage:self.partnerImage.image inImageView:self.partnerImage];
     CGRect imageViewFrame = CGRectMake(self.partnerImage.frame.origin.x + frame.origin.x, self.partnerImage.frame.origin.y + frame.origin.y, frame.size.width, frame.size.height);
     self.partnerImage.frame = imageViewFrame;
-
-    // Set timeLeft from defaults (TODO - temporarily hardcoded)
+    // Set the number of seconds the user will try to connect
     self.timeLeft = 60;
 }
 
@@ -69,6 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMapView) name:CONN_ESTABLISHED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidConnection) name:INVALID object:nil];
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
     [[NSNotificationCenter defaultCenter] addObserver:[CallManager class] selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
 
@@ -93,6 +93,17 @@
     [self.pollTimer invalidate];
     [self.countdownTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+// Occurs when either the server cannot send a push notification or target does not have a device that can receive a push notification
+- (void)invalidConnection {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Unable to establish connection"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)updatePartnerImage {
