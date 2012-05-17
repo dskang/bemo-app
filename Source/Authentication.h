@@ -20,6 +20,10 @@
 // 3. Device token (for push notifications)
 @property (nonatomic) BOOL loginRequired;
 
+// Indicates if we need to log into Facebook
+// This is the case when the user deauthorizes the app
+@property (nonatomic) BOOL facebookLoginRequired;
+
 - (void)authenticate;
 
 @end

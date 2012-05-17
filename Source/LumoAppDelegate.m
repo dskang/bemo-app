@@ -76,6 +76,14 @@
     [self.auth authenticate];
 }
 
+- (void)serviceFailure {
+#ifdef DEBUG
+    NSLog(@"Service auth failed.");
+#endif
+    self.auth.facebookLoginRequired = YES;
+    [self.auth authenticate];
+}
+
 /******************************************************************************
  * Device ID generation
  ******************************************************************************/
@@ -128,6 +136,7 @@
     // Create notification observer for server failure or auth failure
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailure) name:REQUEST_FAILED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:AUTH_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceFailure) name:SERVICE_FAILED object:nil];
     
     // Create notification observer for app flow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];

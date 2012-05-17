@@ -14,6 +14,7 @@
 
 @synthesize facebook = _facebook;
 @synthesize loginRequired;
+@synthesize facebookLoginRequired;
 
 /******************************************************************************
  * Getters
@@ -40,7 +41,7 @@
         self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
     
-    if (![self.facebook isSessionValid]) {
+    if (![self.facebook isSessionValid] || facebookLoginRequired) {
         [self.facebook authorize:nil];
     } else {
         // Only log in if user's info changed
@@ -60,7 +61,9 @@
     [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+    self.facebookLoginRequired = NO;
     
+    // Update server with new Facebook credentials
     [self loginToLumo];
 }
 

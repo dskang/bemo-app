@@ -44,6 +44,7 @@
 #define PARTNER_IMAGE_UPDATED @"partnerImageUpdated"
 #define REQUEST_FAILED @"requestFailure"
 #define AUTH_FAILED @"auth"
+#define SERVICE_FAILED @"service"
 #define INVALID @"invalid"
 
 #define LOGIN_SUCCESS @"loginSuccess"
