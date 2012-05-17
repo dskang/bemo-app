@@ -58,10 +58,6 @@
 /******************************************************************************
  * Lumo
  ******************************************************************************/
-- (void)getLumoFriends {
-    [ContactsManager getFriends];
-}
-
 - (void)requestFailure {
 #ifdef DEBUG
     NSLog(@"Request failed: request operation was unsuccessful or server returned non-JSON data.");
@@ -140,7 +136,7 @@
     
     // Create notification observer for app flow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSessionToken:) name:LOGIN_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLumoFriends) name:LOGIN_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:[ContactsManager class] selector:@selector(getFriends) name:LOGIN_SUCCESS object:nil];
     
     // Register for push notification
 #if !(TARGET_IPHONE_SIMULATOR)
