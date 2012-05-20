@@ -85,8 +85,6 @@
 }
 
 - (void)disconnected {
-    NSString *name = [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
-    [myAppDelegate showMissedRequestAlertFromName:name];
     [self performSegueWithIdentifier:@"receiverShowContacts" sender:nil];
 }
 
