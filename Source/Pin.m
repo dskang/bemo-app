@@ -13,19 +13,19 @@
 @synthesize coordinate = _coordinate;
 @synthesize title = _title;
 
-- (NSString *)title {
-    if (!_title) {
-        _title = [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
-    }
-    return _title;
-}
-
 - (id)initWithLocation:(CLLocationCoordinate2D)coordinate {
     self = [super init];
     if (self) {
         self.coordinate = coordinate;
     }
     return self;
+}
+
+- (NSString *)title {
+    if (!_title) {
+        _title = [myAppDelegate.callManager.partnerInfo valueForKey:@"name"];
+    }
+    return _title;
 }
 
 @end
