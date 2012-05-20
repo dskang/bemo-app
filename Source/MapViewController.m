@@ -58,7 +58,7 @@
 #endif
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:[CallManager class] selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
 
     [myAppDelegate.locationRelay startSelfUpdates];
@@ -75,6 +75,10 @@
 
     // Reset partner's location
     myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+}
+
+- (void)receiveConnection {
+    [CallManager receiveConnection];
 }
 
 - (void)updatePartnerLocationOnMap {

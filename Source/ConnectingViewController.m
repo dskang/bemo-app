@@ -70,7 +70,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPolling) name:CONN_REQUESTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidConnection) name:INVALID object:nil];
     // Automatically receive a call from partner (occurs when two users call each other at the same time)
-    [[NSNotificationCenter defaultCenter] addObserver:[CallManager class] selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
 
     if ([myAppDelegate.callManager.partnerInfo valueForKey:@"image"]) {
         [self updatePartnerImage];
@@ -93,6 +93,10 @@
     [self.pollTimer invalidate];
     [self.countdownTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)receiveConnection {
+    [CallManager receiveConnection];
 }
 
 // Occurs when either the server cannot send a push notification or target does not have a device that can receive a push notification
