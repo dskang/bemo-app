@@ -50,12 +50,6 @@
     [self refreshContacts];
 }
 
-- (IBAction)launchFeedback {
-#ifdef TESTFLIGHT
-    [TestFlight openFeedbackView];
-#endif
-}
-
 - (void)refreshContacts {
     [ContactsManager getFriends];
     
