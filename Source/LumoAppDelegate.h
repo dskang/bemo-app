@@ -22,7 +22,7 @@
 #endif
 
 #define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
-#define BASE_URL @"http://lumo.herokuapp.com"
+#define BASE_URL @"http://bemo.herokuapp.com"
 
 // User defaults
 #define DEVICE_KEY @"deviceKey" // unique device id
