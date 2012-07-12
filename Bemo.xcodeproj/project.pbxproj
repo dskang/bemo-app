@@ -138,7 +138,7 @@
 		1AC8E366155C670A006925B7 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot.png; path = Images/dot.png; sourceTree = SOURCE_ROOT; };
 		1AE29FA31533FC4300E651E4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MapViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AE29FA41533FC4300E651E4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MapViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1AF444F2152E695A0006B5DB /* Lumo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AF444F2152E695A0006B5DB /* Bemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF444F6152E695A0006B5DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1AF444F8152E695A0006B5DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AF444FA152E695A0006B5DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -264,7 +264,7 @@
 		1AF444F3152E695A0006B5DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1AF444F2152E695A0006B5DB /* Lumo.app */,
+				1AF444F2152E695A0006B5DB /* Bemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,9 +394,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1AF444F1152E695A0006B5DB /* Lumo */ = {
+		1AF444F1152E695A0006B5DB /* Bemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Lumo" */;
+			buildConfigurationList = 1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Bemo" */;
 			buildPhases = (
 				1AF444EE152E695A0006B5DB /* Sources */,
 				1AF444EF152E695A0006B5DB /* Frameworks */,
@@ -406,9 +406,9 @@
 			);
 			dependencies = (
 			);
-			name = Lumo;
+			name = Bemo;
 			productName = Rendezvous;
-			productReference = 1AF444F2152E695A0006B5DB /* Lumo.app */;
+			productReference = 1AF444F2152E695A0006B5DB /* Bemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -421,7 +421,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Lumo Labs";
 			};
-			buildConfigurationList = 1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Lumo" */;
+			buildConfigurationList = 1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Bemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -433,7 +433,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1AF444F1152E695A0006B5DB /* Lumo */,
+				1AF444F1152E695A0006B5DB /* Bemo */,
 			);
 		};
 /* End PBXProject section */
@@ -548,7 +548,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -569,7 +569,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -587,8 +587,8 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
-				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PRODUCT_NAME = Bemo;
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -605,8 +605,8 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
-				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PRODUCT_NAME = Bemo;
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -634,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				SDKROOT = iphoneos;
 			};
 			name = TestFlight;
@@ -651,8 +651,8 @@
 					"\"$(SRCROOT)/External/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
-				PRODUCT_NAME = Lumo;
-				PROVISIONING_PROFILE = "B70D2AB5-5AC1-4A1D-B35F-BB0FA3B60806";
+				PRODUCT_NAME = Bemo;
+				PROVISIONING_PROFILE = "DD279930-B96F-40FA-93CC-777C0CA9C94B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = TestFlight;
@@ -660,7 +660,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Lumo" */ = {
+		1AF444EC152E695A0006B5DB /* Build configuration list for PBXProject "Bemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF44519152E695A0006B5DB /* Debug */,
@@ -670,7 +670,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Lumo" */ = {
+		1AF4451B152E695A0006B5DB /* Build configuration list for PBXNativeTarget "Bemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AF4451C152E695A0006B5DB /* Debug */,
