@@ -21,7 +21,7 @@
  ******************************************************************************/
 - (Facebook *)facebook {
     if (!_facebook) {
-        _facebook = [[Facebook alloc] initWithAppId:@"234653946634375" andDelegate:self];
+        _facebook = [[Facebook alloc] initWithAppId:@"264787203622632" andDelegate:self];
     }
     return _facebook;
 }
