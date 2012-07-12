@@ -1,13 +1,13 @@
 //
 //  SplashViewController.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/8/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/8/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "SplashViewController.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 
 @implementation SplashViewController
 

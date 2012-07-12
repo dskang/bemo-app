@@ -1,9 +1,9 @@
 //
 //  Authentication.h
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) Facebook *facebook;
 
-// Indicates if we need to log into Lumo
+// Indicates if we need to log into Bemo
 // This is the case only when any of the three pieces of information changes:
 // 1. Facebook access token
 // 2. Device key (unique identifier)

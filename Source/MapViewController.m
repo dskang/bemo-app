@@ -1,15 +1,15 @@
 //
 //  MapViewController.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 4/10/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/10/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "MapViewController.h"
 #import "Pin.h"
 #import "LocationRelay.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import "CallManager.h"
 
 @interface MapViewController ()
@@ -88,7 +88,7 @@
 
 - (void)disconnected {
     NSString *message = [NSString stringWithFormat:@"%@ ended the connection", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lumo Ended"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bemo Ended"
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"

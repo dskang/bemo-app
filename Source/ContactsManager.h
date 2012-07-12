@@ -1,9 +1,9 @@
 //
 //  ContactsManager.h
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

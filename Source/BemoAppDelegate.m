@@ -1,15 +1,15 @@
 //
-//  LumoAppDelegate.m
-//  Lumo
+//  BemoAppDelegate.m
+//  Bemo
 //
-//  Created by Lumo on 4/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import "ReceivingViewController.h"
 
-@implementation LumoAppDelegate
+@implementation BemoAppDelegate
 
 @synthesize window = _window;
 @synthesize appState = _appState;
@@ -56,7 +56,7 @@
 }
 
 /******************************************************************************
- * Lumo
+ * Bemo
  ******************************************************************************/
 - (void)requestFailure {
 #ifdef DEBUG
@@ -186,8 +186,8 @@
 }
 
 - (void)showMissedRequestAlertFromName:(NSString *)name {
-    NSString *message = [NSString stringWithFormat:@"You missed a Lumo request from %@", name];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missed Lumo Request"
+    NSString *message = [NSString stringWithFormat:@"You missed a Bemo request from %@", name];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missed Bemo Request"
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
@@ -200,9 +200,9 @@
     NSString *sessionToken;
     if ([notification userInfo]) {
         sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
-        [defaults setObject:sessionToken forKey:LUMO_SESSION_TOKEN];
+        [defaults setObject:sessionToken forKey:BEMO_SESSION_TOKEN];
     } else {
-        sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+        sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     }
 #ifdef DEBUG
     NSLog(@"Session token: %@", sessionToken);

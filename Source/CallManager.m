@@ -1,14 +1,14 @@
 //
 //  CallManager.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "CallManager.h"
 #import "AFJSONRequestOperation.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 
 @implementation CallManager
 
@@ -19,7 +19,7 @@
  ******************************************************************************/
 + (void)initiateConnection {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
     NSString *deviceType = [UIDevice currentDevice].model;
     if (sessionToken && partnerID) {
@@ -28,7 +28,7 @@
                               deviceType, @"device",
                               @"facebook", @"service",
                               sessionToken, @"token", nil];
-        [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
+        [BemoRequest postRequestToURL:url withDict:dict successNotification:CONN_REQUESTED];
     }
 }
 
@@ -37,7 +37,7 @@
  ******************************************************************************/
 + (void)receiveConnection {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
     NSString *deviceType = [UIDevice currentDevice].model;
     if (sessionToken && partnerID) {
@@ -45,7 +45,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               deviceType, @"device",
                               sessionToken, @"token", nil];
-        [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
+        [BemoRequest postRequestToURL:url withDict:dict successNotification:CONN_RECEIVED];
     }
 }
 
@@ -54,22 +54,22 @@
  ******************************************************************************/
 + (void)endConnection {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *partnerID = [myAppDelegate.callManager.partnerInfo valueForKey:@"id"];
     if (sessionToken && partnerID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, partnerID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: sessionToken, @"token", nil];
-        [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
+        [BemoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
     }
 }
 
 + (void)endConnectionWithID:(NSString *)targetID {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     if (sessionToken && targetID) {
         NSString *url = [NSString stringWithFormat:@"%@/call/%@/end", BASE_URL, targetID];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: sessionToken, @"token", nil];
-        [LumoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
+        [BemoRequest postRequestToURL:url withDict:dict successNotification:CONN_ENDED];
     }
 }
 

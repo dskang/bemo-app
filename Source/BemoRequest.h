@@ -1,14 +1,14 @@
 //
-//  LumoRequest.h
-//  Lumo
+//  BemoRequest.h
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface LumoRequest : NSObject
+@interface BemoRequest : NSObject
 
 + (void)postRequestToURL:(NSString *)url withDict:(NSDictionary *)dict successNotification:(NSString *)successNotification;
 

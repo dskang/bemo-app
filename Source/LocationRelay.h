@@ -1,9 +1,9 @@
 //
 //  LocationRelay.h
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 4/13/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/13/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

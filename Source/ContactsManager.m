@@ -1,13 +1,13 @@
 //
 //  ContactsManager.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "ContactsManager.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import "AFJSONRequestOperation.h"
 
 @implementation ContactsManager
@@ -53,7 +53,7 @@
  ******************************************************************************/
 + (void)getFriends {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *partnerUrl = [NSString stringWithFormat:@"%@/friends?token=%@", BASE_URL, sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

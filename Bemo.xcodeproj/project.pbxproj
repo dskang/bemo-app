@@ -52,12 +52,12 @@
 		1AF444FB152E695A0006B5DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF444FA152E695A0006B5DB /* CoreGraphics.framework */; };
 		1AF44501152E695A0006B5DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AF444FF152E695A0006B5DB /* InfoPlist.strings */; };
 		1AF44503152E695A0006B5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44502152E695A0006B5DB /* main.m */; };
-		1AF44507152E695A0006B5DB /* LumoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* LumoAppDelegate.m */; };
+		1AF44507152E695A0006B5DB /* BemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44506152E695A0006B5DB /* BemoAppDelegate.m */; };
 		1AF4450A152E695A0006B5DB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */; };
 		1AF44514152E695A0006B5DB /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44513152E695A0006B5DB /* ContactsViewController.m */; };
 		B56008FE15550569008936C9 /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B56008FD15550569008936C9 /* Authentication.m */; };
 		B560090215550C09008936C9 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090115550C09008936C9 /* CallManager.m */; };
-		B560090515550FE6008936C9 /* LumoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090415550FE6008936C9 /* LumoRequest.m */; };
+		B560090515550FE6008936C9 /* BemoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090415550FE6008936C9 /* BemoRequest.m */; };
 		B560090815559BF7008936C9 /* ContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090715559BF7008936C9 /* ContactsManager.m */; };
 		B5910F14155E8F3700294095 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5910F10155E8F3700294095 /* libTestFlight.a */; };
 		B5910F15155E8F3700294095 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B5910F11155E8F3700294095 /* README.txt */; };
@@ -73,10 +73,10 @@
 		1A0876F3154A5D360079276F /* ConnectingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConnectingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1A0876F4154A5D360079276F /* ConnectingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConnectingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A18B343153808FF006C8BF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		1A2596FE1559A09C00131467 /* ReceivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivingViewController.h; sourceTree = "<group>"; };
-		1A2596FF1559A09C00131467 /* ReceivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivingViewController.m; sourceTree = "<group>"; };
-		1A2597041559A74500131467 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		1A2597051559A74500131467 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		1A2596FE1559A09C00131467 /* ReceivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ReceivingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A2596FF1559A09C00131467 /* ReceivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ReceivingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1A2597041559A74500131467 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SplashViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1A2597051559A74500131467 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SplashViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1A2D33C815387E7E003FC6A3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		1A2D33C915387E7E003FC6A3 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		1A2D33CA15387E7E003FC6A3 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -146,25 +146,25 @@
 		1AF44500152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AF44502152E695A0006B5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF44504152E695A0006B5DB /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Prefix.pch; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		1AF44505152E695A0006B5DB /* LumoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LumoAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1AF44506152E695A0006B5DB /* LumoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1AF44505152E695A0006B5DB /* BemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BemoAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1AF44506152E695A0006B5DB /* BemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BemoAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1AF44509152E695A0006B5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1AF44512152E695A0006B5DB /* ContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ContactsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1AF44513152E695A0006B5DB /* ContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContactsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B56008FC15550568008936C9 /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
+		B56008FC15550568008936C9 /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Authentication.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B56008FD15550569008936C9 /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Authentication.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B560090015550C09008936C9 /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CallManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B560090115550C09008936C9 /* CallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CallManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B560090315550FE6008936C9 /* LumoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumoRequest.h; sourceTree = "<group>"; };
-		B560090415550FE6008936C9 /* LumoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LumoRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B560090615559BF7008936C9 /* ContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsManager.h; sourceTree = "<group>"; };
+		B560090315550FE6008936C9 /* BemoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = BemoRequest.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B560090415550FE6008936C9 /* BemoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BemoRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B560090615559BF7008936C9 /* ContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ContactsManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B560090715559BF7008936C9 /* ContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContactsManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B5910F10155E8F3700294095 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		B5910F11155E8F3700294095 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		B5910F12155E8F3700294095 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
 		B5910F13155E8F3700294095 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		B5910F18155E917D00294095 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; path = Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,8 +285,8 @@
 		1AF444FC152E695A0006B5DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1AF44505152E695A0006B5DB /* LumoAppDelegate.h */,
-				1AF44506152E695A0006B5DB /* LumoAppDelegate.m */,
+				1AF44505152E695A0006B5DB /* BemoAppDelegate.h */,
+				1AF44506152E695A0006B5DB /* BemoAppDelegate.m */,
 				1AF44508152E695A0006B5DB /* MainStoryboard.storyboard */,
 				B560090A1555D2AE008936C9 /* Controllers */,
 				B560090B1555D2E5008936C9 /* Images */,
@@ -319,8 +319,8 @@
 				B560090715559BF7008936C9 /* ContactsManager.m */,
 				1A6C9401153D137000C7D6ED /* LocationRelay.h */,
 				1A6C9402153D137000C7D6ED /* LocationRelay.m */,
-				B560090315550FE6008936C9 /* LumoRequest.h */,
-				B560090415550FE6008936C9 /* LumoRequest.m */,
+				B560090315550FE6008936C9 /* BemoRequest.h */,
+				B560090415550FE6008936C9 /* BemoRequest.m */,
 				1A9AA68515368016001B5614 /* Pin.h */,
 				1A9AA68615368016001B5614 /* Pin.m */,
 			);
@@ -478,7 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF44503152E695A0006B5DB /* main.m in Sources */,
-				1AF44507152E695A0006B5DB /* LumoAppDelegate.m in Sources */,
+				1AF44507152E695A0006B5DB /* BemoAppDelegate.m in Sources */,
 				1AF44514152E695A0006B5DB /* ContactsViewController.m in Sources */,
 				1AE29FA51533FC4300E651E4 /* MapViewController.m in Sources */,
 				1A9AA68715368016001B5614 /* Pin.m in Sources */,
@@ -496,7 +496,7 @@
 				1A0876F5154A5D360079276F /* ConnectingViewController.m in Sources */,
 				B56008FE15550569008936C9 /* Authentication.m in Sources */,
 				B560090215550C09008936C9 /* CallManager.m in Sources */,
-				B560090515550FE6008936C9 /* LumoRequest.m in Sources */,
+				B560090515550FE6008936C9 /* BemoRequest.m in Sources */,
 				B560090815559BF7008936C9 /* ContactsManager.m in Sources */,
 				1A2597001559A09C00131467 /* ReceivingViewController.m in Sources */,
 				1A2597061559A74500131467 /* SplashViewController.m in Sources */,

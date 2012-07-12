@@ -1,13 +1,13 @@
 //
 //  Authentication.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "Authentication.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import "AFJSONRequestOperation.h"
 
 @implementation Authentication
@@ -46,10 +46,10 @@
     } else {
         // Only log in if user's info changed
         if (self.loginRequired) {
-            [self loginToLumo];
+            [self loginToBemo];
         } else {
 #ifdef DEBUG
-            NSLog(@"Skipped Lumo login.");
+            NSLog(@"Skipped Bemo login.");
 #endif
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCCESS object:self];
         }
@@ -64,12 +64,12 @@
     self.facebookLoginRequired = NO;
     
     // Update server with new Facebook credentials
-    [self loginToLumo];
+    [self loginToBemo];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login"
-                                                    message:@"You must login to Facebook to use Lumo"
+                                                    message:@"You must login to Facebook to use Bemo"
                                                    delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
@@ -93,18 +93,18 @@
 }
 
 /******************************************************************************
- * Lumo
+ * Bemo
  ******************************************************************************/
 - (void)authenticate {
     [self loginToFB];
 }
 
 /******************************************************************************
- * Login to the Lumo server
+ * Login to the Bemo server
  ******************************************************************************/
-- (void)loginToLumo {
+- (void)loginToBemo {
 #ifdef DEBUG
-    NSLog(@"Logging into Lumo.");
+    NSLog(@"Logging into Bemo.");
 #endif
     NSString *url = [NSString stringWithFormat:@"%@/login", BASE_URL];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -124,7 +124,7 @@
                           deviceToken, @"device_token",
                           @"facebook", @"service",
                           serviceKey, @"service_token", nil];
-    [LumoRequest postRequestToURL:url withDict:dict successNotification:LOGIN_SUCCESS];
+    [BemoRequest postRequestToURL:url withDict:dict successNotification:LOGIN_SUCCESS];
 
     self.loginRequired = NO;
 }

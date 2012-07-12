@@ -1,16 +1,16 @@
 //
-//  LumoRequest.m
-//  Lumo
+//  BemoRequest.m
+//  Bemo
 //
-//  Created by Lumo on 5/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
-#import "LumoAppDelegate.h"
-#import "LumoRequest.h"
+#import "BemoAppDelegate.h"
+#import "BemoRequest.h"
 #import "AFJSONRequestOperation.h"
 
-@implementation LumoRequest
+@implementation BemoRequest
 
 // TODO: Convert code to use AFHTTPClient!
 + (void)postRequestToURL:(NSString *)url withDict:(NSDictionary *)dict successNotification:(NSString *)successNotification  {

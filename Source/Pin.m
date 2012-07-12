@@ -1,13 +1,13 @@
 //
 //  Pin.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 4/11/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/11/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "Pin.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 
 @implementation Pin
 @synthesize coordinate = _coordinate;

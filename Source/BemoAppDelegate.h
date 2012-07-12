@@ -1,15 +1,15 @@
 //
-//  LumoAppDelegate.h
-//  Lumo
+//  BemoAppDelegate.h
+//  Bemo
 //
-//  Created by Lumo on 4/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Authentication.h"
 #import "LocationRelay.h"
-#import "LumoRequest.h"
+#import "BemoRequest.h"
 #import "ContactsManager.h"
 #import "CallManager.h"
 
@@ -21,13 +21,13 @@
 #define NSLog TFLog
 #endif
 
-#define myAppDelegate ((LumoAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define myAppDelegate ((BemoAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define BASE_URL @"http://bemo.herokuapp.com"
 
 // User defaults
 #define DEVICE_KEY @"deviceKey" // unique device id
 #define DEVICE_TOKEN @"deviceToken" // push notification
-#define LUMO_SESSION_TOKEN @"LumoSessionToken"
+#define BEMO_SESSION_TOKEN @"BemoSessionToken"
 
 // Intervals in seconds
 #define WAIT_TIME_BEFORE_INITIATING 2 // how long to wait on the connecting screen before sending init request
@@ -62,7 +62,7 @@
 #define CONN_WAITING @"receive call" // there is a connection waiting to be received
 #define CONN_ESTABLISHED @"connEstablished" // connection was successfully established
 
-@interface LumoAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BemoAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) NSString *appState;

@@ -1,14 +1,14 @@
 //
 //  LocationRelay.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 4/13/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/13/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "LocationRelay.h"
 #import "AFJSONRequestOperation.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 
 @interface LocationRelay()
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -55,7 +55,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     if (error.code == kCLErrorDenied) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Required"
-                                                        message:@"Please enable Location Services for Lumo in Settings"
+                                                        message:@"Please enable Location Services for Bemo in Settings"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -104,7 +104,7 @@
  ******************************************************************************/
 - (void)pushLocation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *url = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
     NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
@@ -114,7 +114,7 @@
                           latitude, @"latitude",
                           longitude, @"longitude",
                           sessionToken, @"token", nil];
-    [LumoRequest postRequestToURL:url withDict:dict successNotification:LOC_PUSHED];
+    [BemoRequest postRequestToURL:url withDict:dict successNotification:LOC_PUSHED];
 }
 
 /******************************************************************************
@@ -128,7 +128,7 @@
  ******************************************************************************/
 - (void)pollForLocation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *sessionToken = [defaults objectForKey:LUMO_SESSION_TOKEN];
+    NSString *sessionToken = [defaults objectForKey:BEMO_SESSION_TOKEN];
     NSString *partnerUrl = [NSString stringWithFormat:@"%@/call/%@/poll?token=%@", BASE_URL, [myAppDelegate.callManager.partnerInfo valueForKey:@"id"], sessionToken];
     NSURL *url = [NSURL URLWithString:partnerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

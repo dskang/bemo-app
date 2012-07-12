@@ -1,14 +1,14 @@
 //
 //  ConnectingViewController.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 4/27/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/27/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "ConnectingViewController.h"
 #import "LocationRelay.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ConnectingViewController ()
@@ -141,7 +141,7 @@
 }
 
 - (void)disconnected {
-    NSString *message = [NSString stringWithFormat:@"%@ is not available for Lumo", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
+    NSString *message = [NSString stringWithFormat:@"%@ is not available for Bemo", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unavailable" 
                                                     message:message
                                                    delegate:nil 

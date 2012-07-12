@@ -1,14 +1,14 @@
 //
-//  LumoViewController.m
-//  Lumo
+//  BemoViewController.m
+//  Bemo
 //
-//  Created by Lumo on 4/5/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 4/5/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "ContactsViewController.h"
 #import "MapViewController.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import "CallManager.h"
 
 @interface ContactsViewController ()

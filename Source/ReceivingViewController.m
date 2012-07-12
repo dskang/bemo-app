@@ -1,14 +1,14 @@
 //
 //  ReceivingViewController.m
-//  Lumo
+//  Bemo
 //
-//  Created by Lumo on 5/8/12.
-//  Copyright (c) 2012 Lumo. All rights reserved.
+//  Created by Lumo Labs on 5/8/12.
+//  Copyright (c) 2012 Bemo. All rights reserved.
 //
 
 #import "ReceivingViewController.h"
 #import "LocationRelay.h"
-#import "LumoAppDelegate.h"
+#import "BemoAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ReceivingViewController ()

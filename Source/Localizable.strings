@@ -1,12 +1,12 @@
 /* 
   Localizable.strings
-  Lumo
+  Bemo
 
-  Created by Lumo on 5/3/12.
-  Copyright (c) 2012 Lumo. All rights reserved.
+  Created by Lumo Labs on 5/3/12.
+  Copyright (c) 2012 Bemo. All rights reserved.
 */
 
 "VIEW" = "View";
 "OK" = "OK";
 "INCOMING_CALL" = "%@ would like to share locations";
-"MISSED_CALL" = "You missed a Lumo request from %@";
+"MISSED_CALL" = "You missed a Bemo request from %@";
