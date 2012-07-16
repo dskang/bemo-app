@@ -14,10 +14,7 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>lumo_icon_57.png</string>
-				<string>lumo_icon_114.png</string>
-				<string>Default@2x.png</string>
-				<string>Default.png</string>
+				<string>Icon</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
