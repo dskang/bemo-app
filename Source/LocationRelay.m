@@ -108,9 +108,7 @@
     NSString *url = [NSString stringWithFormat:@"%@/location/update", BASE_URL];
     NSNumber *latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
-    NSString *deviceType = [UIDevice currentDevice].model;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          deviceType, @"device",
                           latitude, @"latitude",
                           longitude, @"longitude",
                           sessionToken, @"token", nil];
