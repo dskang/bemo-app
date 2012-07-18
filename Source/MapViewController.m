@@ -153,7 +153,7 @@
     MKCoordinateRegion region;
     region.center.latitude = (southWest.latitude + northEast.latitude) / 2.0;
     region.center.longitude = (southWest.longitude + northEast.longitude) / 2.0;
-    region.span.latitudeDelta = meters / 111319.5; // WOAH MAGIC!
+    region.span.latitudeDelta = meters / 111319.5;
     region.span.longitudeDelta = 0.0;
     
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
