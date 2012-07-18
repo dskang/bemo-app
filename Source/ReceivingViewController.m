@@ -54,6 +54,10 @@
     [TestFlight passCheckpoint:@"RECEIVING"];
 #endif
 
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"RECEIVING"];
+#endif
+
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     
     

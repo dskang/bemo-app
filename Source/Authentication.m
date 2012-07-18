@@ -42,6 +42,9 @@
     }
     
     if (![self.facebook isSessionValid] || facebookLoginRequired) {
+#ifdef MIXPANEL
+        [[MixpanelAPI sharedAPI] track:@"Facebook Prompt"];
+#endif
         [self.facebook authorize:nil];
     } else {
         // Only log in if user's info changed
@@ -57,6 +60,9 @@
 }
 
 - (void)fbDidLogin {
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"Facebook Login"];
+#endif
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];

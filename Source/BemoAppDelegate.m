@@ -116,6 +116,10 @@
     [TestFlight takeOff:@"bfbaf3f6b1f916491e638d2777f7bf58_ODk2NDkyMDEyLTA1LTEyIDA4OjQyOjE0LjIwNTkyOQ"];
 #endif
 
+#ifdef MIXPANEL
+    [MixpanelAPI sharedAPIWithToken:@"08c7bd9c014bd946270dc7df3d5e4b1b"];
+#endif
+
     // Check if app was opened from a push notification
     if (launchOptions)
 	{

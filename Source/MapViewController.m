@@ -57,6 +57,10 @@
     [TestFlight passCheckpoint:@"MAP"];
 #endif
 
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"MAP"];
+#endif
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
@@ -132,7 +136,8 @@
 - (IBAction)recenter:(id)sender {
     // Return if we don't have a location for partner
     CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0) return;
+    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0)
+        return;
 
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
     CLLocationCoordinate2D southWest;

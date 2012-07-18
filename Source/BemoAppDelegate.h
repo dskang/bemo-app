@@ -13,6 +13,10 @@
 #import "ContactsManager.h"
 #import "CallManager.h"
 
+#ifdef MIXPANEL
+#import "MixpanelAPI.h"
+#endif
+
 #ifdef TESTFLIGHT
 #import "TestFlight.h"
 #endif

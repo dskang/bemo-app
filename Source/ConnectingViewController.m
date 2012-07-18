@@ -61,6 +61,10 @@
     [TestFlight passCheckpoint:@"CONNECTING"];
 #endif
 
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"CONNECTING"];
+#endif
+
     self.contactName.title = [myAppDelegate.callManager.partnerInfo objectForKey:@"name"];
     self.connectionStatus.text = @"Sending Request";
 
