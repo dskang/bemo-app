@@ -43,7 +43,7 @@
     
     if (![self.facebook isSessionValid] || facebookLoginRequired) {
 #ifdef MIXPANEL
-        [[MixpanelAPI sharedAPI] track:@"Facebook Prompt"];
+        [[MixpanelAPI sharedAPI] track:@"FB_PROMPT"];
 #endif
         [self.facebook authorize:nil];
     } else {
@@ -62,7 +62,7 @@
 - (void)fbDidLogin {
 #ifdef MIXPANEL
     MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
-    [mixpanel track:@"Facebook Login Success"];
+    [mixpanel track:@"FB_SUCCESS"];
     [mixpanel setUserProperty:self.facebook.accessToken forKey:@"fb_id"];
 #endif
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

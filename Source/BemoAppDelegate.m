@@ -243,7 +243,7 @@
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
 
 #ifdef MIXPANEL
-    [[MixpanelAPI sharedAPI] track:@"Opened"];
+    [[MixpanelAPI sharedAPI] track:@"OPENED"];
 #endif
 }
 
