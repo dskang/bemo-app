@@ -61,11 +61,13 @@
 
 - (void)fbDidLogin {
 #ifdef MIXPANEL
-    [[MixpanelAPI sharedAPI] track:@"Facebook Login"];
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel track:@"Facebook Login Success"];
+    [mixpanel setUserProperty:self.facebook.accessToken forKey:@"fb_id"];
 #endif
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[self.facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[self.facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults setObject:self.facebook.accessToken forKey:@"FBAccessTokenKey"];
+    [defaults setObject:self.facebook.expirationDate forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
     self.facebookLoginRequired = NO;
     
