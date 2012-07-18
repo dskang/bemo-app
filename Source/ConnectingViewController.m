@@ -135,8 +135,9 @@
 }
 
 - (void)countdown {
-    if (self.timeLeft <= 0) [self stopConnecting];
-    self.timeLeftLabel.text = [NSString stringWithFormat:@"%02d:%02d", self.timeLeft/60, self.timeLeft%60];
+    if (self.timeLeft <= 0)
+        [self stopConnecting];
+    self.timeLeftLabel.text = [NSString stringWithFormat:@"%02d:%02d", self.timeLeft / 60, self.timeLeft % 60];
     self.timeLeft--;
 }
 
