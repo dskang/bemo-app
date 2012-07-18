@@ -56,6 +56,10 @@
 #ifdef TESTFLIGHT
     [TestFlight passCheckpoint:@"REFRESH_CONTACTS"];
 #endif
+
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"REFRESH_CONTACTS"];
+#endif
 }
 
 - (void)loadContacts {
