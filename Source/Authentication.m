@@ -61,9 +61,7 @@
 
 - (void)fbDidLogin {
 #ifdef MIXPANEL
-    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
-    [mixpanel track:@"FB_SUCCESS"];
-    [mixpanel setUserProperty:self.facebook.accessToken forKey:@"fb_id"];
+    [[MixpanelAPI sharedAPI] track:@"FB_SUCCESS"];
 #endif
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.facebook.accessToken forKey:@"FBAccessTokenKey"];
