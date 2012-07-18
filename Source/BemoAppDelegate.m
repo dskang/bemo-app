@@ -241,6 +241,10 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"Viewed"];
+#endif
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
