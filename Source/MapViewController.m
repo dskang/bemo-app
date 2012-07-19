@@ -16,16 +16,19 @@
 @property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) Pin *contactPin;
 @property (nonatomic, strong) NSTimer *partnerTimer;
-@property (nonatomic, assign) BOOL partnerFound;
+// Whether map has been initially centered between partner and self
+@property (nonatomic, assign) BOOL initialCenter;
 @property (nonatomic, assign) BOOL userOnMap;
+@property (nonatomic, assign) BOOL partnerOnMap;
 @end
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
 @synthesize contactPin = _contactPin;
 @synthesize partnerTimer = _partnerTimer;
-@synthesize partnerFound = _partnerFound;
+@synthesize initialCenter = _initialCenter;
 @synthesize userOnMap = _userOnMap;
+@synthesize partnerOnMap = _partnerOnMap;
 
 - (Pin *)contactPin {
     if (!_contactPin) {
@@ -84,8 +87,6 @@
     // Reset partner's location
     // This ensures that the contact pin is not placed at (0,0) if recenter is pressed before getting partner's location
     myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
-    self.partnerFound = NO;
-    self.userOnMap = NO;
 }
 
 - (void)receiveConnection {
@@ -95,10 +96,12 @@
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
     self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
-    // Center map between contacts when partner is first located and self on map
-    if (!self.partnerFound && self.userOnMap) {
-        self.partnerFound = YES;
+    self.partnerOnMap = YES;
+
+    // Center map when partner and self both initially appear on map
+    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
         [self recenter:nil];
+        self.initialCenter = YES;
     }
 }
 
@@ -189,6 +192,12 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.userOnMap = YES;
+
+    // Center map when partner and self both initially appear on map
+    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
+        [self recenter:nil];
+        self.initialCenter = YES;
+    }
 }
 
 @end
