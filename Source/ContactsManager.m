@@ -14,6 +14,18 @@
 
 @synthesize sections = _sections;
 
+/*
+ * Return last name of a full name or just the name if it comprises of one word.
+ */
+- (NSString *)getLastName:(NSString *)fullName {
+    NSArray *splitName = [fullName componentsSeparatedByString:@" "];
+    if ([splitName count] == 1) {
+        return [splitName objectAtIndex:0];
+    } else {
+        return [splitName objectAtIndex:1];
+    }
+}
+
 /******************************************************************************
  * Format the array of contacts in alphabetized and indexed order
  ******************************************************************************/
@@ -22,9 +34,14 @@
     self.sections = [[NSMutableDictionary alloc] init];
 
     // Sort the contacts
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES comparator:^(NSString *name1, NSString *name2) {
+        NSString *lastName1 = [self getLastName:name1];
+        NSString *lastName2 = [self getLastName:name2];
+        return [lastName1 compare:lastName2];
+    }];
     NSArray *sortedArray = [unsortedContacts sortedArrayUsingDescriptors:
                            [NSArray arrayWithObject:descriptor]];
+    NSLog(@"%@", [sortedArray description]);
     
     // Create section headers
     for (NSDictionary *contact in sortedArray) {
