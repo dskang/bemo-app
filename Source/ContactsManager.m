@@ -23,25 +23,22 @@
 
     // Sort the contacts
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *alphaArray = [unsortedContacts sortedArrayUsingDescriptors:
+    NSArray *sortedArray = [unsortedContacts sortedArrayUsingDescriptors:
                            [NSArray arrayWithObject:descriptor]];
     
     // Create section headers
-    bool inserted = NO;
-    for (NSDictionary *contact in alphaArray) {
-        inserted = NO;
+    for (NSDictionary *contact in sortedArray) {
         NSString *newIndex = [[contact valueForKey:@"name"] substringToIndex:1];
-        for (NSString *index in [self.sections allKeys]) {
-            if ([index isEqualToString:newIndex]) inserted = YES;
-        }
-        if (!inserted) {
+        if (![self.sections.allKeys containsObject:newIndex]) {
             [self.sections setValue:[[NSMutableArray alloc] init] forKey:newIndex];
         }
     }
     
     // Insert contacts into appropriate sections
-    for (NSDictionary *contact in alphaArray) {
-        [[self.sections valueForKey:[[contact valueForKey:@"name"] substringToIndex:1]] addObject:contact];
+    for (NSDictionary *contact in sortedArray) {
+        NSString *index = [[contact valueForKey:@"name"] substringToIndex:1];
+        NSMutableArray *contacts = [self.sections valueForKey:index];
+        [contacts addObject:contact];
     }
 }
 
