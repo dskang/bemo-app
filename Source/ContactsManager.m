@@ -18,6 +18,8 @@
  * Return last name of a full name or just the name if it comprises of one word.
  */
 - (NSString *)getLastName:(NSString *)fullName {
+    // TODO: Use everything but first name to get last name instead of just choosing second word
+    // e.g. "Guido van Rossum" -> "van Rossum"
     NSArray *splitName = [fullName componentsSeparatedByString:@" "];
     if ([splitName count] == 1) {
         return [splitName objectAtIndex:0];
@@ -37,7 +39,13 @@
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES comparator:^(NSString *name1, NSString *name2) {
         NSString *lastName1 = [self getLastName:name1];
         NSString *lastName2 = [self getLastName:name2];
-        return [lastName1 compare:lastName2];
+        NSComparisonResult lastNameComp = [lastName1 compare:lastName2];
+        // Compare by full name if last names match
+        if (lastNameComp == NSOrderedSame) {
+            return [name1 compare:name2];
+        } else {
+            return lastNameComp;
+        }
     }];
     NSArray *sortedArray = [unsortedContacts sortedArrayUsingDescriptors:
                            [NSArray arrayWithObject:descriptor]];
