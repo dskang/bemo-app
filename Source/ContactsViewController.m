@@ -73,10 +73,9 @@
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
     NSArray *sortedSections = [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    NSString *firstLetterOfContactName = [sortedSections objectAtIndex:section];
-    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:firstLetterOfContactName];
+    NSString *sectionTitle = [sortedSections objectAtIndex:section];
+    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionTitle];
     return [contacts objectAtIndex:row];
-    
 }
 
 # pragma mark UITableViewDataSource

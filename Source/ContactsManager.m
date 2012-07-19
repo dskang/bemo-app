@@ -33,7 +33,7 @@
     // Clear sections
     self.sections = [[NSMutableDictionary alloc] init];
 
-    // Sort the contacts
+    // Sort the contacts by last name
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES comparator:^(NSString *name1, NSString *name2) {
         NSString *lastName1 = [self getLastName:name1];
         NSString *lastName2 = [self getLastName:name2];
@@ -41,20 +41,17 @@
     }];
     NSArray *sortedArray = [unsortedContacts sortedArrayUsingDescriptors:
                            [NSArray arrayWithObject:descriptor]];
-    NSLog(@"%@", [sortedArray description]);
-    
-    // Create section headers
-    for (NSDictionary *contact in sortedArray) {
-        NSString *newIndex = [[contact valueForKey:@"name"] substringToIndex:1];
-        if (![self.sections.allKeys containsObject:newIndex]) {
-            [self.sections setValue:[[NSMutableArray alloc] init] forKey:newIndex];
-        }
-    }
     
     // Insert contacts into appropriate sections
     for (NSDictionary *contact in sortedArray) {
-        NSString *index = [[contact valueForKey:@"name"] substringToIndex:1];
-        NSMutableArray *contacts = [self.sections valueForKey:index];
+        NSString *fullName = [contact valueForKey:@"name"];
+        NSString *lastName = [self getLastName:fullName];
+        NSString *sectionTitle = [lastName substringToIndex:1];
+        // Create section if it does not exist
+        if (![self.sections.allKeys containsObject:sectionTitle]) {
+            [self.sections setValue:[[NSMutableArray alloc] init] forKey:sectionTitle];
+        }
+        NSMutableArray *contacts = [self.sections valueForKey:sectionTitle];
         [contacts addObject:contact];
     }
 }
