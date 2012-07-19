@@ -46,12 +46,12 @@
     for (NSDictionary *contact in sortedArray) {
         NSString *fullName = [contact valueForKey:@"name"];
         NSString *lastName = [self getLastName:fullName];
-        NSString *sectionTitle = [lastName substringToIndex:1];
+        NSString *sectionIndexTitle = [lastName substringToIndex:1];
         // Create section if it does not exist
-        if (![self.sections.allKeys containsObject:sectionTitle]) {
-            [self.sections setValue:[[NSMutableArray alloc] init] forKey:sectionTitle];
+        if (![self.sections.allKeys containsObject:sectionIndexTitle]) {
+            [self.sections setValue:[[NSMutableArray alloc] init] forKey:sectionIndexTitle];
         }
-        NSMutableArray *contacts = [self.sections valueForKey:sectionTitle];
+        NSMutableArray *contacts = [self.sections valueForKey:sectionIndexTitle];
         [contacts addObject:contact];
     }
 }

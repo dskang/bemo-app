@@ -73,8 +73,8 @@
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
     NSArray *sortedSections = [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    NSString *sectionTitle = [sortedSections objectAtIndex:section];
-    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionTitle];
+    NSString *sectionIndexTitle = [sortedSections objectAtIndex:section];
+    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle];
     return [contacts objectAtIndex:row];
 }
 
@@ -94,7 +94,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[myAppDelegate.contactsManager.sections valueForKey:[[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
+    NSString *sectionIndexTitle = [[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
+    return [[myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
