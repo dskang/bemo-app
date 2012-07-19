@@ -18,11 +18,11 @@
 // 1. Facebook access token
 // 2. Device key (unique identifier)
 // 3. Device token (for push notifications)
-@property (nonatomic) BOOL loginRequired;
+@property (nonatomic, assign) BOOL loginRequired;
 
 // Indicates if we need to log into Facebook
 // This is the case when the user deauthorizes the app
-@property (nonatomic) BOOL facebookLoginRequired;
+@property (nonatomic, assign) BOOL facebookLoginRequired;
 
 - (void)authenticate;
 

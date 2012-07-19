@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSTimer *pollTimer;
 @property (strong, nonatomic) NSTimer *countdownTimer;
 @property (strong, nonatomic) NSTimer *connStartTimer;
-@property (nonatomic) NSInteger timeLeft;
+@property (nonatomic, assign) NSInteger timeLeft;
 @end
 
 @implementation ConnectingViewController

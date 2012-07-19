@@ -16,12 +16,14 @@
 @property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) Pin *contactPin;
 @property (nonatomic, strong) NSTimer *partnerTimer;
+@property (nonatomic, assign) BOOL pinPlaced;
 @end
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
 @synthesize contactPin = _contactPin;
 @synthesize partnerTimer = _partnerTimer;
+@synthesize pinPlaced = _pinPlaced;
 
 - (Pin *)contactPin {
     if (!_contactPin) {
@@ -78,7 +80,9 @@
     [myAppDelegate.locationRelay stopPartnerUpdates];
 
     // Reset partner's location
+    // This ensures that the contact pin is not placed at (0,0) if recenter is pressed before getting partner's location
     myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+    self.pinPlaced = NO;
 }
 
 - (void)receiveConnection {
@@ -88,6 +92,11 @@
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
     self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
+    // Center map between contacts when pin is first placed
+    if (!self.pinPlaced) {
+        self.pinPlaced = YES;
+        [self recenter:nil];
+    }
 }
 
 - (void)disconnected {

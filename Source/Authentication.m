@@ -13,8 +13,8 @@
 @implementation Authentication
 
 @synthesize facebook = _facebook;
-@synthesize loginRequired;
-@synthesize facebookLoginRequired;
+@synthesize loginRequired = _loginRequired;
+@synthesize facebookLoginRequired = _facebookLoginRequired;
 
 /******************************************************************************
  * Getters
@@ -41,7 +41,7 @@
         self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
     
-    if (![self.facebook isSessionValid] || facebookLoginRequired) {
+    if (![self.facebook isSessionValid] || self.facebookLoginRequired) {
 #ifdef MIXPANEL
         [[MixpanelAPI sharedAPI] track:@"FB_PROMPT"];
 #endif
