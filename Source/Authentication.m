@@ -142,10 +142,10 @@
 // Send user's Facebook info to Mixpanel
 - (void)request:(FBRequest *)request didLoad:(id)result {
 #ifdef MIXPANEL
-    NSDictionary *dict = result;
-    NSString *name = [dict valueForKey:@"name"];
-    NSNumber *fbId = [dict valueForKey:@"id"];
-    NSString *gender = [dict valueForKey:@"gender"];
+    NSDictionary *user = result;
+    NSString *name = [user valueForKey:@"name"];
+    NSNumber *fbId = [user valueForKey:@"id"];
+    NSString *gender = [user valueForKey:@"gender"];
 
     MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
     [mixpanel setUserProperty:name forKey:@"name"];
