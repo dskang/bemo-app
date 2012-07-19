@@ -62,6 +62,8 @@
 - (void)fbDidLogin {
 #ifdef MIXPANEL
     [[MixpanelAPI sharedAPI] track:@"FB_SUCCESS"];
+    // Get information about user to save with Mixpanel
+    [self.facebook requestWithGraphPath:@"me" andDelegate:self];
 #endif
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.facebook.accessToken forKey:@"FBAccessTokenKey"];
@@ -133,6 +135,29 @@
     [BemoRequest postRequestToURL:url withDict:dict successNotification:LOGIN_SUCCESS];
 
     self.loginRequired = NO;
+}
+
+# pragma mark FBRequestDelegate
+
+// Send user's Facebook info to Mixpanel
+- (void)request:(FBRequest *)request didLoad:(id)result {
+    NSDictionary *dict = result;
+    NSString *name = [dict valueForKey:@"name"];
+    NSNumber *fbId = [dict valueForKey:@"id"];
+    NSString *gender = [dict valueForKey:@"gender"];
+
+#ifdef MIXPANEL
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setUserProperty:name forKey:@"name"];
+    [mixpanel setUserProperty:fbId forKey:@"fb_id"];
+    [mixpanel setUserProperty:gender forKey:@"gender"];
+#endif
+}
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
+#ifdef DEBUG
+    NSLog(@"FB error: %@", error);
+#endif
 }
 
 @end
