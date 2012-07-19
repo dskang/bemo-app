@@ -109,7 +109,6 @@
 // Application launched from a non-running state
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
 #ifdef TESTFLIGHT
     // NOTE: This is deprecated functionality, but we need it for TestFlight
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];

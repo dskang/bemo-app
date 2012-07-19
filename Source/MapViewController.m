@@ -148,7 +148,10 @@
     if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0)
         return;
 
+    // Return if we don't have a location for self
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
+    if (currentLocation.coordinate.latitude == 0.0 && currentLocation.coordinate.longitude == 0.0)
+        return;
     CLLocationCoordinate2D southWest;
     CLLocationCoordinate2D northEast;
     
