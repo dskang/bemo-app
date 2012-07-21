@@ -94,6 +94,8 @@
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
+        // Try to get contacts again
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getFriends) userInfo:nil repeats:NO];
     }];
     [operation start];
 }

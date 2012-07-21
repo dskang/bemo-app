@@ -201,6 +201,7 @@
 - (void)saveSessionToken:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *sessionToken;
+    // Save session token only when user contacts the server on login
     if ([notification userInfo]) {
         sessionToken = [[notification userInfo] valueForKeyPath:@"data.token"];
         [defaults setObject:sessionToken forKey:BEMO_SESSION_TOKEN];
