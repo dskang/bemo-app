@@ -40,7 +40,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
+        NSDictionary *requestInfo = [NSDictionary dictionaryWithObject:url forKey:@"url"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self userInfo:requestInfo];
     }];
     [operation start];
 }

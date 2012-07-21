@@ -58,9 +58,14 @@
 /******************************************************************************
  * Bemo
  ******************************************************************************/
-- (void)requestFailure {
+- (void)requestFailure:(NSNotification *)notification {
+    NSString *url = [[notification userInfo] valueForKey:@"url"];
 #ifdef DEBUG
-    NSLog(@"Request failed: request operation was unsuccessful or server returned non-JSON data.");
+    NSLog(@"Request failed for %@: request operation was unsuccessful or server returned non-JSON data.", url);
+#endif
+#ifdef MIXPANEL
+    // FIXME: Add URL to event data
+    [[MixpanelAPI sharedAPI] track:@"REQUEST_FAILED"];
 #endif
 }
 
@@ -133,7 +138,7 @@
     [self generateDeviceKey];
     
     // Create notification observer for server failure or auth failure
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailure) name:REQUEST_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailure:) name:REQUEST_FAILED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authFailure) name:AUTH_FAILED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceFailure) name:SERVICE_FAILED object:nil];
     

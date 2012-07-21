@@ -93,7 +93,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:error object:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self];
+        NSDictionary *requestInfo = [NSDictionary dictionaryWithObject:partnerUrl forKey:@"url"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:REQUEST_FAILED object:self userInfo:requestInfo];
         // Try to get contacts again
         [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getFriends) userInfo:nil repeats:NO];
     }];
