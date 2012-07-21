@@ -151,6 +151,8 @@
     [mixpanel setUserProperty:name forKey:@"name"];
     [mixpanel setUserProperty:fbId forKey:@"fb_id"];
     [mixpanel setUserProperty:gender forKey:@"gender"];
+
+    // TODO: Decide if we want to use fbId as a super property -- this will be decided by whether we can filter events by user properties
 #endif
 }
 

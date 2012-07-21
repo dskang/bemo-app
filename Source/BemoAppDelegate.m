@@ -67,6 +67,7 @@
 #ifdef MIXPANEL
     [[MixpanelAPI sharedAPI] track:@"REQUEST_FAILED" properties:properties];
 #endif
+    // TODO: Check for network connectivity and show alert if appropriate
 }
 
 - (void)authFailure {
@@ -122,6 +123,7 @@
 
 #ifdef MIXPANEL
     [MixpanelAPI sharedAPIWithToken:@"08c7bd9c014bd946270dc7df3d5e4b1b"];
+    [[MixpanelAPI sharedAPI] setSendDeviceModel:YES];
 #endif
 
     // Check if app was opened from a push notification
