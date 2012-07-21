@@ -59,13 +59,13 @@
  * Bemo
  ******************************************************************************/
 - (void)requestFailure:(NSNotification *)notification {
-    NSString *url = [[notification userInfo] valueForKey:@"url"];
+    NSDictionary *properties = [notification userInfo];
 #ifdef DEBUG
+    NSString *url = [properties valueForKey:@"url"];
     NSLog(@"Request failed for %@: request operation was unsuccessful or server returned non-JSON data.", url);
 #endif
 #ifdef MIXPANEL
-    // FIXME: Add URL to event data
-    [[MixpanelAPI sharedAPI] track:@"REQUEST_FAILED"];
+    [[MixpanelAPI sharedAPI] track:@"REQUEST_FAILED" properties:properties];
 #endif
 }
 
