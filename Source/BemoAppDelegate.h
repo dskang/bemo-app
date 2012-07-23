@@ -26,7 +26,12 @@
 #endif
 
 #define myAppDelegate ((BemoAppDelegate *)[[UIApplication sharedApplication] delegate])
+
+#ifdef STAGING
+#define BASE_URL @"https://bemo-staging.herokuapp.com"
+#else
 #define BASE_URL @"https://bemo.herokuapp.com"
+#endif
 
 // User defaults
 #define DEVICE_KEY @"deviceKey" // unique device id
