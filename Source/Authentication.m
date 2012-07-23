@@ -30,18 +30,21 @@
  * Facebook
  ******************************************************************************/
 - (void)loginToFB {
-#ifdef DEBUG
-    NSLog(@"Logging into Facebook.");
-#endif
     // Check for previously saved access token information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
         && [defaults objectForKey:@"FBExpirationDateKey"]) {
         self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
         self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+#ifdef DEBUG
+        NSLog(@"Skipped Facebook login.");
+#endif
     }
     
     if (![self.facebook isSessionValid] || self.facebookLoginRequired) {
+#ifdef DEBUG
+        NSLog(@"Logging into Facebook.");
+#endif
 #ifdef MIXPANEL
         [[MixpanelAPI sharedAPI] track:@"FB_PROMPT"];
 #endif
