@@ -672,7 +672,6 @@
 					"DEBUG=1",
 					"TESTFLIGHT=1",
 					"MIXPANEL=1",
-					"STAGING=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
