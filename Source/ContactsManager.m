@@ -14,20 +14,6 @@
 
 @synthesize sections = _sections;
 
-/*
- * Return last name of a full name or just the name if it comprises of one word.
- */
-- (NSString *)getLastName:(NSString *)fullName {
-    // TODO: Use everything but first name to get last name instead of just choosing second word
-    // e.g. "Guido van Rossum" -> "van Rossum"
-    NSArray *splitName = [fullName componentsSeparatedByString:@" "];
-    if ([splitName count] == 1) {
-        return [splitName objectAtIndex:0];
-    } else {
-        return [splitName objectAtIndex:1];
-    }
-}
-
 /******************************************************************************
  * Format the array of contacts in alphabetized and indexed order
  ******************************************************************************/
@@ -35,26 +21,14 @@
     // Clear sections
     self.sections = [[NSMutableDictionary alloc] init];
 
-    // Sort the contacts by last name
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES comparator:^(NSString *name1, NSString *name2) {
-        NSString *lastName1 = [self getLastName:name1];
-        NSString *lastName2 = [self getLastName:name2];
-        NSComparisonResult lastNameComp = [lastName1 compare:lastName2];
-        // Compare by full name if last names match
-        if (lastNameComp == NSOrderedSame) {
-            return [name1 compare:name2];
-        } else {
-            return lastNameComp;
-        }
-    }];
+    // Sort the contacts by first name
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortedArray = [unsortedContacts sortedArrayUsingDescriptors:
                            [NSArray arrayWithObject:descriptor]];
     
     // Insert contacts into appropriate sections
     for (NSDictionary *contact in sortedArray) {
-        NSString *fullName = [contact valueForKey:@"name"];
-        NSString *lastName = [self getLastName:fullName];
-        NSString *sectionIndexTitle = [lastName substringToIndex:1];
+        NSString *sectionIndexTitle = [[contact valueForKey:@"name"] substringToIndex:1];
         // Create section if it does not exist
         if (![self.sections.allKeys containsObject:sectionIndexTitle]) {
             [self.sections setValue:[[NSMutableArray alloc] init] forKey:sectionIndexTitle];
