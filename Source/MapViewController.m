@@ -100,26 +100,6 @@
     [self didUpdatePartnerLocation];
 }
 
--(void)didUpdatePartnerLocation {
-    self.partnerOnMap = YES;
-
-    // Center map when partner and self both initially appear on map
-    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
-        [self recenter:nil];
-        self.initialCenter = YES;
-    }
-}
-
-- (void)didUpdateUserLocation {
-    self.userOnMap = YES;
-
-    // Center map when partner and self both initially appear on map
-    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
-        [self recenter:nil];
-        self.initialCenter = YES;
-    }
-}
-
 - (void)disconnected {
     NSString *message = [NSString stringWithFormat:@"%@ ended the connection", [myAppDelegate.callManager.partnerInfo valueForKey:@"name"]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bemo Ended"
@@ -201,6 +181,30 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+/*
+ * Recenter map when both user and partner first appear on map.
+ */
+
+-(void)didUpdatePartnerLocation {
+    self.partnerOnMap = YES;
+
+    // Center map when partner and self both initially appear on map
+    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
+        [self recenter:nil];
+        self.initialCenter = YES;
+    }
+}
+
+- (void)didUpdateUserLocation {
+    self.userOnMap = YES;
+
+    // Center map when partner and self both initially appear on map
+    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
+        [self recenter:nil];
+        self.initialCenter = YES;
+    }
 }
 
 @end
