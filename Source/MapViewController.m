@@ -85,12 +85,8 @@
     [myAppDelegate.locationRelay stopSelfUpdates];
     [myAppDelegate.locationRelay stopPartnerUpdates];
 
-    // Reset partner's location
-    // This ensures that the contact pin is not placed at (0,0) if recenter is pressed before getting partner's location
-    myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
-
-    // Reset self location
-    // Otherwise, SELF_LOC_UPDATED may not be sent on next call if user has not moved
+    // Reset locations
+    myAppDelegate.locationRelay.partnerLocation = nil;
     myAppDelegate.locationRelay.currentLocation = nil;
 }
 
@@ -148,23 +144,20 @@
 // See: http://stackoverflow.com/questions/1336370/positioning-mkmapview-to-show-multiple-annotations-at-once
 
 - (IBAction)recenter:(id)sender {
-    // Return if we don't have a location for partner
     CLLocation *partnerLocation = myAppDelegate.locationRelay.partnerLocation;
-    if (partnerLocation.coordinate.latitude == 0.0 && partnerLocation.coordinate.longitude == 0.0)
-        return;
-
-    // Return if we don't have a location for self
     CLLocation *currentLocation = myAppDelegate.locationRelay.currentLocation;
-    if (currentLocation.coordinate.latitude == 0.0 && currentLocation.coordinate.longitude == 0.0)
+    if (currentLocation == nil || partnerLocation == nil) {
         return;
+    }
+
     CLLocationCoordinate2D southWest;
     CLLocationCoordinate2D northEast;
     
-    southWest.latitude = MIN(currentLocation.coordinate.latitude, self.contactPin.coordinate.latitude);
-    southWest.longitude = MIN(currentLocation.coordinate.longitude, self.contactPin.coordinate.longitude);
+    southWest.latitude = MIN(currentLocation.coordinate.latitude, partnerLocation.coordinate.latitude);
+    southWest.longitude = MIN(currentLocation.coordinate.longitude, partnerLocation.coordinate.longitude);
     
-    northEast.latitude = MAX(currentLocation.coordinate.latitude, self.contactPin.coordinate.latitude);
-    northEast.longitude = MAX(currentLocation.coordinate.longitude, self.contactPin.coordinate.longitude);
+    northEast.latitude = MAX(currentLocation.coordinate.latitude, partnerLocation.coordinate.latitude);
+    northEast.longitude = MAX(currentLocation.coordinate.longitude, partnerLocation.coordinate.longitude);
     
     CLLocation *locSouthWest = [[CLLocation alloc] initWithLatitude:southWest.latitude longitude:southWest.longitude];
     CLLocation *locNorthEast = [[CLLocation alloc] initWithLatitude:northEast.latitude longitude:northEast.longitude];
