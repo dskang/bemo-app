@@ -49,6 +49,7 @@
               self.currentLocation.coordinate.longitude);
 #endif
         // TODO: Only push location if delta is greater than some minimum distance from last pushed location
+        [[NSNotificationCenter defaultCenter] postNotificationName:SELF_LOC_UPDATED object:self];
         [self pushLocation];
     }
 }

@@ -69,6 +69,7 @@
 #endif
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePartnerLocationOnMap) name:PARTNER_LOC_UPDATED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUserLocation) name:SELF_LOC_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveConnection) name:CONN_WAITING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnected) name:DISCONNECTED object:nil];
 
@@ -96,7 +97,21 @@
 - (void)updatePartnerLocationOnMap {
     // Show partner's location on map
     self.contactPin.coordinate = myAppDelegate.locationRelay.partnerLocation.coordinate;
+    [self didUpdatePartnerLocation];
+}
+
+-(void)didUpdatePartnerLocation {
     self.partnerOnMap = YES;
+
+    // Center map when partner and self both initially appear on map
+    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
+        [self recenter:nil];
+        self.initialCenter = YES;
+    }
+}
+
+- (void)didUpdateUserLocation {
+    self.userOnMap = YES;
 
     // Center map when partner and self both initially appear on map
     if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
@@ -186,18 +201,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma MKMapViewDelegate
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    self.userOnMap = YES;
-
-    // Center map when partner and self both initially appear on map
-    if (!self.initialCenter && self.userOnMap && self.partnerOnMap) {
-        [self recenter:nil];
-        self.initialCenter = YES;
-    }
 }
 
 @end

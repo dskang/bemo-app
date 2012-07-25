@@ -61,6 +61,7 @@
 
 #define LOC_PUSHED @"locPushed"
 #define PARTNER_LOC_UPDATED @"partnerLocUpdated"
+#define SELF_LOC_UPDATED @"selfLocUpdated"
 #define DISCONNECTED @"disconnected"
 
 #define CONN_REQUESTED @"connRequested" // user successfully requested a connection
