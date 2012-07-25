@@ -39,8 +39,9 @@
            fromLocation:(CLLocation *)oldLocation {
     NSDate *eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    // Only use update if it's from the last 15 seconds
-    if (abs(howRecent) < 15.0)
+    CLLocationDistance distance = [self.currentLocation distanceFromLocation:newLocation];
+    // Only use update if it's from the last 15 seconds and at least 10 meters away from last update
+    if (abs(howRecent) < 15.0 && (self.currentLocation == nil || distance > 10.0))
     {
         self.currentLocation = newLocation;
 #ifdef DEBUG
@@ -48,7 +49,6 @@
               self.currentLocation.coordinate.latitude,
               self.currentLocation.coordinate.longitude);
 #endif
-        // TODO: Only push location if delta is greater than some minimum distance from last pushed location
 #ifdef DEBUG
         NSLog(@"Notification: %@", SELF_LOC_UPDATED);
 #endif
