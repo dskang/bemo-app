@@ -88,6 +88,10 @@
     // Reset partner's location
     // This ensures that the contact pin is not placed at (0,0) if recenter is pressed before getting partner's location
     myAppDelegate.locationRelay.partnerLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+
+    // Reset self location
+    // Otherwise, SELF_LOC_UPDATED may not be sent on next call if user has not moved
+    myAppDelegate.locationRelay.currentLocation = nil;
 }
 
 - (void)receiveConnection {
