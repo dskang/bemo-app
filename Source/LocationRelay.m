@@ -87,6 +87,8 @@
  * Start fetching partner location
  ******************************************************************************/
 - (void)startPartnerUpdates {
+    // Poll immediately to try to get partner's location if available
+    [self pollForLocation];
     self.partnerUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:PARTNER_LOC_POLL_INTERVAL target:self selector:@selector(pollForLocation) userInfo:nil repeats:YES];
 }
 
