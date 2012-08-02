@@ -72,8 +72,8 @@
 }
 
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
-    NSArray *sortedSections = [[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    NSString *sectionIndexTitle = [sortedSections objectAtIndex:section];
+    NSArray *sections = [self sectionIndexTitlesForTableView:nil];
+    NSString *sectionIndexTitle = [sections objectAtIndex:section];
     NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle];
     return [contacts objectAtIndex:row];
 }
@@ -85,17 +85,24 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
+    NSArray *sections = [self sectionIndexTitlesForTableView:nil];
+    NSString *sectionIndexTitle = [sections objectAtIndex:section];
+    if ([myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle] == nil) {
+        return nil;
+    } else {
+        return sectionIndexTitle;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger count = [[myAppDelegate.contactsManager.sections allKeys] count];
-    return count;
+    return [[self sectionIndexTitlesForTableView:nil] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *sectionIndexTitle = [[[myAppDelegate.contactsManager.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
-    return [[myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle] count];
+    NSArray *sections = [self sectionIndexTitlesForTableView:nil];
+    NSString *sectionIndexTitle = [sections objectAtIndex:section];
+    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle];
+    return [contacts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
