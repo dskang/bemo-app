@@ -165,4 +165,18 @@
 #endif
 }
 
+# pragma mark FBDialogDelegate
+
+- (void)dialogDidComplete:(FBDialog *)dialog {
+}
+
+- (void) dialogDidNotComplete:(FBDialog *)dialog {
+}
+
+- (void)dialogCompleteWithUrl:(NSURL *)url {
+}
+
+- (void) dialogDidNotCompleteWithUrl:(NSURL *)url {
+}
+
 @end
