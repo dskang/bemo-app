@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 
-@interface Authentication : NSObject <FBSessionDelegate, FBRequestDelegate>
+@interface Authentication : NSObject <FBSessionDelegate, FBRequestDelegate, FBDialogDelegate>
 
 @property (nonatomic, strong) Facebook *facebook;
 

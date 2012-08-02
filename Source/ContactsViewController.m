@@ -13,18 +13,28 @@
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
+// TODO: Why does this only work when 'strong' if tableHeaderView uses retain and creating a local UITableView in viewDidLoad works?
+@property (strong, nonatomic) UITableView *inviteTableView;
 @property (strong, nonatomic) PullToRefreshView *refreshView;
 @end
 
 @implementation ContactsViewController
 @synthesize contactsTableView = _contactsTableView;
+@synthesize inviteTableView = _inviteTableView;
 @synthesize refreshView = _refreshView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set up pull-to-refresh
     self.refreshView = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *)self.contactsTableView];
     [self.refreshView setDelegate:self];
     [self.contactsTableView addSubview:self.refreshView];
+
+    // Set up invite table header
+    self.inviteTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 66)];
+    self.inviteTableView.delegate = self;
+    self.inviteTableView.dataSource = self;
+    self.contactsTableView.tableHeaderView = self.inviteTableView;
 }
 
 - (void)viewDidUnload {
@@ -71,6 +81,15 @@
     [self performSegueWithIdentifier:@"showReceive" sender:nil];
 }
 
++ (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
 - (NSDictionary *)getContactForSection:(NSInteger)section forRow:(NSInteger)row {
     NSArray *sections = [self sectionIndexTitlesForTableView:nil];
     NSString *sectionIndexTitle = [sections objectAtIndex:section];
@@ -81,46 +100,90 @@
 # pragma mark UITableViewDataSource
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
+    if (tableView == self.inviteTableView) {
+        return nil;
+    } else {
+        return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray *sections = [self sectionIndexTitlesForTableView:nil];
-    NSString *sectionIndexTitle = [sections objectAtIndex:section];
-    if ([myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle] == nil) {
-        return nil;
+    if (tableView == self.inviteTableView) {
+        if (section == 0) {
+            return @"Invite Friends";
+        } else {
+            return nil;
+        }
     } else {
-        return sectionIndexTitle;
+        NSArray *sections = [self sectionIndexTitlesForTableView:nil];
+        NSString *sectionIndexTitle = [sections objectAtIndex:section];
+        if ([myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle] == nil) {
+            return nil;
+        } else {
+            return sectionIndexTitle;
+        }
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self sectionIndexTitlesForTableView:nil] count];
+    if (tableView == self.inviteTableView) {
+        return 1;
+    } else {
+        return [[self sectionIndexTitlesForTableView:nil] count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sections = [self sectionIndexTitlesForTableView:nil];
-    NSString *sectionIndexTitle = [sections objectAtIndex:section];
-    NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle];
-    return [contacts count];
+    if (tableView == self.inviteTableView) {
+        return 1;
+    } else {
+        NSArray *sections = [self sectionIndexTitlesForTableView:nil];
+        NSString *sectionIndexTitle = [sections objectAtIndex:section];
+        NSArray *contacts = [myAppDelegate.contactsManager.sections valueForKey:sectionIndexTitle];
+        return [contacts count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
+    if (tableView == self.inviteTableView) {
+        static NSString *cellID = @"cellID";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        cell.textLabel.text = @"Facebook";
+        UIImage *logo = [UIImage imageNamed:@"fb_logo.png"];
+        CGSize size;
+        size.height = 22;
+        size.width = 22;
+        UIImage *scaledLogo = [[self class] scale:logo toSize:size];
+        cell.imageView.image = scaledLogo;
+        return cell;
+    } else {
+        static NSString *cellID = @"cellID";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
+        }
+        NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
+        cell.textLabel.text = [contact valueForKey:@"name"];
+        return cell;
     }
-    NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
-    cell.textLabel.text = [contact valueForKey:@"name"];
-    return cell;
 }
 
 # pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    myAppDelegate.callManager.partnerInfo = [[self getContactForSection:indexPath.section forRow:indexPath.row] mutableCopy];
-    [self showConnScreen];
+    if (tableView == self.inviteTableView) {
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"Let's share locations on Bemo.", @"message",
+                                       nil];
+        [myAppDelegate.auth.facebook dialog:@"apprequests" andParams:params andDelegate:myAppDelegate.auth];
+        [self.inviteTableView deselectRowAtIndexPath:[self.inviteTableView indexPathForSelectedRow] animated:NO];
+    } else {
+        myAppDelegate.callManager.partnerInfo = [[self getContactForSection:indexPath.section forRow:indexPath.row] mutableCopy];
+        [self showConnScreen];
+    }
 }
 
 - (void)showConnScreen {
