@@ -49,6 +49,7 @@
 		B50B7D1015B6C000004300FD /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B50B7D0715B6C000004300FD /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B50B7D1115B6C000004300FD /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B50B7D0915B6C000004300FD /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B50B7D1215B6C000004300FD /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B50B7D0C15B6C000004300FD /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B52071A715CAAA0C0014F2EE /* fb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B52071A615CAAA0C0014F2EE /* fb_logo.png */; };
 		B56008FE15550569008936C9 /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B56008FD15550569008936C9 /* Authentication.m */; };
 		B560090215550C09008936C9 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090115550C09008936C9 /* CallManager.m */; };
 		B560090515550FE6008936C9 /* BemoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B560090415550FE6008936C9 /* BemoRequest.m */; };
@@ -63,7 +64,6 @@
 		B5C3EDBC15B3F447003C16A9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C3EDBA15B3F447003C16A9 /* Icon.png */; };
 		B5C3EDBD15B3F447003C16A9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C3EDBB15B3F447003C16A9 /* Icon@2x.png */; };
 		B5C7D90515523E250080E630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C7D90415523E250080E630 /* Localizable.strings */; };
-		B5DEE48E15CA9B9E003D48AA /* fb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5DEE48D15CA9B9E003D48AA /* fb_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +152,7 @@
 		B50B7D0A15B6C000004300FD /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
 		B50B7D0B15B6C000004300FD /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
 		B50B7D0C15B6C000004300FD /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
+		B52071A615CAAA0C0014F2EE /* fb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fb_logo.png; path = ../Images/fb_logo.png; sourceTree = "<group>"; };
 		B56008FC15550568008936C9 /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Authentication.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B56008FD15550569008936C9 /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Authentication.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B560090015550C09008936C9 /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CallManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -171,7 +172,6 @@
 		B5C3EDBA15B3F447003C16A9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = SOURCE_ROOT; };
 		B5C3EDBB15B3F447003C16A9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Images/Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; path = Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
-		B5DEE48D15CA9B9E003D48AA /* fb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,7 +399,7 @@
 		B560090B1555D2E5008936C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B5DEE48D15CA9B9E003D48AA /* fb_logo.png */,
+				B52071A615CAAA0C0014F2EE /* fb_logo.png */,
 				B5C3EDB215B3F2C8003C16A9 /* bemo_icon512.png */,
 				B5C3EDBA15B3F447003C16A9 /* Icon.png */,
 				B5C3EDBB15B3F447003C16A9 /* Icon@2x.png */,
@@ -508,7 +508,7 @@
 				B5C3EDB515B3F2C8003C16A9 /* Default.png in Resources */,
 				B5C3EDBC15B3F447003C16A9 /* Icon.png in Resources */,
 				B5C3EDBD15B3F447003C16A9 /* Icon@2x.png in Resources */,
-				B5DEE48E15CA9B9E003D48AA /* fb_logo.png in Resources */,
+				B52071A715CAAA0C0014F2EE /* fb_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
