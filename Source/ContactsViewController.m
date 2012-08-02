@@ -13,7 +13,6 @@
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
-// TODO: Why does this only work when 'strong' if tableHeaderView uses retain and creating a local UITableView in viewDidLoad works?
 @property (strong, nonatomic) UITableView *inviteTableView;
 @property (strong, nonatomic) PullToRefreshView *refreshView;
 @end
