@@ -96,8 +96,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
     if (section == 0) {
         return @"Invite Friends";
+    } else if (noContacts && section == 1) {
+        return @" ";
     } else {
         NSArray *sections = [self sectionIndexTitlesForTableView:nil];
         NSString *sectionIndexTitle = [sections objectAtIndex:section];
@@ -114,7 +117,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
     if (section == 0) {
+        return 1;
+    } else if (noContacts && section == 1) {
         return 1;
     } else {
         NSArray *sections = [self sectionIndexTitlesForTableView:nil];
@@ -130,6 +136,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
     }
+
+    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
     if (indexPath.section == 0) {
         cell.textLabel.text = @"Facebook";
         UIImage *logo = [UIImage imageNamed:@"fb_logo.png"];
@@ -138,19 +146,22 @@
         size.width = 22;
         UIImage *scaledLogo = [[self class] scale:logo toSize:size];
         cell.imageView.image = scaledLogo;
-        return cell;
+    } else if (noContacts && indexPath.section == 1) {
+        cell.textLabel.text = @"No Contacts";
+        cell.imageView.image = nil;
     } else {
         NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
         cell.textLabel.text = [contact valueForKey:@"name"];
         cell.imageView.image = nil;
-        return cell;
     }
+    return cell;
 }
 
 # pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
+    if (indexPath.section == 0 || (noContacts && indexPath.section == 1)) {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"Let's share locations on Bemo.", @"message",
                                        nil];
