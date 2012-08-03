@@ -162,9 +162,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
     if (indexPath.section == 0 || (noContacts && indexPath.section == 1)) {
-#ifdef MIXPANEL
-        [[MixpanelAPI sharedAPI] track:@"FB_INVITE_OPENED"];
-#endif
         // Show Facebook send requests dialog
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"Let's share locations on Bemo.", @"message",

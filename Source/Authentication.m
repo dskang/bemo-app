@@ -174,9 +174,20 @@
 }
 
 - (void)dialogCompleteWithUrl:(NSURL *)url {
+#ifdef MIXPANEL
+    NSString *query = [url query];
+    if (query != nil && [query rangeOfString:@"request"].location != NSNotFound) {
+        [[MixpanelAPI sharedAPI] track:@"FB_INVITE_SENT"];
+    } else {
+        [[MixpanelAPI sharedAPI] track:@"FB_INVITE_CANCELLED"];
+    }
+#endif
 }
 
 - (void) dialogDidNotCompleteWithUrl:(NSURL *)url {
+#ifdef MIXPANEL
+    [[MixpanelAPI sharedAPI] track:@"FB_INVITE_CANCELLED"];
+#endif
 }
 
 @end
