@@ -164,7 +164,7 @@
     if (indexPath.section == 0 || (noContacts && indexPath.section == 1)) {
         // Show Facebook send requests dialog
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"Let's share locations on Bemo.", @"message",
+                                       @"Let's share locations using Bemo!", @"message",
                                        nil];
         [myAppDelegate.auth.facebook dialog:@"apprequests" andParams:params andDelegate:myAppDelegate.auth];
         [self.contactsTableView deselectRowAtIndexPath:[self.contactsTableView indexPathForSelectedRow] animated:NO];
