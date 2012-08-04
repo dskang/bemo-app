@@ -131,13 +131,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
+    if (noContacts && indexPath.section == 1) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+        cell.textLabel.text = @"No Contacts";
+        cell.detailTextLabel.text = @"Invite your Facebook friends to use Bemo";
+        return cell;
+    }
+
     static NSString *cellID = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
+    if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];   
     }
 
-    BOOL noContacts = [[myAppDelegate.contactsManager.sections allKeys] count] == 0;
     if (indexPath.section == 0) {
         cell.textLabel.text = @"Facebook";
         UIImage *logo = [UIImage imageNamed:@"fb_logo.png"];
@@ -146,9 +153,6 @@
         size.width = 22;
         UIImage *scaledLogo = [[self class] scale:logo toSize:size];
         cell.imageView.image = scaledLogo;
-    } else if (noContacts && indexPath.section == 1) {
-        cell.textLabel.text = @"No Contacts";
-        cell.imageView.image = nil;
     } else {
         NSDictionary *contact = [self getContactForSection:indexPath.section forRow:indexPath.row];
         cell.textLabel.text = [contact valueForKey:@"name"];
