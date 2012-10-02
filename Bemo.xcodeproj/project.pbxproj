@@ -64,6 +64,7 @@
 		B5C3EDBC15B3F447003C16A9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C3EDBA15B3F447003C16A9 /* Icon.png */; };
 		B5C3EDBD15B3F447003C16A9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C3EDBB15B3F447003C16A9 /* Icon@2x.png */; };
 		B5C7D90515523E250080E630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C7D90415523E250080E630 /* Localizable.strings */; };
+		B5F737EF161B7A6F006779BB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F737EE161B7A6F006779BB /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +173,7 @@
 		B5C3EDBA15B3F447003C16A9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = SOURCE_ROOT; };
 		B5C3EDBB15B3F447003C16A9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Images/Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		B5C7D90415523E250080E630 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; path = Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
+		B5F737EE161B7A6F006779BB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 		1AF444E7152E695A0006B5DB = {
 			isa = PBXGroup;
 			children = (
+				B5F737EE161B7A6F006779BB /* Default-568h@2x.png */,
 				B5C7D8FC1551E3C90080E630 /* External */,
 				1AF444FC152E695A0006B5DB /* Source */,
 				1AF444F5152E695A0006B5DB /* Frameworks */,
@@ -509,6 +512,7 @@
 				B5C3EDBC15B3F447003C16A9 /* Icon.png in Resources */,
 				B5C3EDBD15B3F447003C16A9 /* Icon@2x.png in Resources */,
 				B52071A715CAAA0C0014F2EE /* fb_logo.png in Resources */,
+				B5F737EF161B7A6F006779BB /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -635,7 +639,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -654,7 +658,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Bemo;
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -672,7 +676,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Bemo;
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -701,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				SDKROOT = iphoneos;
 			};
 			name = TestFlight;
@@ -719,7 +723,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Bemo;
-				PROVISIONING_PROFILE = "2EDABE9F-D146-4FC9-BAFE-76F3BEDDCCF7";
+				PROVISIONING_PROFILE = "11FAB607-EE61-421A-8F2D-D351A71351E8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = TestFlight;

@@ -158,7 +158,7 @@
     return YES;
 }
 
-// Called when notifcation comes in while app is active or suspended
+// Called when notification comes in while app is active or suspended
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)pushNotification
 {
     NSString *key = [pushNotification valueForKeyPath:@"aps.alert.loc-key"];
